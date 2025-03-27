@@ -1,9 +1,15 @@
-<script>
-	import { createEventDispatcher } from 'svelte';
+<script lang="ts">
+	// Use callback props instead of createEventDispatcher
+	export let onOpenContactModal: () => void;
 
-	const dispatch = createEventDispatcher();
+	// Define type for navigation items
+	type NavItem = {
+		text: string;
+		path: string | null;
+		action?: string;
+	};
 
-	const navItems = [
+	const navItems: NavItem[] = [
 		{ text: 'Homepage', path: '/' },
 		{ text: 'About', path: '/about' },
 		{ text: 'Resume', path: '/resume' },
@@ -12,10 +18,9 @@
 		{ text: 'Get in Touch', path: null, action: 'openContactModal' }
 	];
 
-	function handleNavClick(item) {
+	function handleNavClick(item: NavItem): void {
 		if (item.action === 'openContactModal') {
-			dispatch('openContactModal');
-			return;
+			onOpenContactModal();
 		}
 	}
 </script>

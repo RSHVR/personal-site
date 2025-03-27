@@ -13,7 +13,7 @@
 
 <div class="under-construction">
 	<header class="header">
-		<Navigation on:openContactModal={handleOpenContactModal} />
+		<Navigation onOpenContactModal={handleOpenContactModal} />
 	</header>
 
 	<main class="main-content">

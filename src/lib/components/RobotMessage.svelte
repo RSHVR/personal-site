@@ -25,33 +25,40 @@
 </div>
 
 <style>
+	/* Base styles - will apply to all screen sizes */
 	.robot-container {
-		position: absolute;
-		left: 50%;
-		top: 50%;
-		transform: translate(-50%, -20%);
+		position: relative;
 		display: flex;
 		flex-direction: column;
 		align-items: center;
+		width: 100%;
+		max-width: 320px;
+		margin: 0 auto;
 	}
 
 	.robot-message-group {
 		position: relative;
 		display: flex;
-		align-items: flex-start;
+		align-items: center;
+		justify-content: center;
+		width: 100%;
 	}
 
 	.robot-image {
 		width: auto;
-		max-height: 280px;
-		min-height: 240px;
+		height: 280px; /* Desktop default */
 		object-fit: contain;
+		position: relative;
+		transition: height 0.3s ease; /* Smooth transition for size changes */
 	}
 
 	.message-container {
 		position: absolute;
-		top: -30px; /* Position above the robot */
-		left: 60%; /* Position to the right of robot's center */
+		top: -30px;
+		right: -80px;
+		transition:
+			top 0.3s ease,
+			right 0.3s ease; /* Smooth transition for position changes */
 	}
 
 	.rectangle-10 {
@@ -63,6 +70,9 @@
 		align-items: center;
 		padding: 0 20px;
 		white-space: nowrap;
+		transition:
+			height 0.3s ease,
+			padding 0.3s ease; /* Smooth transition for size changes */
 	}
 
 	.working_span {
@@ -71,6 +81,7 @@
 		font-family: 'Nunito', sans-serif;
 		font-weight: 600;
 		white-space: nowrap;
+		transition: font-size 0.3s ease; /* Smooth transition for font size changes */
 	}
 
 	.vector-1 {
@@ -79,13 +90,16 @@
 		background: #1e1f20;
 		position: absolute;
 		bottom: -13px;
-		left: 13px; /* Align to the left side */
+		left: 13px;
 		clip-path: polygon(0 0, 100% 0, 50% 100%);
 	}
 
 	.status-container {
-		margin-top: 30px;
+		margin-top: 20px;
 		width: 120px;
+		transition:
+			width 0.3s ease,
+			margin-top 0.3s ease; /* Smooth transition for size changes */
 	}
 
 	.rectangle-1 {
@@ -123,48 +137,186 @@
 		font-weight: 400;
 		text-transform: uppercase;
 		line-height: 25px;
+		transition: font-size 0.3s ease; /* Smooth transition for font size changes */
 	}
 
-	@media (max-width: 1400px) {
+	/* Extra Small Mobile (320px - 480px) */
+	@media (max-width: 480px) {
 		.robot-container {
-			transform: translate(-50%, -15%);
+			max-width: 250px;
+		}
+
+		.robot-image {
+			height: 180px; /* Phone size as specified */
 		}
 
 		.message-container {
-			left: 60%; /* Maintain right position */
-		}
-	}
-
-	@media (max-width: 1200px) {
-		.robot-container {
-			transform: translate(-50%, 0);
-		}
-
-		.message-container {
-			left: 60%; /* Maintain right position */
-		}
-	}
-
-	@media (max-height: 700px) {
-		.robot-container {
-			transform: translate(-50%, 0);
-		}
-	}
-
-	/* Adjusted responsive styles to keep message above and to the right of robot */
-	@media (max-width: 768px) {
-		.message-container {
-			left: 65%; /* Increase right position slightly on smaller screens */
+			top: -20px;
+			right: -50px;
 		}
 
 		.rectangle-10 {
-			min-width: fit-content;
-			padding: 0 15px;
-			height: 40px; /* Slightly smaller height */
+			height: 35px;
+			padding: 0 12px;
 		}
 
 		.working_span {
-			font-size: 16px; /* Smaller font size for mobile */
+			font-size: 14px;
+		}
+
+		.status-container {
+			width: 100px;
+			margin-top: 12px;
+		}
+
+		.offline_span {
+			font-size: 18px;
+		}
+	}
+
+	/* Small Mobile landscape (481px - 600px) */
+	@media (min-width: 481px) and (max-width: 600px) {
+		.robot-container {
+			max-width: 280px;
+		}
+
+		.robot-image {
+			height: 180px; /* Phone size as specified */
+		}
+
+		.message-container {
+			top: -22px;
+			right: -60px;
+		}
+
+		.rectangle-10 {
+			height: 38px;
+			padding: 0 14px;
+		}
+
+		.working_span {
+			font-size: 15px;
+		}
+
+		.status-container {
+			width: 105px;
+			margin-top: 14px;
+		}
+
+		.offline_span {
+			font-size: 19px;
+		}
+	}
+
+	/* Small Tablets portrait (601px - 768px) */
+	@media (min-width: 601px) and (max-width: 768px) {
+		.robot-container {
+			max-width: 300px;
+		}
+
+		.robot-image {
+			height: 240px; /* Tablet size as specified */
+		}
+
+		.message-container {
+			top: -26px; /* Closer to large tablet value for smoother transition */
+			right: -70px; /* Closer to large tablet value for smoother transition */
+		}
+
+		.rectangle-10 {
+			height: 41px; /* Closer to large tablet value for smoother transition */
+			padding: 0 17px; /* Closer to large tablet value for smoother transition */
+		}
+
+		.working_span {
+			font-size: 17px; /* Match large tablet size for smoother transition */
+		}
+
+		.status-container {
+			width: 112px; /* Closer to large tablet value for smoother transition */
+			margin-top: 17px; /* Closer to large tablet value for smoother transition */
+		}
+
+		.offline_span {
+			font-size: 21px; /* Closer to large tablet value for smoother transition */
+		}
+	}
+
+	/* Large Tablets landscape (769px - 1024px) */
+	@media (min-width: 769px) and (max-width: 1024px) {
+		.robot-container {
+			max-width: 310px;
+		}
+
+		.robot-image {
+			height: 240px; /* Tablet size as specified */
+		}
+
+		.message-container {
+			top: -28px;
+			right: -73px; /* Closer to desktop value for smoother transition */
+		}
+
+		.rectangle-10 {
+			height: 43px; /* Closer to desktop value for smoother transition */
+			padding: 0 18px;
+		}
+
+		.working_span {
+			font-size: 18px; /* Match desktop size for smoother transition */
+		}
+
+		.status-container {
+			width: 115px;
+			margin-top: 18px;
+		}
+
+		.offline_span {
+			font-size: 22px;
+		}
+	}
+
+	/* Small Desktops/Laptops (1025px - 1280px) */
+	@media (min-width: 1025px) and (max-width: 1280px) {
+		.robot-container {
+			max-width: 320px;
+		}
+
+		.robot-image {
+			height: 280px; /* Desktop size as specified */
+		}
+
+		.message-container {
+			top: -30px;
+			right: -75px;
+		}
+
+		.rectangle-10 {
+			height: 45px;
+			padding: 0 19px; /* Slightly increased for better transition */
+		}
+
+		.working_span {
+			font-size: 18px;
+		}
+
+		.status-container {
+			width: 118px;
+		}
+
+		.offline_span {
+			font-size: 23px;
+		}
+	}
+
+	/* For very short height screens */
+	@media (max-height: 600px) {
+		.robot-image {
+			height: 160px;
+		}
+
+		.status-container {
+			margin-top: 10px;
 		}
 	}
 </style>

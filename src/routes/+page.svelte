@@ -20,11 +20,11 @@
 
 	.siteunderconstruction_span {
 		color: #a3a3a3;
-		font-size: min(96px, 8vw);
+		font-size: min(96px, 18vw);
 		font-family: 'Jersey 10', sans-serif;
 		font-weight: 400;
 		letter-spacing: 2px;
-		white-space: nowrap;
+		white-space: wrap;
 	}
 
 	@media (max-width: 1200px) {

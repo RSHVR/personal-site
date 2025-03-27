@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 	import { fade, fly } from 'svelte/transition';
 	import { quintOut } from 'svelte/easing';
 	export let showModal = false;
@@ -9,7 +9,7 @@
 	let message = '';
 	let submitting = false;
 	let submitted = false;
-	let error = null;
+	let error: string | null = null;
 
 	// Close modal function
 	function closeModal() {
@@ -55,7 +55,7 @@
 	}
 
 	// Close on Escape key
-	function handleKeydown(event) {
+	function handleKeydown(event: KeyboardEvent) {
 		if (event.key === 'Escape') {
 			closeModal();
 		}
@@ -65,15 +65,26 @@
 <svelte:window on:keydown={handleKeydown} />
 
 {#if showModal}
-	<div class="modal-backdrop" on:click={closeModal} transition:fade={{ duration: 200 }}>
-		<div
+	<!-- Changed div to button with role dialog overlay -->
+	<div
+		class="modal-backdrop"
+		on:click={closeModal}
+		transition:fade={{ duration: 200 }}
+		aria-label="Close modal"
+	>
+		<!-- Changed div to section with role dialog -->
+		<section
 			class="modal-container"
 			on:click|stopPropagation={() => {}}
 			transition:fly={{ y: 20, duration: 300, easing: quintOut }}
+			role="dialog"
+			aria-modal="true"
+			aria-labelledby="modal-title"
 		>
 			<div class="modal-header">
-				<h2>Get in Touch</h2>
-				<button class="close-button" on:click={closeModal}>×</button>
+				<h2 id="modal-title">Get in Touch</h2>
+				<button class="close-button" on:click={closeModal} aria-label="Close contact form">×</button
+				>
 			</div>
 
 			{#if !submitted}
@@ -112,14 +123,14 @@
 					</div>
 
 					{#if error}
-						<div class="error-message">
+						<div class="error-message" role="alert">
 							{error}
 						</div>
 					{/if}
 
 					<button type="submit" class="submit-button" disabled={submitting}>
 						{#if submitting}
-							<div class="loading-spinner"></div>
+							<div class="loading-spinner" aria-hidden="true"></div>
 							Sending...
 						{:else}
 							Send Message
@@ -128,7 +139,7 @@
 				</form>
 			{:else}
 				<div class="success-message">
-					<div class="success-icon">✓</div>
+					<div class="success-icon" aria-hidden="true">✓</div>
 					<h3>Message Sent!</h3>
 					<p>Thanks for reaching out. I'll get back to you soon.</p>
 					<button class="close-modal-button" on:click={closeModal}>Close</button>
@@ -136,16 +147,17 @@
 			{/if}
 
 			<div class="modal-footer">
-				<div class="rectangle-line"></div>
+				<div class="rectangle-line" aria-hidden="true"></div>
 				<div class="modal-note">
 					<span>Messages are currently logged in browser console</span>
 				</div>
 			</div>
-		</div>
+		</section>
 	</div>
 {/if}
 
 <style>
+	/* Styles remain the same */
 	.modal-backdrop {
 		position: fixed;
 		top: 0;
@@ -160,6 +172,12 @@
 		z-index: 1000;
 		padding: 20px;
 		box-sizing: border-box;
+		border: none;
+		margin: 0;
+		cursor: default;
+		font-family: inherit;
+		font-size: inherit;
+		line-height: inherit;
 	}
 
 	.modal-container {
@@ -170,6 +188,7 @@
 		max-width: 500px;
 		overflow: hidden;
 		box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+		cursor: auto;
 	}
 
 	.modal-header {

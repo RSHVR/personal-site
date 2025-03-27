@@ -42,7 +42,7 @@
 		background: #131314;
 		display: flex;
 		flex-direction: column;
-		overflow: hidden; /* Prevent content from overflowing when translated */
+		overflow-x: hidden; /* Allow vertical scrolling but prevent horizontal */
 	}
 
 	.header {
@@ -59,21 +59,19 @@
 	.main-content {
 		position: relative;
 		width: 100%;
-		flex: 1;
+		flex: 1; /* Take up all available space between header and footer */
 		display: flex;
 		flex-direction: column;
-		padding-bottom: 40px; /* Ensure spacing before footer */
-		overflow-y: auto; /* Allow scrolling if content is too large */
-		transition: padding-bottom 0.3s ease; /* Smooth transition for padding changes */
-		/* Ensure the main content has a minimum height to maintain footer position */
-		min-height: calc(100vh - 180px); /* 100vh - (header height + footer height) */
+		padding-bottom: 20px; /* Smaller padding to ensure footer is visible */
+		transition: padding-bottom 0.3s ease;
 	}
 
 	.footer-wrapper {
 		width: 100%;
 		height: 60px; /* Fixed height for footer */
-		margin-top: auto;
 		flex-shrink: 0; /* Prevent footer from shrinking */
+		position: relative; /* Ensure proper stacking context */
+		z-index: 1; /* Make sure footer is above other elements */
 	}
 
 	/* Extra small (0-480px) */
@@ -83,8 +81,7 @@
 		}
 
 		.main-content {
-			padding-bottom: 30px;
-			min-height: calc(100vh - 150px); /* 100vh - (header + footer) */
+			padding-bottom: 15px;
 		}
 	}
 
@@ -95,8 +92,7 @@
 		}
 
 		.main-content {
-			padding-bottom: 35px;
-			min-height: calc(100vh - 160px); /* 100vh - (header + footer) */
+			padding-bottom: 18px;
 		}
 	}
 
@@ -107,8 +103,7 @@
 		}
 
 		.main-content {
-			padding-bottom: 38px;
-			min-height: calc(100vh - 170px); /* 100vh - (header + footer) */
+			padding-bottom: 20px;
 		}
 	}
 
@@ -119,8 +114,7 @@
 		}
 
 		.main-content {
-			padding-bottom: 40px;
-			min-height: calc(100vh - 180px); /* 100vh - (header + footer) */
+			padding-bottom: 20px;
 		}
 	}
 
@@ -135,8 +129,7 @@
 		}
 
 		.main-content {
-			padding-bottom: 25px;
-			min-height: calc(100vh - 140px); /* 100vh - (header + footer) */
+			padding-bottom: 15px;
 		}
 	}
 </style>

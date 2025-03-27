@@ -41,17 +41,21 @@
 	.site-title {
 		margin: 0;
 		padding: 0 20px; /* Add horizontal padding to prevent awkward wrapping */
+		max-width: 767px; /* Force wrap at 768px by making container 1px smaller */
+		margin-left: auto;
+		margin-right: auto;
 	}
 
 	.site-title-text {
 		color: #a3a3a3;
-		font-size: min(96px, 16vw); /* Base size */
+		font-size: min(96px, 16vw); /* Base size that scales down */
 		font-family: 'Jersey 10', sans-serif;
 		font-weight: 400;
 		letter-spacing: 2px;
 		line-height: 1.2;
 		display: inline-block;
 		transition: all 0.3s ease;
+		/* Note: white-space: nowrap is applied in larger screens in media query */
 	}
 
 	.robot-content {
@@ -98,7 +102,7 @@
 		}
 
 		.site-title-text {
-			font-size: min(70px, 13vw);
+			font-size: min(80px, 14vw);
 			letter-spacing: 1.2px;
 		}
 	}
@@ -116,6 +120,7 @@
 		.site-title-text {
 			font-size: min(80px, 14vw);
 			letter-spacing: 1.5px;
+			white-space: nowrap; /* Prevent text from wrapping */
 		}
 	}
 
@@ -125,9 +130,14 @@
 			margin-bottom: 60px;
 		}
 
+		.site-title {
+			max-width: none; /* Remove max-width to prevent wrapping */
+		}
+
 		.site-title-text {
-			font-size: min(96px, 16vw);
+			font-size: min(120px, 16vw); /* Larger max font size */
 			letter-spacing: 2px;
+			white-space: nowrap; /* Prevent text from wrapping */
 		}
 	}
 </style>

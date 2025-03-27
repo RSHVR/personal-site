@@ -42,6 +42,7 @@
 		background: #131314;
 		display: flex;
 		flex-direction: column;
+		overflow: hidden; /* Prevent content from overflowing when translated */
 	}
 
 	.header {
@@ -52,9 +53,7 @@
 		align-items: center;
 		justify-content: flex-end;
 		flex-shrink: 0;
-		transition:
-			height 0.3s ease,
-			min-height 0.3s ease; /* Smooth transition for size changes */
+		transition: height 0.3s ease; /* Smooth transition for size changes */
 	}
 
 	.main-content {
@@ -63,45 +62,65 @@
 		flex: 1;
 		display: flex;
 		flex-direction: column;
-		padding-bottom: 30px; /* Ensure spacing before footer */
+		padding-bottom: 40px; /* Ensure spacing before footer */
 		overflow-y: auto; /* Allow scrolling if content is too large */
 		transition: padding-bottom 0.3s ease; /* Smooth transition for padding changes */
+		/* Ensure the main content has a minimum height to maintain footer position */
+		min-height: calc(100vh - 180px); /* 100vh - (header height + footer height) */
 	}
 
 	.footer-wrapper {
 		width: 100%;
+		height: 60px; /* Fixed height for footer */
 		margin-top: auto;
+		flex-shrink: 0; /* Prevent footer from shrinking */
 	}
 
-	/* Extra Small Mobile (320px - 480px) */
+	/* Extra small (0-480px) */
 	@media (max-width: 480px) {
 		.header {
 			height: 90px;
-			min-height: 90px;
 		}
 
 		.main-content {
-			padding-bottom: 20px;
+			padding-bottom: 30px;
+			min-height: calc(100vh - 150px); /* 100vh - (header + footer) */
 		}
 	}
 
-	/* Small Mobile landscape (481px - 600px) */
-	@media (min-width: 481px) and (max-width: 600px) {
+	/* Small (481-768px) */
+	@media (min-width: 481px) and (max-width: 768px) {
 		.header {
 			height: 100px;
-			min-height: 100px;
 		}
 
 		.main-content {
-			padding-bottom: 25px;
+			padding-bottom: 35px;
+			min-height: calc(100vh - 160px); /* 100vh - (header + footer) */
 		}
 	}
 
-	/* Small Tablets portrait (601px - 768px) */
-	@media (min-width: 601px) and (max-width: 768px) {
+	/* Medium (769-1279px) */
+	@media (min-width: 769px) and (max-width: 1279px) {
 		.header {
 			height: 110px;
-			min-height: 110px;
+		}
+
+		.main-content {
+			padding-bottom: 38px;
+			min-height: calc(100vh - 170px); /* 100vh - (header + footer) */
+		}
+	}
+
+	/* Large (1280px+) */
+	@media (min-width: 1280px) {
+		.header {
+			height: 120px;
+		}
+
+		.main-content {
+			padding-bottom: 40px;
+			min-height: calc(100vh - 180px); /* 100vh - (header + footer) */
 		}
 	}
 
@@ -113,11 +132,11 @@
 
 		.header {
 			height: 80px;
-			min-height: 80px;
 		}
 
 		.main-content {
-			padding-bottom: 15px;
+			padding-bottom: 25px;
+			min-height: calc(100vh - 140px); /* 100vh - (header + footer) */
 		}
 	}
 </style>

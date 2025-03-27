@@ -4,8 +4,8 @@
 
 <div class="page-content">
 	<div class="title-container">
-		<h1 class="site-under-construction">
-			<span class="siteunderconstruction_span">Site Under Construction</span>
+		<h1 class="site-title">
+			<span class="site-title-text">Site Under Construction</span>
 		</h1>
 	</div>
 
@@ -23,7 +23,10 @@
 		width: 100%;
 		padding: 20px;
 		box-sizing: border-box;
-		transition: padding 0.3s ease; /* Smooth transition for padding changes */
+		transition:
+			padding 0.3s ease,
+			transform 0.3s ease;
+		position: relative;
 	}
 
 	.title-container {
@@ -32,21 +35,23 @@
 		padding-top: 30px;
 		transition:
 			margin-bottom 0.3s ease,
-			padding-top 0.3s ease; /* Smooth transitions */
+			padding-top 0.3s ease;
 	}
 
-	.site-under-construction {
+	.site-title {
 		margin: 0;
+		padding: 0 20px; /* Add horizontal padding to prevent awkward wrapping */
 	}
 
-	.siteunderconstruction_span {
+	.site-title-text {
 		color: #a3a3a3;
-		font-size: min(96px, 16vw);
+		font-size: min(96px, 16vw); /* Base size */
 		font-family: 'Jersey 10', sans-serif;
 		font-weight: 400;
 		letter-spacing: 2px;
 		line-height: 1.2;
-		transition: font-size 0.3s ease; /* This won't actually apply since we're using min() */
+		display: inline-block;
+		transition: all 0.3s ease;
 	}
 
 	.robot-content {
@@ -56,45 +61,73 @@
 		align-items: flex-start;
 		justify-content: center;
 		margin-top: 20px;
-		transition: margin-top 0.3s ease; /* Smooth transition for margin changes */
+		transition: margin-top 0.3s ease;
 	}
 
-	/* Extra Small Mobile (320px - 480px) */
+	/* Extra small (0-480px) */
 	@media (max-width: 480px) {
 		.page-content {
 			padding: 15px;
 		}
 
 		.title-container {
-			margin-bottom: 40px;
-			padding-top: 20px;
+			margin-bottom: 30px;
+			padding-top: 15px;
+		}
+
+		.site-title {
+			padding: 0 10px;
+		}
+
+		.site-title-text {
+			font-size: min(60px, 13vw);
+			letter-spacing: 1px;
 		}
 	}
 
-	/* Small Mobile landscape (481px - 600px) */
-	@media (min-width: 481px) and (max-width: 600px) {
-		.title-container {
-			margin-bottom: 45px;
-			padding-top: 25px;
+	/* Small (481-768px) */
+	@media (min-width: 481px) and (max-width: 768px) {
+		.page-content {
+			padding: 18px;
+			transform: translateY(-3%);
 		}
-	}
 
-	/* Small Tablets portrait (601px - 768px) */
-	@media (min-width: 601px) and (max-width: 768px) {
-		.title-container {
-			margin-bottom: 50px;
-		}
-	}
-
-	/* For very short height screens */
-	@media (max-height: 600px) {
 		.title-container {
 			margin-bottom: 30px;
 			padding-top: 15px;
 		}
 
+		.site-title-text {
+			font-size: min(70px, 13vw);
+			letter-spacing: 1.2px;
+		}
+	}
+
+	/* Medium (769-1279px) */
+	@media (min-width: 769px) and (max-width: 1279px) {
+		.title-container {
+			margin-bottom: 40px;
+		}
+
 		.page-content {
-			padding: 10px;
+			transform: translateY(-4%);
+		}
+
+		.site-title-text {
+			font-size: min(80px, 14vw);
+			letter-spacing: 1.5px;
+		}
+	}
+
+	/* Large (1280px+) */
+	@media (min-width: 1280px) {
+		.title-container {
+			margin-bottom: 60px;
+		}
+
+		.site-title-text {
+			font-size: min(96px, 16vw);
+			letter-spacing: 2px;
 		}
 	}
 </style>

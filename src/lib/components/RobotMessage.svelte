@@ -3,14 +3,16 @@
 </script>
 
 <div class="robot-container">
-	<img src="/robot.png" alt="Robot" class="robot-image" />
-	<div class="message-container">
-		<div class="rectangle-10">
-			<div class="im-working-as-fast-as-i-can">
-				<span class="imworkingasfastasican_span">{message}</span>
+	<div class="robot-message-group">
+		<img src="/robot.png" alt="Robot" class="robot-image" />
+		<div class="message-container">
+			<div class="rectangle-10">
+				<div class="im-working-as-fast-as-i-can">
+					<span class="working_span">{message}</span>
+				</div>
 			</div>
+			<div class="vector-1"></div>
 		</div>
-		<div class="vector-1"></div>
 	</div>
 	<div class="status-container">
 		<div class="rectangle-1">
@@ -33,16 +35,23 @@
 		align-items: center;
 	}
 
+	.robot-message-group {
+		position: relative;
+		display: flex;
+		align-items: flex-start;
+	}
+
 	.robot-image {
 		width: auto;
-		height: 280px;
+		max-height: 280px;
+		min-height: 240px;
 		object-fit: contain;
 	}
 
 	.message-container {
 		position: absolute;
-		top: -20px;
-		right: -220px;
+		top: -30px; /* Position above the robot */
+		left: 60%; /* Position to the right of robot's center */
 	}
 
 	.rectangle-10 {
@@ -53,9 +62,10 @@
 		display: flex;
 		align-items: center;
 		padding: 0 20px;
+		white-space: nowrap;
 	}
 
-	.imworkingasfastasican_span {
+	.working_span {
 		color: #a3a3a3;
 		font-size: 20px;
 		font-family: 'Nunito', sans-serif;
@@ -69,7 +79,7 @@
 		background: #1e1f20;
 		position: absolute;
 		bottom: -13px;
-		left: 13px;
+		left: 13px; /* Align to the left side */
 		clip-path: polygon(0 0, 100% 0, 50% 100%);
 	}
 
@@ -121,7 +131,7 @@
 		}
 
 		.message-container {
-			right: -160px;
+			left: 60%; /* Maintain right position */
 		}
 	}
 
@@ -131,30 +141,30 @@
 		}
 
 		.message-container {
-			position: relative;
-			right: 0;
-			top: 20px;
-		}
-	}
-
-	@media (max-width: 768px) {
-		.robot-image {
-			height: 100px;
-		}
-
-		.rectangle-10 {
-			min-width: fit-content;
-			padding: 0 15px;
-		}
-
-		.imworkingasfastasican_span {
-			font-size: 14px;
+			left: 60%; /* Maintain right position */
 		}
 	}
 
 	@media (max-height: 700px) {
 		.robot-container {
 			transform: translate(-50%, 0);
+		}
+	}
+
+	/* Adjusted responsive styles to keep message above and to the right of robot */
+	@media (max-width: 768px) {
+		.message-container {
+			left: 65%; /* Increase right position slightly on smaller screens */
+		}
+
+		.rectangle-10 {
+			min-width: fit-content;
+			padding: 0 15px;
+			height: 40px; /* Slightly smaller height */
+		}
+
+		.working_span {
+			font-size: 16px; /* Smaller font size for mobile */
 		}
 	}
 </style>

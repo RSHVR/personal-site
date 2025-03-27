@@ -1,15 +1,16 @@
-<!-- src/lib/components/BreakpointDebugger.svelte -->
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import { browser } from '$app/environment';
 
-	// Default Tailwind breakpoints
+	// Define breakpoints according to the comprehensive list provided
 	const breakpoints = {
-		sm: 640,
-		md: 768,
-		lg: 1024,
-		xl: 1280,
-		'2xl': 1536
+		'xs-mobile': { min: 0, max: 480 }, // Extra Small Mobile (320px - 480px)
+		'sm-mobile': { min: 481, max: 600 }, // Small Mobile landscape (481px - 600px)
+		'sm-tablet': { min: 601, max: 768 }, // Small Tablets portrait (601px - 768px)
+		'lg-tablet': { min: 769, max: 1024 }, // Large Tablets landscape (769px - 1024px)
+		'sm-desktop': { min: 1025, max: 1280 }, // Small Desktops/Laptops (1025px - 1280px)
+		'lg-desktop': { min: 1281, max: 1440 }, // Large Desktops (1281px - 1440px)
+		'xl-desktop': { min: 1441, max: 9999 } // Extra Large Desktops (1441px and up)
 	};
 
 	let width = 0;
@@ -25,12 +26,9 @@
 		height = window.innerHeight;
 
 		// Determine current breakpoint
-		currentBreakpoint = 'xs';
-		if (width >= breakpoints['2xl']) currentBreakpoint = '2xl';
-		else if (width >= breakpoints.xl) currentBreakpoint = 'xl';
-		else if (width >= breakpoints.lg) currentBreakpoint = 'lg';
-		else if (width >= breakpoints.md) currentBreakpoint = 'md';
-		else if (width >= breakpoints.sm) currentBreakpoint = 'sm';
+		currentBreakpoint =
+			Object.entries(breakpoints).find(([_, { min, max }]) => width >= min && width <= max)?.[0] ||
+			'';
 	}
 
 	function toggleVisibility() {
@@ -54,17 +52,19 @@
 				<span>{width}px × {height}px</span>
 			</div>
 			<div class="breakpoints">
-				{#each Object.entries(breakpoints) as [name, size]}
+				{#each Object.entries(breakpoints) as [name, _]}
 					<span class="breakpoint {currentBreakpoint === name ? 'active' : ''}">
 						{name}
 					</span>
 				{/each}
 			</div>
 		</div>
-		<button class="toggle-button" on:click={toggleVisibility}>×</button>
+		<button class="toggle-button" on:click={toggleVisibility} aria-label="Hide debugger">×</button>
 	</div>
 {:else}
-	<button class="show-button" on:click={toggleVisibility}>BP</button>
+	<button class="show-button" on:click={toggleVisibility} aria-label="Show breakpoint debugger"
+		>BP</button
+	>
 {/if}
 
 <style>
@@ -95,10 +95,13 @@
 	.breakpoints {
 		display: flex;
 		gap: 6px;
+		flex-wrap: wrap;
+		max-width: 300px;
 	}
 
 	.breakpoint {
 		opacity: 0.5;
+		margin-right: 4px;
 	}
 
 	.breakpoint.active {

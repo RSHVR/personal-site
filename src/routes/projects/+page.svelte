@@ -3,46 +3,51 @@
 </script>
 
 <svelte:head>
-	<title>Projects - Arshveer Gahir</title>
-	<meta name="description" content="Explore Arshveer Gahir's portfolio of AI/ML projects and enterprise solutions" />
+	<title>RSHVR</title>
+	<meta
+		name="description"
+		content="Explore Arshveer Gahir's portfolio of AI/ML projects and enterprise solutions"
+	/>
 </svelte:head>
 
 <div class="projects-page">
 	<div class="projects-header">
 		<h1>Projects</h1>
-		<p class="projects-subtitle">A collection of AI/ML solutions and enterprise applications I've built</p>
+		<p class="projects-subtitle">
+			A collection of AI/ML solutions and enterprise applications I've built
+		</p>
 	</div>
 
 	<div class="projects-container">
-		<ProjectCard 
+		<ProjectCard
 			title="Capfluence"
 			description="AI-powered lead discovery platform that saves financial advisors 100+ hours monthly through automated prospect identification and data-driven insights. Built with modern ML techniques, scalable cloud architecture, and real-time data processing capabilities."
 			imageSrc="/project-images/capfluence.png"
 			readMoreLink="/projects/capfluence"
 		/>
-		
-		<ProjectCard 
+
+		<ProjectCard
 			title="Highlyte Compliance Engine"
 			description="Computer vision and NLP models that automated compliance verification across all 50 US states and Instagram, processing thousands of marketing materials and eliminating manual review bottlenecks for cannabis industry clients with 99.2% accuracy."
 			imageSrc="/project-images/highlyte.png"
 			readMoreLink="/projects/highlyte"
 		/>
-		
-		<ProjectCard 
+
+		<ProjectCard
 			title="Financial Portfolio Optimizer"
 			description="Machine learning-driven portfolio optimization system using modern portfolio theory and risk assessment algorithms. Integrates real-time market data, ESG scoring, and behavioral finance principles to maximize risk-adjusted returns for institutional clients."
 			imageSrc="/project-images/portfolio-optimizer.png"
 			readMoreLink="/projects/portfolio-optimizer"
 		/>
-		
-		<ProjectCard 
+
+		<ProjectCard
 			title="Healthcare Data Analytics Platform"
 			description="HIPAA-compliant data analytics platform for healthcare providers, featuring predictive modeling for patient outcomes, resource optimization, and operational efficiency. Processes 10M+ patient records with advanced privacy-preserving techniques."
 			imageSrc="/project-images/healthcare-platform.png"
 			readMoreLink="/projects/healthcare-platform"
 		/>
-		
-		<ProjectCard 
+
+		<ProjectCard
 			title="Real-time Fraud Detection System"
 			description="High-performance fraud detection system processing 50K+ transactions per second using ensemble machine learning models, graph neural networks, and real-time feature engineering to identify suspicious patterns with sub-100ms latency."
 			imageSrc="/project-images/fraud-detection.png"
@@ -57,7 +62,7 @@
 		min-height: 100vh;
 		padding: 60px 196px 100px 196px;
 		box-sizing: border-box;
-		background: #FCF7F2;
+		background: #fcf7f2;
 	}
 
 	.projects-header {

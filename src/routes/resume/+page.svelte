@@ -1,7 +1,7 @@
 <script>
 	import { onMount } from 'svelte';
 	import { browser } from '$app/environment';
-	
+
 	let resumePdfUrl = '/resume.pdf';
 	let isMobile = false;
 	let pdfSupported = true;
@@ -9,12 +9,14 @@
 
 	onMount(() => {
 		// Detect mobile devices
-		isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-		
+		isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+			navigator.userAgent
+		);
+
 		// Check PDF plugin support
 		const hasPdfSupport = navigator.mimeTypes && navigator.mimeTypes['application/pdf'];
 		pdfSupported = hasPdfSupport || !isMobile;
-		
+
 		if (isMobile || !pdfSupported) {
 			showFallback = true;
 		}
@@ -22,7 +24,7 @@
 </script>
 
 <svelte:head>
-	<title>Resume - Arshveer Gahir</title>
+	<title>RSHVR</title>
 	<meta name="description" content="View and download Arshveer Gahir's resume" />
 </svelte:head>
 
@@ -30,9 +32,15 @@
 	<div class="resume-header">
 		<h1>Resume</h1>
 		<a href={resumePdfUrl} download="Arshveer_Gahir_Resume.pdf" class="download-btn">
-			<svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-				<path d="M12 16L16 12H13V4H11V12H8L12 16Z" fill="currentColor"/>
-				<path d="M20 18H4V20H20V18Z" fill="currentColor"/>
+			<svg
+				width="20"
+				height="20"
+				viewBox="0 0 24 24"
+				fill="none"
+				xmlns="http://www.w3.org/2000/svg"
+			>
+				<path d="M12 16L16 12H13V4H11V12H8L12 16Z" fill="currentColor" />
+				<path d="M20 18H4V20H20V18Z" fill="currentColor" />
 			</svg>
 			Download Resume
 		</a>
@@ -42,26 +50,38 @@
 		{#if browser && showFallback}
 			<div class="pdf-fallback">
 				<div class="fallback-content">
-					<svg width="64" height="64" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-						<path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20Z" fill="#ff611a"/>
+					<svg
+						width="64"
+						height="64"
+						viewBox="0 0 24 24"
+						fill="none"
+						xmlns="http://www.w3.org/2000/svg"
+					>
+						<path
+							d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20Z"
+							fill="#ff611a"
+						/>
 					</svg>
 					<h3>Resume Preview</h3>
 					<p>PDF preview not available on this device</p>
 					<div class="fallback-actions">
 						<a href={resumePdfUrl} target="_blank" class="view-btn">View in New Tab</a>
-						<a href={resumePdfUrl} download="Arshveer_Gahir_Resume.pdf" class="download-btn-fallback">Download PDF</a>
+						<a
+							href={resumePdfUrl}
+							download="Arshveer_Gahir_Resume.pdf"
+							class="download-btn-fallback">Download PDF</a
+						>
 					</div>
 				</div>
 			</div>
 		{:else}
 			<object data={resumePdfUrl} type="application/pdf" class="pdf-object">
-				<iframe 
-					src={resumePdfUrl}
-					title="Arshveer Gahir Resume"
-					class="pdf-viewer">
-				</iframe>
+				<iframe src={resumePdfUrl} title="Arshveer Gahir Resume" class="pdf-viewer"> </iframe>
 				<div class="fallback-message">
-					<p>Unable to display PDF? <a href={resumePdfUrl} target="_blank">View in new tab</a> or <a href={resumePdfUrl} download="Arshveer_Gahir_Resume.pdf">download it here</a></p>
+					<p>
+						Unable to display PDF? <a href={resumePdfUrl} target="_blank">View in new tab</a> or
+						<a href={resumePdfUrl} download="Arshveer_Gahir_Resume.pdf">download it here</a>
+					</p>
 				</div>
 			</object>
 		{/if}
@@ -76,7 +96,7 @@
 		box-sizing: border-box;
 		display: flex;
 		flex-direction: column;
-		background: #FCF7F2;
+		background: #fcf7f2;
 	}
 
 	.resume-header {
@@ -206,7 +226,8 @@
 		flex-wrap: wrap;
 	}
 
-	.view-btn, .download-btn-fallback {
+	.view-btn,
+	.download-btn-fallback {
 		padding: 12px 24px;
 		text-decoration: none;
 		border-radius: 8px;

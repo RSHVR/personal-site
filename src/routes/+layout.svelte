@@ -39,7 +39,7 @@
 		width: 100%;
 		min-height: 100vh;
 		position: relative;
-		background: #131314;
+		background: #FCF7F2;
 		display: flex;
 		flex-direction: column;
 		overflow-x: hidden; /* Allow vertical scrolling but prevent horizontal */
@@ -48,7 +48,7 @@
 	.header {
 		width: 100%;
 		height: 120px;
-		background: #131314;
+		background: #FCF7F2;
 		display: flex;
 		align-items: center;
 		justify-content: flex-end;

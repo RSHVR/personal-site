@@ -1,16 +1,63 @@
 <script>
 	import RobotMessage from '$lib/components/RobotMessage.svelte';
+	import TechStackCarousel from '$lib/components/TechStackCarousel.svelte';
+	import ProjectCard from '$lib/components/ProjectCard.svelte';
 </script>
 
 <div class="page-content">
-	<div class="title-container">
-		<h1 class="site-title">
-			<span class="site-title-text">Site Under Construction</span>
-		</h1>
+	<div class="hero-section-intro">
+		<div class="hero-image">
+			<img src="/hero-image.png" alt="profile picture" />
+		</div>
+		<div class="title-container">
+			<h1 class="greeting">
+				<span class="greeting-text">Hi, I am Veer</span>
+			</h1>
+			<p class="intro">
+				I am a product-focused ML/AI Engineer with proven track record of building enterprise AI
+				solutions that deliver measurable business impact. Currently building <a
+					class="previous-workplace"
+					href="https://www.capfluence.app"
+					target="_blank">Capfluence</a
+				>, an AI-powered lead discovery platform that saves financial advisors 100+ hours monthly
+				through automated prospect identification and data-driven insights.
+				<br /><br />
+
+				At
+				<a class="previous-workplace" href="https://www.highlyte.ai" target="_blank">Highlyte</a>, I
+				architected and deployed computer vision and NLP models that automated compliance
+				verification for cannabis industry clients across all 50 US states and Instagram, processing
+				thousands of marketing materials and eliminating manual review bottlenecks.
+				<br /><br />
+
+				I excel at the intersection of technology and business strategy, translating complex
+				technical capabilities into user-centric products that solve real problems. My
+				systems-thinking approach allows me to architect scalable solutions that align technical
+				innovation with business objectives.
+			</p>
+		</div>
 	</div>
 
-	<div class="robot-content">
-		<RobotMessage message="I'm working on it" />
+	<div class="hero-section-stack">
+		<TechStackCarousel />
+	</div>
+
+	<div class="hero-section-projects">
+		<h1 class="projects-heading">Recent Projects</h1>
+		<div class="projects-container">
+			<ProjectCard 
+				title="Capfluence"
+				description="AI-powered lead discovery platform that saves financial advisors 100+ hours monthly through automated prospect identification and data-driven insights. Built with modern ML techniques and scalable architecture."
+				imageSrc="/project-images/capfluence.png"
+				readMoreLink="/projects/capfluence"
+			/>
+			<ProjectCard 
+				title="Highlyte Compliance Engine"
+				description="Computer vision and NLP models that automated compliance verification across all 50 US states and Instagram, processing thousands of marketing materials and eliminating manual review bottlenecks for cannabis industry clients."
+				imageSrc="/project-images/highlyte.png"
+				readMoreLink="/projects/highlyte"
+			/>
+		</div>
 	</div>
 </div>
 
@@ -21,7 +68,7 @@
 		flex-direction: column;
 		height: 100%;
 		width: 100%;
-		padding: 20px;
+		padding: 0 196px;
 		box-sizing: border-box;
 		transition:
 			padding 0.3s ease,
@@ -29,10 +76,23 @@
 		position: relative;
 	}
 
+	.hero-section-intro {
+		width: 100vw;
+		height: 70vh;
+		margin-left: -196px;
+		padding: 21px 196px 172px 196px;
+		box-sizing: border-box;
+		display: flex;
+		flex-direction: row;
+		align-items: flex-start;
+	}
+
 	.title-container {
-		text-align: center;
-		margin-bottom: 60px;
-		padding-top: 30px;
+		text-align: left;
+		margin-left: 90px;
+		width: 934px;
+		height: 650px;
+		padding-top: 21px;
 		transition:
 			margin-bottom 0.3s ease,
 			padding-top 0.3s ease;
@@ -58,14 +118,82 @@
 		/* Note: white-space: nowrap is applied in larger screens in media query */
 	}
 
-	.robot-content {
-		flex: 1;
-		position: relative;
+	.hero-image {
+		height: 525px;
+		width: 505px;
+	}
+
+	.hero-image img {
+		width: 100%;
+		height: 100%;
+		object-fit: contain;
+	}
+
+	.intro {
+		line-height: 1.5;
+	}
+
+	.previous-workplace {
+		text-decoration: none;
+		color: inherit;
+		border-bottom: 2.5px dotted;
+	}
+
+	.stack {
 		display: flex;
-		align-items: flex-start;
-		justify-content: center;
-		margin-top: 20px;
-		transition: margin-top 0.3s ease;
+		justify-content: space-between;
+		gap: 40px;
+		margin-top: 40px;
+	}
+
+	.stack-category h3 {
+		margin: 0 0 10px 0;
+		font-weight: 600;
+	}
+
+	.stack-category ul {
+		list-style: none;
+		padding: 0;
+		margin: 0;
+	}
+
+	.stack-category li {
+		margin-bottom: 5px;
+	}
+
+	.hero-section-stack {
+		width: 100vw;
+		height: 200px;
+		margin-left: -196px;
+		background: transparent;
+		position: relative;
+	}
+
+	.hero-section-projects {
+		width: 100vw;
+		height: auto;
+		margin-left: -196px;
+		padding: 60px 196px 100px 196px;
+		box-sizing: border-box;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
+
+	.projects-heading {
+		margin: 0 0 50px 0;
+		font-size: 36px;
+		font-weight: 600;
+		color: #222222;
+		align-self: flex-start;
+	}
+
+	.projects-container {
+		display: flex;
+		flex-direction: column;
+		gap: 55px;
+		align-items: center;
+		width: 100%;
 	}
 
 	/* Extra small (0-480px) */

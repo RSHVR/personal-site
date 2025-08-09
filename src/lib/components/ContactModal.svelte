@@ -181,13 +181,13 @@
 	}
 
 	.modal-container {
-		background: #1a1a1b;
-		border: 1px solid #2a2a2a;
-		border-radius: 8px;
+		background: #ffffff;
+		border: 1px solid #e0e0e0;
+		border-radius: 16px;
 		width: 100%;
 		max-width: 500px;
 		overflow: hidden;
-		box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+		box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
 		cursor: auto;
 	}
 
@@ -195,23 +195,23 @@
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
-		padding: 20px;
-		border-bottom: 1px solid #2a2a2a;
+		padding: 24px;
+		border-bottom: 1px solid #f0f0f0;
 	}
 
 	.modal-header h2 {
-		color: #a3a3a3;
-		font-family: 'Jersey 10', sans-serif;
-		font-size: 28px;
+		color: #222222;
+		font-family: 'Nunito', sans-serif;
+		font-size: 32px;
 		margin: 0;
-		font-weight: 400;
-		letter-spacing: 1px;
+		font-weight: 600;
+		letter-spacing: 0;
 	}
 
 	.close-button {
 		background: none;
 		border: none;
-		color: #a3a3a3;
+		color: #666666;
 		font-size: 28px;
 		cursor: pointer;
 		padding: 0;
@@ -221,16 +221,16 @@
 		align-items: center;
 		justify-content: center;
 		border-radius: 50%;
-		transition: background-color 0.3s;
+		transition: all 0.3s;
 	}
 
 	.close-button:hover {
-		background-color: rgba(255, 97, 26, 0.1);
-		color: rgba(255, 97, 26, 0.9);
+		background-color: #f0f0f0;
+		color: #222222;
 	}
 
 	form {
-		padding: 20px;
+		padding: 24px;
 	}
 
 	.form-group {
@@ -239,8 +239,8 @@
 
 	label {
 		display: block;
-		color: #a3a3a3;
-		font-size: 14px;
+		color: #222222;
+		font-size: 16px;
 		margin-bottom: 8px;
 		font-family: 'Nunito', sans-serif;
 		font-weight: 600;
@@ -249,44 +249,46 @@
 	input,
 	textarea {
 		width: 100%;
-		padding: 12px;
-		background: #131314;
-		border: 1px solid #2a2a2a;
-		border-radius: 6px;
-		color: #a3a3a3;
+		padding: 14px 16px;
+		background: #fcf7f2;
+		border: 2px solid #e0e0e0;
+		border-radius: 8px;
+		color: #222222;
 		font-family: 'Nunito', sans-serif;
 		font-size: 16px;
 		box-sizing: border-box;
-		transition: border-color 0.3s;
+		transition: all 0.3s;
 	}
 
 	input:focus,
 	textarea:focus {
 		outline: none;
-		border-color: rgba(255, 97, 26, 0.7);
+		border-color: #ff611a;
+		background: #ffffff;
 	}
 
 	input::placeholder,
 	textarea::placeholder {
-		color: #3a3a3a;
+		color: #999999;
 	}
 
 	.error-message {
-		background: rgba(201, 19, 19, 0.1);
-		color: #c91313;
-		padding: 10px;
-		border-radius: 4px;
+		background: #fef2f2;
+		color: #dc2626;
+		padding: 12px 16px;
+		border-radius: 8px;
 		font-size: 14px;
 		margin-bottom: 20px;
-		border: 1px solid rgba(201, 19, 19, 0.3);
+		border: 1px solid #fecaca;
+		font-family: 'Nunito', sans-serif;
 	}
 
 	.submit-button {
-		background: rgba(255, 97, 26, 0.15);
-		color: rgba(255, 97, 26, 0.9);
-		border: 1px solid rgba(255, 97, 26, 0.3);
-		border-radius: 50px;
-		padding: 12px 24px;
+		background: #ff611a;
+		color: white;
+		border: none;
+		border-radius: 8px;
+		padding: 16px 24px;
 		font-size: 16px;
 		font-family: 'Nunito', sans-serif;
 		font-weight: 600;
@@ -299,20 +301,22 @@
 	}
 
 	.submit-button:hover:not(:disabled) {
-		background: rgba(255, 97, 26, 0.25);
+		background: #e55517;
 		transform: translateY(-2px);
+		box-shadow: 0 8px 25px rgba(255, 97, 26, 0.3);
 	}
 
 	.submit-button:disabled {
 		opacity: 0.7;
 		cursor: not-allowed;
+		transform: none;
 	}
 
 	.loading-spinner {
 		width: 18px;
 		height: 18px;
-		border: 2px solid rgba(255, 97, 26, 0.3);
-		border-top: 2px solid rgba(255, 97, 26, 0.9);
+		border: 2px solid rgba(255, 255, 255, 0.3);
+		border-top: 2px solid white;
 		border-radius: 50%;
 		margin-right: 10px;
 		animation: spin 1s linear infinite;
@@ -328,43 +332,44 @@
 	}
 
 	.success-message {
-		padding: 30px 20px;
+		padding: 30px 24px;
 		text-align: center;
 	}
 
 	.success-icon {
 		width: 60px;
 		height: 60px;
-		background: rgba(39, 174, 96, 0.1);
+		background: #dcfce7;
 		border-radius: 50%;
-		color: #27ae60;
+		color: #16a34a;
 		font-size: 30px;
 		display: flex;
 		align-items: center;
 		justify-content: center;
 		margin: 0 auto 20px;
-		border: 1px solid rgba(39, 174, 96, 0.3);
+		border: 2px solid #bbf7d0;
 	}
 
 	.success-message h3 {
-		color: #a3a3a3;
-		font-size: 24px;
+		color: #222222;
+		font-size: 28px;
 		margin: 0 0 10px;
-		font-family: 'Jersey 10', sans-serif;
-		font-weight: 400;
+		font-family: 'Nunito', sans-serif;
+		font-weight: 600;
 	}
 
 	.success-message p {
-		color: #a3a3a3;
-		margin: 0 0 20px;
+		color: #666666;
+		margin: 0 0 24px;
 		font-family: 'Nunito', sans-serif;
+		font-size: 16px;
 	}
 
 	.close-modal-button {
-		background: rgba(255, 97, 26, 0.15);
-		color: rgba(255, 97, 26, 0.9);
-		border: 1px solid rgba(255, 97, 26, 0.3);
-		border-radius: 50px;
+		background: #f0f0f0;
+		color: #222222;
+		border: 2px solid #e0e0e0;
+		border-radius: 8px;
 		padding: 12px 24px;
 		font-size: 16px;
 		font-family: 'Nunito', sans-serif;
@@ -374,25 +379,26 @@
 	}
 
 	.close-modal-button:hover {
-		background: rgba(255, 97, 26, 0.25);
-		transform: translateY(-2px);
+		background: #e0e0e0;
+		transform: translateY(-1px);
 	}
 
 	.modal-footer {
-		padding: 10px 20px 20px;
+		padding: 16px 24px 24px;
 		text-align: center;
+		border-top: 1px solid #f0f0f0;
 	}
 
 	.rectangle-line {
 		width: 50px;
 		height: 2px;
-		background: rgba(255, 97, 26, 0.7);
+		background: #ff611a;
 		border-radius: 20px;
-		margin: 0 auto 10px;
+		margin: 0 auto 12px;
 	}
 
 	.modal-note span {
-		color: #2a2a2a;
+		color: #999999;
 		font-size: 12px;
 		font-family: 'Nunito', sans-serif;
 	}

@@ -43,15 +43,18 @@
 	</div>
 
 	<div class="hero-section-projects">
-		<h1 class="projects-heading">Recent Projects</h1>
+		<div class="projects-header">
+			<h1 class="projects-heading">Recent Projects</h1>
+			<a href="/projects" class="see-all-link">see all</a>
+		</div>
 		<div class="projects-container">
-			<ProjectCard 
+			<ProjectCard
 				title="Capfluence"
 				description="AI-powered lead discovery platform that saves financial advisors 100+ hours monthly through automated prospect identification and data-driven insights. Built with modern ML techniques and scalable architecture."
 				imageSrc="/project-images/capfluence.png"
 				readMoreLink="/projects/capfluence"
 			/>
-			<ProjectCard 
+			<ProjectCard
 				title="Highlyte Compliance Engine"
 				description="Computer vision and NLP models that automated compliance verification across all 50 US states and Instagram, processing thousands of marketing materials and eliminating manual review bottlenecks for cannabis industry clients."
 				imageSrc="/project-images/highlyte.png"
@@ -180,12 +183,26 @@
 		align-items: center;
 	}
 
+	.projects-header {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		width: 100%;
+		margin-bottom: 50px;
+	}
+
 	.projects-heading {
-		margin: 0 0 50px 0;
+		margin: 0;
 		font-size: 36px;
 		font-weight: 600;
 		color: #222222;
-		align-self: flex-start;
+	}
+
+	.see-all-link {
+		text-decoration: underline;
+		color: inherit;
+		font-size: 16px;
+		margin-right: 150px;
 	}
 
 	.projects-container {

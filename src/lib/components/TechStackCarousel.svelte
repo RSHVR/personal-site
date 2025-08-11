@@ -59,13 +59,13 @@
 		animation: scroll 45s linear infinite;
 		height: 100%;
 		align-items: center;
-		width: calc(60px * 39); /* 39 items (13 * 3) * (20px width + 40px margin) */
+		width: calc(64px * 39); /* 39 items (13 * 3) * (24px width + 40px margin) */
 	}
 
 	.carousel-item {
 		flex-shrink: 0;
-		width: 20px;
-		height: 20px;
+		width: 24px;
+		height: 24px;
 		margin: 0 20px;
 		display: flex;
 		align-items: center;

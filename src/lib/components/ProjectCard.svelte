@@ -14,9 +14,15 @@
 		<p class="project-description">{description}</p>
 		<div class="read-more-section">
 			<svg class="arrow" viewBox="0 0 40 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-				<path d="M32 1L39 8L32 15M39 8H1" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+				<path
+					d="M32 1L39 8L32 15M39 8H1"
+					stroke="currentColor"
+					stroke-width="2"
+					stroke-linecap="round"
+					stroke-linejoin="round"
+				/>
 			</svg>
-			<a href={readMoreLink} class="read-more">Read More</a>
+			<a href={readMoreLink} class="read-more">GitHub</a>
 		</div>
 	</div>
 </div>

@@ -7,7 +7,7 @@
 
 	onMount(() => {
 		// Show modal immediately when page loads
-		showModal = true;
+		showModal = false;
 	});
 
 	function handleModalClose() {
@@ -20,39 +20,44 @@
 </script>
 
 <svelte:head>
-	<title>Contact - Arshveer Gahir</title>
-	<meta name="description" content="Get in touch with Arshveer Gahir for AI/ML projects and collaborations" />
+	<title>Arshveer Gahir</title>
+	<meta
+		name="description"
+		content="Get in touch with Arshveer Gahir for AI/ML projects and collaborations"
+	/>
 </svelte:head>
 
 <div class="contact-page">
 	<div class="contact-header">
 		<h1>Get in Touch</h1>
 		<p class="contact-subtitle">Let's discuss AI/ML projects, collaborations, or opportunities</p>
-		
+
 		<div class="contact-info">
 			<div class="contact-card">
 				<h3>Email</h3>
-				<p>arshveer.gahir@example.com</p>
+				<a href="mailto:arshveersinghgahir@gmail.com"><p>arshveersinghgahir at gmail dot com</p></a>
 			</div>
-			
+
 			<div class="contact-card">
 				<h3>LinkedIn</h3>
-				<p>linkedin.com/in/arshveergahir</p>
+				<a
+					href="https://www.linkedin.com/in/arshveer-singh-gahir"
+					target="_blank"
+					rel="noopener noreferrer"><p>linkedin.com/in/arshveer-singh-gahir</p></a
+				>
 			</div>
-			
+
 			<div class="contact-card">
 				<h3>Location</h3>
-				<p>San Francisco, CA</p>
+				<p>Toronto, Canada</p>
 			</div>
 		</div>
 
-		<button class="open-form-btn" on:click={() => showModal = true}>
-			Open Contact Form
-		</button>
+		<button class="open-form-btn" on:click={() => (showModal = true)}> Open Contact Form </button>
 	</div>
 </div>
 
-<ContactModal bind:showModal={showModal} />
+<ContactModal bind:showModal />
 
 <style>
 	.contact-page {
@@ -60,7 +65,7 @@
 		min-height: 80vh;
 		padding: 60px 196px 100px 196px;
 		box-sizing: border-box;
-		background: #FCF7F2;
+		background: #fcf7f2;
 		display: flex;
 		align-items: center;
 		justify-content: center;
@@ -101,6 +106,11 @@
 		box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
 		text-align: center;
 		transition: transform 0.3s ease;
+	}
+
+	.contact-card a {
+		text-decoration: none;
+		color: inherit;
 	}
 
 	.contact-card:hover {

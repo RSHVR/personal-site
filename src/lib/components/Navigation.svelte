@@ -10,6 +10,7 @@
 		<a href="/">Home</a>
 		<a href="resume">Resume</a>
 		<a href="/projects">Projects</a>
+		<a href="/contact">Contact</a>
 		<button class="contact-btn" on:click={onOpenContactModal}>Get in Touch</button>
 	</div>
 </div>

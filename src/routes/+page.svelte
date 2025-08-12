@@ -18,22 +18,27 @@
 				solutions that deliver measurable business impact. Currently building <a
 					class="previous-workplace"
 					href="https://www.capfluence.app"
-					target="_blank">Capfluence</a
+					target="_blank"
+					rel="noopener noreferrer">Capfluence</a
 				>, an AI-powered lead discovery platform that saves financial advisors 100+ hours monthly
 				through automated prospect identification and data-driven insights.
 				<br /><br />
 
 				At
-				<a class="previous-workplace" href="https://www.highlyte.ai" target="_blank">Highlyte</a>, I
-				architected and deployed computer vision and NLP models that automated compliance
+				<a
+					class="previous-workplace"
+					href="https://www.highlyte.ai"
+					target="_blank"
+					rel="noopener noreferrer">Highlyte</a
+				>, I architected and deployed computer vision and NLP models that automated compliance
 				verification for cannabis industry clients across all 50 US states and Instagram, processing
 				thousands of marketing materials and eliminating manual review bottlenecks.
 				<br /><br />
 
 				I excel at the intersection of technology and business strategy, translating complex
-				technical capabilities into user-centric products that solve real problems. My
-				systems-thinking approach allows me to architect scalable solutions that align technical
-				innovation with business objectives.
+				technical capabilities into user-centric products that solve real problems. My analytical
+				approach allows me to architect scalable solutions that align technical innovation with
+				business objectives.
 			</p>
 		</div>
 	</div>
@@ -132,14 +137,33 @@
 		object-fit: contain;
 	}
 
+	.greeting-text {
+		font-size: 48px;
+		font-weight: 300;
+		color: #222222;
+		margin-bottom: 16px;
+	}
+
 	.intro {
 		line-height: 1.5;
+		font-size: 18px;
+		font-weight: 200;
 	}
 
 	.previous-workplace {
 		text-decoration: none;
 		color: inherit;
-		border-bottom: 2.5px dotted;
+		border-bottom: none;
+		background-image: linear-gradient(
+			to right,
+			currentColor 0%,
+			currentColor 60%,
+			transparent 60%,
+			transparent 100%
+		);
+		background-size: 8.1px 1.5px;
+		background-repeat: repeat-x;
+		background-position: bottom;
 	}
 
 	.stack {

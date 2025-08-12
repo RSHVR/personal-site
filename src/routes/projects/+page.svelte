@@ -3,7 +3,7 @@
 </script>
 
 <svelte:head>
-	<title>RSHVR</title>
+	<title>Arshveer Gahir</title>
 	<meta
 		name="description"
 		content="Explore Arshveer Gahir's portfolio of AI/ML projects and enterprise solutions"

@@ -24,7 +24,7 @@
 </script>
 
 <svelte:head>
-	<title>RSHVR</title>
+	<title>Arshveer Gahir</title>
 	<meta name="description" content="View and download Arshveer Gahir's resume" />
 </svelte:head>
 

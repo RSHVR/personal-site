@@ -1,26 +1,7 @@
 <script>
-	import { onMount } from 'svelte';
-	import { browser } from '$app/environment';
-
-	let resumePdfUrl = '/resume.pdf';
-	let isMobile = false;
-	let pdfSupported = true;
-	let showFallback = false;
-
-	onMount(() => {
-		// Detect mobile devices
-		isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
-			navigator.userAgent
-		);
-
-		// Check PDF plugin support
-		const hasPdfSupport = navigator.mimeTypes && navigator.mimeTypes['application/pdf'];
-		pdfSupported = hasPdfSupport || !isMobile;
-
-		if (isMobile || !pdfSupported) {
-			showFallback = true;
-		}
-	});
+	let resumePdfUrl =
+		'https://drive.google.com/file/d/1vp-GXJM62c1plobpRwqsrlGDWBnQoes4/view?usp=sharing';
+	let googleViewerUrl = `https://drive.google.com/file/d/1vp-GXJM62c1plobpRwqsrlGDWBnQoes4/preview`;
 </script>
 
 <svelte:head>
@@ -31,7 +12,12 @@
 <div class="resume-page">
 	<div class="resume-header">
 		<h1>Resume</h1>
-		<a href={resumePdfUrl} download="Arshveer_Gahir_Resume.pdf" class="download-btn">
+		<a
+			href={resumePdfUrl}
+			download="Arshveer_Gahir_Resume.pdf"
+			class="download-btn"
+			target="_blank"
+		>
 			<svg
 				width="20"
 				height="20"
@@ -47,44 +33,16 @@
 	</div>
 
 	<div class="pdf-container">
-		{#if browser && showFallback}
-			<div class="pdf-fallback">
-				<div class="fallback-content">
-					<svg
-						width="64"
-						height="64"
-						viewBox="0 0 24 24"
-						fill="none"
-						xmlns="http://www.w3.org/2000/svg"
-					>
-						<path
-							d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20Z"
-							fill="#ff611a"
-						/>
-					</svg>
-					<h3>Resume Preview</h3>
-					<p>PDF preview not available on this device</p>
-					<div class="fallback-actions">
-						<a href={resumePdfUrl} target="_blank" class="view-btn">View in New Tab</a>
-						<a
-							href={resumePdfUrl}
-							download="Arshveer_Gahir_Resume.pdf"
-							class="download-btn-fallback">Download PDF</a
-						>
-					</div>
-				</div>
-			</div>
-		{:else}
-			<object data={resumePdfUrl} type="application/pdf" class="pdf-object">
-				<iframe src={resumePdfUrl} title="Arshveer Gahir Resume" class="pdf-viewer"> </iframe>
-				<div class="fallback-message">
-					<p>
-						Unable to display PDF? <a href={resumePdfUrl} target="_blank">View in new tab</a> or
-						<a href={resumePdfUrl} download="Arshveer_Gahir_Resume.pdf">download it here</a>
-					</p>
-				</div>
-			</object>
-		{/if}
+		<iframe src={googleViewerUrl} title="Arshveer Gahir Resume" class="pdf-viewer" frameborder="0"
+		></iframe>
+		<div class="fallback-message">
+			<p>
+				Can't see the resume? <a href={resumePdfUrl} target="_blank">View in new tab</a> or
+				<a href={resumePdfUrl} download="Arshveer_Gahir_Resume.pdf" target="_blank"
+					>download it here</a
+				>
+			</p>
+		</div>
 	</div>
 </div>
 
@@ -140,36 +98,39 @@
 	.pdf-container {
 		flex: 1;
 		position: relative;
-		border-radius: 12px;
-		overflow: hidden;
-		box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-		background: white;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		background: transparent;
 	}
 
 	.pdf-viewer {
-		width: 100%;
-		height: 80vh;
-		min-height: 600px;
+		width: 70%;
+		max-width: 800px;
+		height: 100vh;
+		min-height: 800px;
 		border: none;
-		border-radius: 12px;
+		border-radius: 8px;
+		box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
 	}
 
 	.fallback-message {
 		position: absolute;
-		top: 50%;
+		bottom: 20px;
 		left: 50%;
-		transform: translate(-50%, -50%);
+		transform: translateX(-50%);
 		text-align: center;
-		background: rgba(255, 255, 255, 0.9);
-		padding: 20px;
+		background: rgba(255, 255, 255, 0.95);
+		padding: 15px 20px;
 		border-radius: 8px;
-		pointer-events: none;
+		box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+		z-index: 10;
 	}
 
 	.fallback-message p {
 		margin: 0;
 		color: #666666;
-		font-size: 16px;
+		font-size: 14px;
 	}
 
 	.fallback-message a {
@@ -180,80 +141,6 @@
 
 	.fallback-message a:hover {
 		text-decoration: underline;
-	}
-
-	.pdf-object {
-		width: 100%;
-		height: 80vh;
-		min-height: 600px;
-		border: none;
-		border-radius: 12px;
-	}
-
-	.pdf-fallback {
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		height: 60vh;
-		min-height: 400px;
-	}
-
-	.fallback-content {
-		text-align: center;
-		padding: 40px;
-		background: white;
-		border-radius: 16px;
-		box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-		max-width: 400px;
-	}
-
-	.fallback-content h3 {
-		margin: 20px 0 10px 0;
-		font-size: 24px;
-		color: #222222;
-	}
-
-	.fallback-content p {
-		margin: 0 0 30px 0;
-		color: #666666;
-		font-size: 16px;
-	}
-
-	.fallback-actions {
-		display: flex;
-		gap: 15px;
-		justify-content: center;
-		flex-wrap: wrap;
-	}
-
-	.view-btn,
-	.download-btn-fallback {
-		padding: 12px 24px;
-		text-decoration: none;
-		border-radius: 8px;
-		font-weight: 500;
-		font-size: 14px;
-		transition: all 0.3s ease;
-		font-family: 'Nunito', sans-serif;
-	}
-
-	.view-btn {
-		background: #f0f0f0;
-		color: #222222;
-		border: 2px solid #e0e0e0;
-	}
-
-	.view-btn:hover {
-		background: #e8e8e8;
-	}
-
-	.download-btn-fallback {
-		background: #ff611a;
-		color: white;
-	}
-
-	.download-btn-fallback:hover {
-		background: #e55517;
 	}
 
 	/* Responsive design */
@@ -273,8 +160,9 @@
 		}
 
 		.pdf-viewer {
-			height: 70vh;
-			min-height: 500px;
+			width: 85%;
+			height: 90vh;
+			min-height: 700px;
 		}
 	}
 
@@ -289,8 +177,18 @@
 		}
 
 		.pdf-viewer {
-			height: 60vh;
-			min-height: 400px;
+			width: 95%;
+			height: 85vh;
+			min-height: 600px;
+		}
+
+		.fallback-message {
+			bottom: 10px;
+			padding: 12px 16px;
+		}
+
+		.fallback-message p {
+			font-size: 12px;
 		}
 	}
 </style>

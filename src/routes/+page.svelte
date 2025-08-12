@@ -142,6 +142,7 @@
 		font-weight: 300;
 		color: #222222;
 		margin-bottom: 16px;
+		/*font-family: 'Poppins', sans-serif;*/
 	}
 
 	.intro {

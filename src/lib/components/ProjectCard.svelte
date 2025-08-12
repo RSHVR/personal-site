@@ -62,6 +62,8 @@
 		flex-direction: column;
 		text-align: left;
 		position: relative;
+		font-weight: 300;
+		font-size: 16px;
 	}
 
 	.project-title {
@@ -69,6 +71,8 @@
 		font-weight: 600;
 		font-size: 24px;
 		color: #222222;
+		font-weight: 400;
+		/*font-family: 'Poppins', sans-serif;*/
 	}
 
 	.project-description {

@@ -5,6 +5,7 @@
 				href="https://www.linkedin.com/in/arshveer-singh-gahir/"
 				target="_blank"
 				rel="noopener noreferrer"
+				aria-label="Visit my LinkedIn profile"
 			>
 				<svg
 					width="24"
@@ -19,7 +20,7 @@
 					/>
 				</svg>
 			</a>
-			<a href="https://github.com/RSHVR" target="_blank" rel="noopener noreferrer">
+			<a href="https://github.com/RSHVR" target="_blank" rel="noopener noreferrer" aria-label="Visit my GitHub profile">
 				<svg
 					width="24"
 					height="24"
@@ -33,7 +34,7 @@
 					/>
 				</svg>
 			</a>
-			<a href="https://rshvr.medium.com/" target="_blank" rel="noopener noreferrer">
+			<a href="https://rshvr.medium.com/" target="_blank" rel="noopener noreferrer" aria-label="Visit my Medium blog">
 				<svg
 					width="24"
 					height="24"

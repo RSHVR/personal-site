@@ -69,17 +69,22 @@
 	<div
 		class="modal-backdrop"
 		on:click={closeModal}
+		on:keydown={(e) => e.key === 'Enter' && closeModal()}
 		transition:fade={{ duration: 200 }}
 		aria-label="Close modal"
+		role="button"
+		tabindex="0"
 	>
 		<!-- Changed div to section with role dialog -->
-		<section
+		<div
 			class="modal-container"
 			on:click|stopPropagation={() => {}}
+			on:keydown|stopPropagation={() => {}}
 			transition:fly={{ y: 20, duration: 300, easing: quintOut }}
 			role="dialog"
 			aria-modal="true"
 			aria-labelledby="modal-title"
+			tabindex="-1"
 		>
 			<div class="modal-header">
 				<h2 id="modal-title">Get in Touch</h2>
@@ -152,7 +157,7 @@
 					<span>Messages are currently logged in browser console</span>
 				</div>
 			</div>
-		</section>
+		</div>
 	</div>
 {/if}
 

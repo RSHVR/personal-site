@@ -22,7 +22,13 @@
 		<ProjectCard
 			title="Capfluence"
 			description="AI-powered lead discovery platform that saves financial advisors 100+ hours monthly through automated prospect identification and data-driven insights. Built with modern ML techniques, scalable cloud architecture, and real-time data processing capabilities."
-			imageSrc="/project-images/capfluence.png"
+			imageSrc="/project-images/capfluence/capfluence-dashboard.png"
+			images={[
+				'/project-images/capfluence/capfluence-dashboard.png',
+				'/project-images/capfluence/capfluence-prospects.png',
+				'/project-images/capfluence/capfluence-leads.png',
+				'/project-images/capfluence/capfluence-insights.png'
+			]}
 			readMoreLink="/projects/capfluence"
 		/>
 

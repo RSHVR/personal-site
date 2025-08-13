@@ -20,7 +20,7 @@
 
 	<div class="projects-container">
 		<ProjectCard
-			title="Capfluence"
+			title="Capfluence - Leads Generation & Enrichment"
 			description="AI-powered lead discovery platform that saves financial advisors 100+ hours monthly through automated prospect identification and data-driven insights. Built with modern ML techniques, scalable cloud architecture, and real-time data processing capabilities."
 			imageSrc="/project-images/capfluence/capfluence-dashboard.png"
 			images={[
@@ -34,9 +34,15 @@
 		/>
 
 		<ProjectCard
-			title="Highlyte Compliance Engine"
+			title="Highlyte - Compliance & Risk Management"
 			description="Computer vision and NLP models that automated compliance verification across all 50 US states and Instagram, processing thousands of marketing materials and eliminating manual review bottlenecks for cannabis industry clients with 99.2% accuracy."
-			imageSrc="/project-images/highlyte.png"
+			imageSrc="/project-images/highlyte/highlyte-dashboard-1.png"
+			images={[
+				'/project-images/highlyte/highlyte-dashboard-1.png',
+				'/project-images/highlyte/highlyte-dashboard-2.png',
+				'/project-images/highlyte/highlyte-insights-1.png',
+				'/project-images/highlyte/highlyte-insights-2.png'
+			]}
 			readMoreLink="https://www.highlyte.ai"
 			readMoreText="website"
 		/>

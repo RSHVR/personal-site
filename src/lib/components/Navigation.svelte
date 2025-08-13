@@ -10,8 +10,7 @@
 		<a href="/">Home</a>
 		<a href="resume">Resume</a>
 		<a href="/projects">Projects</a>
-		<a href="/contact">Contact</a>
-		<button class="contact-btn" on:click={onOpenContactModal}>Get in Touch</button>
+		<a href="/contact" class="contact-btn">Contact</a>
 	</div>
 </div>
 
@@ -43,7 +42,7 @@
 		color: #989898;
 	}
 
-	.contact-btn {
+	.nav-links a.contact-btn {
 		background: none;
 		border: none;
 		font-family: 'Nunito', sans-serif;
@@ -55,7 +54,7 @@
 		padding: 0;
 	}
 
-	.contact-btn:hover {
+	.nav-links a.contact-btn:hover {
 		color: #f98d5c;
 	}
 

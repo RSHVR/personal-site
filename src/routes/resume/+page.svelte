@@ -67,7 +67,7 @@
 	}
 
 	.resume-header h1 {
-		margin: 0;
+		margin: 0 0 20px 0;
 		font-size: 36px;
 		font-weight: 600;
 		color: #222222;

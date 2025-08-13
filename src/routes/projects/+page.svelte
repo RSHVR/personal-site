@@ -13,9 +13,6 @@
 <div class="projects-page">
 	<div class="projects-header">
 		<h1>Projects</h1>
-		<p class="projects-subtitle">
-			A collection of AI/ML solutions and enterprise applications I've built
-		</p>
 	</div>
 
 	<div class="projects-container">
@@ -53,32 +50,27 @@
 	.projects-page {
 		width: 100%;
 		min-height: 100vh;
-		padding: 60px 196px 100px 196px;
+		padding: 40px 196px 100px 196px;
 		box-sizing: border-box;
 		background: #fcf7f2;
 	}
 
 	.projects-header {
 		margin-bottom: 60px;
-		text-align: center;
+		text-align: flex-start;
+		justify-content: space-between;
+		align-items: center;
+		margin-bottom: 30px;
+		padding-bottom: 20px;
+		border-bottom: 1px solid #e0e0e0;
 	}
 
 	.projects-header h1 {
 		margin: 0 0 20px 0;
-		font-size: 48px;
+		font-size: 36px;
 		font-weight: 600;
 		color: #222222;
 		font-family: 'Nunito', sans-serif;
-	}
-
-	.projects-subtitle {
-		margin: 0;
-		font-size: 18px;
-		color: #666666;
-		font-family: 'Nunito', sans-serif;
-		max-width: 600px;
-		margin: 0 auto;
-		line-height: 1.5;
 	}
 
 	.projects-container {

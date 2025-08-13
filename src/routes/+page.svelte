@@ -11,7 +11,7 @@
 		</div>
 		<div class="title-container">
 			<h1 class="greeting">
-				<span class="greeting-text">Hi, I am Veer</span>
+				<span class="greeting-text">Hello, Veer here</span>
 			</h1>
 			<p class="intro">
 				I am a product-focused ML/AI Engineer with proven track record of building enterprise AI

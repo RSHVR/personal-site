@@ -4,6 +4,7 @@
 	export let images = []; // Array of image URLs
 	export let imageSrc = ''; // Backward compatibility
 	export let readMoreLink = '#';
+	export let readMoreText = 'GitHub';
 
 	let currentImageIndex = 0;
 	let showModal = false;
@@ -41,7 +42,7 @@
 
 	function handleKeydown(event) {
 		if (!showModal) return;
-		
+
 		if (event.key === 'Escape') {
 			closeModal();
 		} else if (event.key === 'ArrowRight') {
@@ -58,34 +59,52 @@
 	<div class="image-container">
 		{#if images.length > 0}
 			<img src={images[currentImageIndex]} alt={title} />
-			
+
 			<!-- Carousel navigation -->
 			{#if images.length > 1}
 				<button class="nav-btn nav-btn-left" on:click={prevImage}>
 					<svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-						<path d="M15 18L9 12L15 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+						<path
+							d="M15 18L9 12L15 6"
+							stroke="currentColor"
+							stroke-width="2"
+							stroke-linecap="round"
+							stroke-linejoin="round"
+						/>
 					</svg>
 				</button>
 				<button class="nav-btn nav-btn-right" on:click={nextImage}>
 					<svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-						<path d="M9 18L15 12L9 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+						<path
+							d="M9 18L15 12L9 6"
+							stroke="currentColor"
+							stroke-width="2"
+							stroke-linecap="round"
+							stroke-linejoin="round"
+						/>
 					</svg>
 				</button>
-				
+
 				<!-- Expand button -->
 				<button class="expand-btn" on:click={openModal}>
 					<svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-						<path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+						<path
+							d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"
+							stroke="currentColor"
+							stroke-width="2"
+							stroke-linecap="round"
+							stroke-linejoin="round"
+						/>
 					</svg>
 				</button>
-				
+
 				<!-- Image indicators -->
 				<div class="image-indicators">
 					{#each images as _, index}
-						<button 
-							class="indicator" 
+						<button
+							class="indicator"
 							class:active={index === currentImageIndex}
-							on:click={() => currentImageIndex = index}
+							on:click={() => (currentImageIndex = index)}
 						></button>
 					{/each}
 				</div>
@@ -105,7 +124,9 @@
 					stroke-linejoin="round"
 				/>
 			</svg>
-			<a href={readMoreLink} class="read-more">GitHub</a>
+			<a href={readMoreLink} target="_blank" rel="noopener noreferrer" class="read-more"
+				>{readMoreText}</a
+			>
 		</div>
 	</div>
 </div>
@@ -115,34 +136,52 @@
 	<div class="modal-overlay" on:click={closeModal}>
 		<div class="modal-content" on:click|stopPropagation>
 			<img src={images[modalImageIndex]} alt={title} />
-			
+
 			{#if images.length > 1}
 				<button class="modal-nav-btn modal-nav-left" on:click={prevModalImage}>
 					<svg width="32" height="32" viewBox="0 0 24 24" fill="none">
-						<path d="M15 18L9 12L15 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+						<path
+							d="M15 18L9 12L15 6"
+							stroke="currentColor"
+							stroke-width="2"
+							stroke-linecap="round"
+							stroke-linejoin="round"
+						/>
 					</svg>
 				</button>
 				<button class="modal-nav-btn modal-nav-right" on:click={nextModalImage}>
 					<svg width="32" height="32" viewBox="0 0 24 24" fill="none">
-						<path d="M9 18L15 12L9 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+						<path
+							d="M9 18L15 12L9 6"
+							stroke="currentColor"
+							stroke-width="2"
+							stroke-linecap="round"
+							stroke-linejoin="round"
+						/>
 					</svg>
 				</button>
 			{/if}
-			
+
 			<button class="modal-close" on:click={closeModal}>
 				<svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-					<path d="M18 6L6 18M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+					<path
+						d="M18 6L6 18M6 6L18 18"
+						stroke="currentColor"
+						stroke-width="2"
+						stroke-linecap="round"
+						stroke-linejoin="round"
+					/>
 				</svg>
 			</button>
-			
+
 			<!-- Modal indicators -->
 			{#if images.length > 1}
 				<div class="modal-indicators">
 					{#each images as _, index}
-						<button 
-							class="modal-indicator" 
+						<button
+							class="modal-indicator"
 							class:active={index === modalImageIndex}
-							on:click={() => modalImageIndex = index}
+							on:click={() => (modalImageIndex = index)}
 						></button>
 					{/each}
 				</div>

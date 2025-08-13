@@ -63,13 +63,15 @@
 					'/project-images/capfluence/capfluence-leads.png',
 					'/project-images/capfluence/capfluence-insights.png'
 				]}
-				readMoreLink="/projects/capfluence"
+				readMoreLink="https://www.capfluence.app"
+				readMoreText="website"
 			/>
 			<ProjectCard
 				title="Highlyte Compliance Engine"
 				description="Computer vision and NLP models that automated compliance verification across all 50 US states and Instagram, processing thousands of marketing materials and eliminating manual review bottlenecks for cannabis industry clients."
 				imageSrc="/project-images/highlyte.png"
-				readMoreLink="/projects/highlyte"
+				readMoreLink="https://www.highlyte.ai"
+				readMoreText="website"
 			/>
 		</div>
 	</div>

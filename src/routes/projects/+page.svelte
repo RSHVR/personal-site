@@ -30,6 +30,7 @@
 				'/project-images/capfluence/capfluence-insights.png'
 			]}
 			readMoreLink="/projects/capfluence"
+			readMoreText="website"
 		/>
 
 		<ProjectCard
@@ -37,6 +38,7 @@
 			description="Computer vision and NLP models that automated compliance verification across all 50 US states and Instagram, processing thousands of marketing materials and eliminating manual review bottlenecks for cannabis industry clients with 99.2% accuracy."
 			imageSrc="/project-images/highlyte.png"
 			readMoreLink="/projects/highlyte"
+			readMoreText="website"
 		/>
 
 		<ProjectCard

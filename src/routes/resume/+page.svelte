@@ -1,7 +1,7 @@
 <script>
 	let resumePdfUrl =
-		'https://drive.google.com/file/d/1vp-GXJM62c1plobpRwqsrlGDWBnQoes4/view?usp=sharing';
-	let googleViewerUrl = `https://drive.google.com/file/d/1vp-GXJM62c1plobpRwqsrlGDWBnQoes4/preview`;
+		'https://drive.google.com/file/d/1Md-o3o8KjDOYRMB28jDNdPgOgAyrXUMo/view?usp=sharing';
+	let googleViewerUrl = `https://drive.google.com/file/d/1Md-o3o8KjDOYRMB28jDNdPgOgAyrXUMo/preview`;
 </script>
 
 <svelte:head>

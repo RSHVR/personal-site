@@ -35,7 +35,7 @@
 
 		<ProjectCard
 			title="Highlyte - Compliance & Risk Management"
-			description="Computer vision and NLP models that automated compliance verification across all 50 US states and Instagram, processing thousands of marketing materials and eliminating manual review bottlenecks for cannabis industry clients with 99.2% accuracy."
+			description="Computer vision and NLP models that automated compliance verification across all 50 US states and Instagram, processing thousands of marketing materials and eliminating manual review bottlenecks for cannabis industry clients."
 			imageSrc="/project-images/highlyte/highlyte-dashboard-1.png"
 			images={[
 				'/project-images/highlyte/highlyte-dashboard-1.png',
@@ -45,27 +45,6 @@
 			]}
 			readMoreLink="https://www.highlyte.ai"
 			readMoreText="website"
-		/>
-
-		<ProjectCard
-			title="Financial Portfolio Optimizer"
-			description="Machine learning-driven portfolio optimization system using modern portfolio theory and risk assessment algorithms. Integrates real-time market data, ESG scoring, and behavioral finance principles to maximize risk-adjusted returns for institutional clients."
-			imageSrc="/project-images/portfolio-optimizer.png"
-			readMoreLink="/projects/portfolio-optimizer"
-		/>
-
-		<ProjectCard
-			title="Healthcare Data Analytics Platform"
-			description="HIPAA-compliant data analytics platform for healthcare providers, featuring predictive modeling for patient outcomes, resource optimization, and operational efficiency. Processes 10M+ patient records with advanced privacy-preserving techniques."
-			imageSrc="/project-images/healthcare-platform.png"
-			readMoreLink="/projects/healthcare-platform"
-		/>
-
-		<ProjectCard
-			title="Real-time Fraud Detection System"
-			description="High-performance fraud detection system processing 50K+ transactions per second using ensemble machine learning models, graph neural networks, and real-time feature engineering to identify suspicious patterns with sub-100ms latency."
-			imageSrc="/project-images/fraud-detection.png"
-			readMoreLink="/projects/fraud-detection"
 		/>
 	</div>
 </div>

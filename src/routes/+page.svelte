@@ -7,7 +7,7 @@
 <div class="page-content">
 	<div class="hero-section-intro">
 		<div class="hero-image">
-			<img src="/hero-image.png" alt="profile picture" />
+			<img src="/profile-image.png" alt="profile picture" />
 		</div>
 		<div class="title-container">
 			<h1 class="greeting">

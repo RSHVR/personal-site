@@ -102,7 +102,7 @@
 		width: 100vw;
 		height: 70vh;
 		margin-left: -196px;
-		padding: 21px 196px 172px 196px;
+		padding: 0px 196px 172px 196px;
 		box-sizing: border-box;
 		display: flex;
 		flex-direction: row;
@@ -114,10 +114,11 @@
 		margin-left: 90px;
 		width: 934px;
 		height: 650px;
-		padding-top: 21px;
+		padding-top: 0px;
 		transition:
 			margin-bottom 0.3s ease,
 			padding-top 0.3s ease;
+		align-items: flex-start;
 	}
 
 	.site-title {
@@ -141,14 +142,16 @@
 	}
 
 	.hero-image {
-		height: 525px;
-		width: 505px;
+		padding-top: 35px;
+		height: 550px;
+		width: 400px;
+		flex-shrink: 0;
 	}
 
 	.hero-image img {
 		width: 100%;
 		height: 100%;
-		object-fit: contain;
+		object-fit: cover;
 	}
 
 	.greeting-text {

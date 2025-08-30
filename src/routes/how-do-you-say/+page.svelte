@@ -201,6 +201,13 @@
 	}
 </script>
 
+<head>
+	<meta
+		name="viewport"
+		content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+	/>
+</head>
+
 <div class="flex min-h-screen flex-col bg-[#FCDFA6]">
 	<!-- Header -->
 	<div

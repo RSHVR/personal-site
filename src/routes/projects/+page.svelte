@@ -17,6 +17,20 @@
 
 	<div class="projects-container">
 		<ProjectCard
+			title="How Do You Say? - Language Model Powered Translation"
+			description="AI-powered translation tool built with Svelte and TypeScript, using Cohere's Command-A translation model (released August 28, 2025) and hosted on Cloudflare. Provides accurate translations that preserve meaning and context across multiple languages, with pronunciation guides included. This results in more natural, contextually appropriate translations that sound right in the target language."
+			imageSrc="/project-images/how-do-you-say/hdys-dashboard.png"
+			images={[
+				'/project-images/how-do-you-say/hdys-dashboard.png',
+				'/project-images/how-do-you-say/hdys-translation.png',
+				'/project-images/how-do-you-say/hdys-failure-mode.png',
+				'/project-images/how-do-you-say/hdys-menu.png'
+			]}
+			readMoreLink="https://capfluence.app"
+			readMoreText="website"
+		/>
+
+		<ProjectCard
 			title="Capfluence - Leads Generation & Enrichment"
 			description="AI-powered lead discovery platform that saves financial advisors 100+ hours monthly through automated prospect identification and data-driven insights. Built with modern ML techniques, scalable cloud architecture, and real-time data processing capabilities."
 			imageSrc="/project-images/capfluence/capfluence-dashboard.png"

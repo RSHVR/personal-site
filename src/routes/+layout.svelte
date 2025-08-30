@@ -1,37 +1,48 @@
 <script>
 	import '../lib/styles/global.css';
+	import '../app.css';
 	import Navigation from '$lib/components/Navigation.svelte';
 	import Footer from '$lib/components/Footer.svelte';
 	import ContactModal from '$lib/components/ContactModal.svelte';
 	import BreakpointDebugger from '$lib/components/BreakpointDebugger.svelte';
 	import { dev } from '$app/environment';
+	import { page } from '$app/stores';
 
 	let showContactModal = false;
 
 	function handleOpenContactModal() {
 		showContactModal = true;
 	}
+
+	// Check if current route is translate page
+	$: isTranslatePage = $page.url.pathname === '/how-do-you-say';
 </script>
 
-<div class="under-construction">
-	<header class="header">
-		<Navigation onOpenContactModal={handleOpenContactModal} />
-	</header>
+{#if isTranslatePage}
+	<!-- Clean layout for translate page -->
+	<slot />
+{:else}
+	<!-- Normal layout with header and footer -->
+	<div class="under-construction">
+		<header class="header">
+			<Navigation onOpenContactModal={handleOpenContactModal} />
+		</header>
 
-	<main class="main-content">
-		<slot />
-	</main>
+		<main class="main-content">
+			<slot />
+		</main>
 
-	<footer class="footer-wrapper">
-		<Footer />
-	</footer>
+		<footer class="footer-wrapper">
+			<Footer />
+		</footer>
 
-	<ContactModal bind:showModal={showContactModal} />
+		<ContactModal bind:showModal={showContactModal} />
+	</div>
+{/if}
 
-	{#if dev}
-		<BreakpointDebugger />
-	{/if}
-</div>
+{#if dev}
+	<BreakpointDebugger />
+{/if}
 
 <style>
 	/* Base styles */
@@ -39,7 +50,7 @@
 		width: 100%;
 		min-height: 100vh;
 		position: relative;
-		background: #FCF7F2;
+		background: #fcf7f2;
 		display: flex;
 		flex-direction: column;
 		overflow-x: hidden; /* Allow vertical scrolling but prevent horizontal */
@@ -48,7 +59,7 @@
 	.header {
 		width: 100%;
 		height: 120px;
-		background: #FCF7F2;
+		background: #fcf7f2;
 		display: flex;
 		align-items: center;
 		justify-content: flex-end;

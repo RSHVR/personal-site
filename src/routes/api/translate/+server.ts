@@ -26,7 +26,7 @@ export const POST: RequestHandler = async ({ request, platform }) => {
 				messages: [
 					{
 						role: 'system',
-						content: `You are a professional translator. Translate the given text accurately to ${targetLanguage}. Return both the translated text, and its English pronunciation, nothing else. Preserve the original meaning, tone, and formatting.`
+						content: `You are a professional translator. Translate the given text accurately to ${targetLanguage}. Return the translated text, followed by its English pronunciation in parentheses. Preserve the original meaning, tone, and formatting.`
 					},
 					{
 						role: 'user',

@@ -182,7 +182,7 @@
 
 		// Refocus textarea for smoother interaction
 		if (textareaRef) {
-			textareaRef.focus();
+			textareaRef.focus({ preventScroll: true });
 		}
 	}
 

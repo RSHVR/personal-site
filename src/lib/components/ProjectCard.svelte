@@ -1,19 +1,23 @@
 <script>
-	export let title = '';
-	export let description = '';
-	export let images = []; // Array of image URLs
-	export let imageSrc = ''; // Backward compatibility
-	export let readMoreLink = '#';
-	export let readMoreText = 'GitHub';
+	let {
+		title = '',
+		description = '',
+		images = [],
+		imageSrc = '',
+		readMoreLink = '#',
+		readMoreText = 'GitHub'
+	} = $props();
 
-	let currentImageIndex = 0;
-	let showModal = false;
-	let modalImageIndex = 0;
+	let currentImageIndex = $state(0);
+	let showModal = $state(false);
+	let modalImageIndex = $state(0);
 
 	// Backward compatibility - if imageSrc is provided, use it as single image
-	$: if (typeof imageSrc === 'string' && imageSrc && images.length === 0) {
-		images = [imageSrc];
-	}
+	$effect(() => {
+		if (typeof imageSrc === 'string' && imageSrc && images.length === 0) {
+			images = [imageSrc];
+		}
+	});
 
 	function nextImage() {
 		currentImageIndex = (currentImageIndex + 1) % images.length;
@@ -53,7 +57,7 @@
 	}
 </script>
 
-<svelte:window on:keydown={handleKeydown} />
+<svelte:window onkeydown={handleKeydown} />
 
 <div class="project-card">
 	<div class="image-container">
@@ -62,7 +66,7 @@
 
 			<!-- Carousel navigation -->
 			{#if images.length > 1}
-				<button class="nav-btn nav-btn-left" on:click={prevImage}>
+				<button class="nav-btn nav-btn-left" onclick={prevImage}>
 					<svg width="24" height="24" viewBox="0 0 24 24" fill="none">
 						<path
 							d="M15 18L9 12L15 6"
@@ -73,7 +77,7 @@
 						/>
 					</svg>
 				</button>
-				<button class="nav-btn nav-btn-right" on:click={nextImage}>
+				<button class="nav-btn nav-btn-right" onclick={nextImage}>
 					<svg width="24" height="24" viewBox="0 0 24 24" fill="none">
 						<path
 							d="M9 18L15 12L9 6"
@@ -86,7 +90,7 @@
 				</button>
 
 				<!-- Expand button -->
-				<button class="expand-btn" on:click={openModal}>
+				<button class="expand-btn" onclick={openModal}>
 					<svg width="16" height="16" viewBox="0 0 24 24" fill="none">
 						<path
 							d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"
@@ -104,7 +108,7 @@
 						<button
 							class="indicator"
 							class:active={index === currentImageIndex}
-							on:click={() => (currentImageIndex = index)}
+							onclick={() => (currentImageIndex = index)}
 						></button>
 					{/each}
 				</div>
@@ -133,12 +137,12 @@
 
 <!-- Modal -->
 {#if showModal}
-	<div class="modal-overlay" on:click={closeModal}>
-		<div class="modal-content" on:click|stopPropagation>
+	<div class="modal-overlay" onclick={closeModal}>
+		<div class="modal-content" onclick={(e) => e.stopPropagation()}>
 			<img src={images[modalImageIndex]} alt={title} />
 
 			{#if images.length > 1}
-				<button class="modal-nav-btn modal-nav-left" on:click={prevModalImage}>
+				<button class="modal-nav-btn modal-nav-left" onclick={prevModalImage}>
 					<svg width="32" height="32" viewBox="0 0 24 24" fill="none">
 						<path
 							d="M15 18L9 12L15 6"
@@ -149,7 +153,7 @@
 						/>
 					</svg>
 				</button>
-				<button class="modal-nav-btn modal-nav-right" on:click={nextModalImage}>
+				<button class="modal-nav-btn modal-nav-right" onclick={nextModalImage}>
 					<svg width="32" height="32" viewBox="0 0 24 24" fill="none">
 						<path
 							d="M9 18L15 12L9 6"
@@ -162,7 +166,7 @@
 				</button>
 			{/if}
 
-			<button class="modal-close" on:click={closeModal}>
+			<button class="modal-close" onclick={closeModal}>
 				<svg width="24" height="24" viewBox="0 0 24 24" fill="none">
 					<path
 						d="M18 6L6 18M6 6L18 18"
@@ -181,7 +185,7 @@
 						<button
 							class="modal-indicator"
 							class:active={index === modalImageIndex}
-							on:click={() => (modalImageIndex = index)}
+							onclick={() => (modalImageIndex = index)}
 						></button>
 					{/each}
 				</div>

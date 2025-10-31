@@ -1,6 +1,5 @@
 <script>
-	export let status = 'OFFLINE';
-	export const color = '#c91313'; // Red color by default
+	let { status = 'OFFLINE' } = $props();
 </script>
 
 <div class="status-container">

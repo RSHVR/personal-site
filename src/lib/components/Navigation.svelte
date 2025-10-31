@@ -1,9 +1,9 @@
 <script>
 	import { onMount } from 'svelte';
 
-	export let onOpenContactModal = () => {};
+	let { onOpenContactModal = () => {} } = $props();
 
-	let showToolsDropdown = false;
+	let showToolsDropdown = $state(false);
 	let dropdownElement;
 
 	function toggleToolsDropdown() {

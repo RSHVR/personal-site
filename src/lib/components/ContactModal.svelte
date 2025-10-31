@@ -1,15 +1,15 @@
 <script lang="ts">
 	import { fade, fly } from 'svelte/transition';
 	import { quintOut } from 'svelte/easing';
-	export let showModal = false;
+	let { showModal = $bindable(false) } = $props();
 
 	// Form data
-	let name = '';
-	let email = '';
-	let message = '';
-	let submitting = false;
-	let submitted = false;
-	let error: string | null = null;
+	let name = $state('');
+	let email = $state('');
+	let message = $state('');
+	let submitting = $state(false);
+	let submitted = $state(false);
+	let error = $state<string | null>(null);
 
 	// Close modal function
 	function closeModal() {
@@ -62,14 +62,14 @@
 	}
 </script>
 
-<svelte:window on:keydown={handleKeydown} />
+<svelte:window onkeydown={handleKeydown} />
 
 {#if showModal}
 	<!-- Changed div to button with role dialog overlay -->
 	<div
 		class="modal-backdrop"
-		on:click={closeModal}
-		on:keydown={(e) => e.key === 'Enter' && closeModal()}
+		onclick={closeModal}
+		onkeydown={(e) => e.key === 'Enter' && closeModal()}
 		transition:fade={{ duration: 200 }}
 		aria-label="Close modal"
 		role="button"
@@ -78,8 +78,8 @@
 		<!-- Changed div to section with role dialog -->
 		<div
 			class="modal-container"
-			on:click|stopPropagation={() => {}}
-			on:keydown|stopPropagation={() => {}}
+			onclick={(e) => e.stopPropagation()}
+			onkeydown={(e) => e.stopPropagation()}
 			transition:fly={{ y: 20, duration: 300, easing: quintOut }}
 			role="dialog"
 			aria-modal="true"
@@ -88,12 +88,12 @@
 		>
 			<div class="modal-header">
 				<h2 id="modal-title">Get in Touch</h2>
-				<button class="close-button" on:click={closeModal} aria-label="Close contact form">×</button
+				<button class="close-button" onclick={closeModal} aria-label="Close contact form">×</button
 				>
 			</div>
 
 			{#if !submitted}
-				<form on:submit|preventDefault={handleSubmit}>
+				<form onsubmit={(e) => { e.preventDefault(); handleSubmit(); }}>
 					<div class="form-group">
 						<label for="name">Name</label>
 						<input
@@ -147,7 +147,7 @@
 					<div class="success-icon" aria-hidden="true">✓</div>
 					<h3>Message Sent!</h3>
 					<p>Thanks for reaching out. I'll get back to you soon.</p>
-					<button class="close-modal-button" on:click={closeModal}>Close</button>
+					<button class="close-modal-button" onclick={closeModal}>Close</button>
 				</div>
 			{/if}
 

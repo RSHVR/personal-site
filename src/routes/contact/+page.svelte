@@ -3,7 +3,7 @@
 	import { goto } from '$app/navigation';
 	import ContactModal from '$lib/components/ContactModal.svelte';
 
-	let showModal = false;
+	let showModal = $state(false);
 
 	onMount(() => {
 		// Show modal immediately when page loads

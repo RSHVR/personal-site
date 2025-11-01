@@ -17,10 +17,10 @@
 			download="Arshveer_Gahir_Resume.pdf"
 			class="download-btn"
 			target="_blank"
+			aria-label="Download Resume"
 		>
 			<svg
-				width="20"
-				height="20"
+				class="download-icon"
 				viewBox="0 0 24 24"
 				fill="none"
 				xmlns="http://www.w3.org/2000/svg"
@@ -28,7 +28,6 @@
 				<path d="M12 16L16 12H13V4H11V12H8L12 16Z" fill="currentColor" />
 				<path d="M20 18H4V20H20V18Z" fill="currentColor" />
 			</svg>
-			Download Resume
 		</a>
 	</div>
 
@@ -58,7 +57,7 @@
 	}
 
 	.resume-header h1 {
-		margin: 0 0 20px 0;
+		margin: 0;
 		font-size: 28px;
 		font-weight: 400;
 		color: #222222;
@@ -68,16 +67,19 @@
 	.download-btn {
 		display: flex;
 		align-items: center;
-		gap: 8px;
-		padding: 12px 24px;
+		justify-content: center;
+		padding: 8px;
 		background: #ff611a;
 		color: white;
 		text-decoration: none;
 		border-radius: 8px;
-		font-weight: 500;
-		font-size: 16px;
 		transition: all 0.3s ease;
-		font-family: 'Nunito', sans-serif;
+		flex-shrink: 0;
+	}
+
+	.download-icon {
+		width: 16px;
+		height: 16px;
 	}
 
 	.download-btn:hover {
@@ -106,19 +108,37 @@
 	}
 
 	/* Responsive design */
-	@media (max-width: 768px) {
+	@media (max-width: 480px) {
 		.resume-page {
-			padding: 20px 20px 40px;
-		}
-
-		.resume-header {
-			flex-direction: column;
-			gap: 20px;
-			text-align: center;
+			padding: 15px 15px 30px;
 		}
 
 		.resume-header h1 {
-			font-size: 28px;
+			font-size: 20px;
+		}
+
+		.pdf-viewer {
+			width: 100%;
+			max-width: 100%;
+		}
+	}
+
+	@media (min-width: 481px) and (max-width: 768px) {
+		.resume-page {
+			padding: 30px 30px 60px;
+		}
+
+		.resume-header h1 {
+			font-size: 22px;
+		}
+
+		.download-icon {
+			width: 18px;
+			height: 18px;
+		}
+
+		.download-btn {
+			padding: 10px;
 		}
 
 		.pdf-viewer {
@@ -126,19 +146,33 @@
 		}
 	}
 
-	@media (max-width: 480px) {
+	@media (min-width: 769px) and (max-width: 1200px) {
 		.resume-page {
-			padding: 15px 15px 30px;
+			padding: 40px 100px 80px;
+		}
+
+		.resume-header h1 {
+			font-size: 24px;
+		}
+
+		.download-icon {
+			width: 20px;
+			height: 20px;
 		}
 
 		.download-btn {
-			padding: 10px 20px;
-			font-size: 14px;
+			padding: 12px;
+		}
+	}
+
+	@media (min-width: 1201px) {
+		.download-icon {
+			width: 20px;
+			height: 20px;
 		}
 
-		.pdf-viewer {
-			width: 100%;
-			max-width: 100%;
+		.download-btn {
+			padding: 12px;
 		}
 	}
 </style>

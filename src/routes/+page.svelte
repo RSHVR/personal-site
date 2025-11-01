@@ -63,8 +63,8 @@
 					'/project-images/capfluence/capfluence-leads.png',
 					'/project-images/capfluence/capfluence-insights.png'
 				]}
-				readMoreLink="https://www.capfluence.app"
-				readMoreText="website"
+				websiteLink="https://www.capfluence.app"
+				websiteText="website"
 			/>
 			<ProjectCard
 				title="Highlyte - Compliance & Risk Management"
@@ -76,8 +76,8 @@
 					'/project-images/highlyte/highlyte-insights-1.png',
 					'/project-images/highlyte/highlyte-insights-2.png'
 				]}
-				readMoreLink="https://www.highlyte.ai"
-				readMoreText="website"
+				websiteLink="https://www.highlyte.ai"
+				websiteText="website"
 			/>
 		</div>
 	</div>

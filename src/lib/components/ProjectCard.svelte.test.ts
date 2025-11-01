@@ -8,8 +8,10 @@ describe('ProjectCard Component', () => {
 		title: 'Test Project',
 		description: 'This is a test project description',
 		images: ['/image1.png', '/image2.png', '/image3.png'],
-		readMoreLink: 'https://example.com',
-		readMoreText: 'Visit Site'
+		websiteLink: 'https://example.com',
+		websiteText: 'website',
+		repoLink: 'https://github.com/test/repo',
+		repoType: 'GitHub'
 	};
 
 	test('should render with props', () => {
@@ -36,13 +38,21 @@ describe('ProjectCard Component', () => {
 		expect(navButtons.length).toBe(2); // left and right buttons
 	});
 
-	test('should render read more link', () => {
+	test('should render action buttons (website and repo)', () => {
 		render(ProjectCard, { props: mockProps });
 
-		const link = screen.getByRole('link', { name: /Visit Site/i });
-		expect(link).toBeInTheDocument();
-		expect(link).toHaveAttribute('href', 'https://example.com');
-		expect(link).toHaveAttribute('target', '_blank');
+		const links = screen.getAllByRole('link');
+		expect(links.length).toBe(2); // website and repo buttons
+
+		// Check website button
+		const websiteButton = screen.getByText('website');
+		expect(websiteButton).toBeInTheDocument();
+		expect(websiteButton.closest('a')).toHaveAttribute('href', 'https://example.com');
+
+		// Check repo button
+		const repoButton = screen.getByText('GitHub');
+		expect(repoButton).toBeInTheDocument();
+		expect(repoButton.closest('a')).toHaveAttribute('href', 'https://github.com/test/repo');
 	});
 
 	test('should have carousel functionality with multiple images', async () => {
@@ -93,10 +103,29 @@ describe('ProjectCard Component', () => {
 		expect(buttons.length).toBe(0);
 	});
 
-	test('should have accessible read more link', () => {
+	test('should have accessible action buttons', () => {
 		render(ProjectCard, { props: mockProps });
 
-		const link = screen.getByRole('link');
-		expect(link).toHaveAttribute('rel', 'noopener noreferrer');
+		const links = screen.getAllByRole('link');
+		// Both buttons should have proper accessibility attributes
+		links.forEach(link => {
+			expect(link).toHaveAttribute('rel', 'noopener noreferrer');
+			expect(link).toHaveAttribute('target', '_blank');
+		});
+	});
+
+	test('should render only website button when no repo link provided', () => {
+		render(ProjectCard, {
+			props: {
+				...mockProps,
+				repoLink: ''
+			}
+		});
+
+		const links = screen.getAllByRole('link');
+		expect(links.length).toBe(1); // only website button
+
+		const websiteButton = screen.getByText('website');
+		expect(websiteButton).toBeInTheDocument();
 	});
 });

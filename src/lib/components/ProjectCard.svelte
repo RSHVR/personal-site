@@ -300,22 +300,22 @@
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		gap: 8px;
-		padding: 10px 20px;
+		gap: 6px;
+		padding: 8px 16px;
 		border-radius: 8px;
 		font-family: 'Nunito', sans-serif;
 		font-weight: 600;
-		font-size: 16px;
+		font-size: 14px;
 		text-decoration: none;
 		transition: all 0.3s ease;
-		min-width: 120px;
-		height: 40px;
+		width: 110px;
+		height: 32px;
 		box-sizing: border-box;
 	}
 
 	.btn-icon {
-		width: 20px;
-		height: 20px;
+		width: 16px;
+		height: 16px;
 		flex-shrink: 0;
 	}
 
@@ -324,26 +324,25 @@
 	}
 
 	.btn-secondary {
-		background: #ff611a;
-		color: white;
-		border: none;
-	}
-
-	.btn-secondary:hover {
-		background: #e55517;
-		transform: translateY(-1px);
-		box-shadow: 0 4px 12px rgba(255, 97, 26, 0.3);
-	}
-
-	.btn-tertiary {
 		background: transparent;
 		color: #ff611a;
 		border: 2px solid #ff611a;
 	}
 
-	.btn-tertiary:hover {
+	.btn-secondary:hover {
 		background: rgba(255, 97, 26, 0.1);
 		transform: translateY(-1px);
+	}
+
+	.btn-tertiary {
+		background: transparent;
+		color: #ff611a;
+		border: none;
+		text-decoration: underline;
+	}
+
+	.btn-tertiary:hover {
+		text-decoration: none;
 	}
 
 	/* Carousel navigation buttons */
@@ -586,9 +585,9 @@
 		}
 
 		.btn {
-			min-width: 44px;
-			width: 44px;
-			padding: 10px;
+			width: 36px;
+			height: 36px;
+			padding: 8px;
 			font-size: 14px;
 		}
 
@@ -597,8 +596,8 @@
 		}
 
 		.btn-icon {
-			width: 24px;
-			height: 24px;
+			width: 20px;
+			height: 20px;
 		}
 
 		.nav-btn {
@@ -643,9 +642,9 @@
 		}
 
 		.btn {
-			min-width: 48px;
-			width: 48px;
-			padding: 12px;
+			width: 40px;
+			height: 40px;
+			padding: 10px;
 		}
 
 		.btn-text {
@@ -653,8 +652,8 @@
 		}
 
 		.btn-icon {
-			width: 24px;
-			height: 24px;
+			width: 20px;
+			height: 20px;
 		}
 	}
 

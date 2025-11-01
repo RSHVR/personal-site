@@ -26,8 +26,10 @@
 				'/project-images/how-do-you-say/hdys-failure-mode.png',
 				'/project-images/how-do-you-say/hdys-menu.png'
 			]}
-			readMoreLink="https://capfluence.app"
-			readMoreText="website"
+			repoLink="https://github.com/RSHVR/hdys"
+			repoType="GitHub"
+			websiteLink="/how-do-you-say"
+			websiteText="website"
 		/>
 
 		<ProjectCard
@@ -40,8 +42,8 @@
 				'/project-images/capfluence/capfluence-leads.png',
 				'/project-images/capfluence/capfluence-insights.png'
 			]}
-			readMoreLink="https://capfluence.app"
-			readMoreText="website"
+			websiteLink="https://capfluence.app"
+			websiteText="website"
 		/>
 
 		<ProjectCard
@@ -54,8 +56,8 @@
 				'/project-images/highlyte/highlyte-insights-1.png',
 				'/project-images/highlyte/highlyte-insights-2.png'
 			]}
-			readMoreLink="https://www.highlyte.ai"
-			readMoreText="website"
+			websiteLink="https://www.highlyte.ai"
+			websiteText="website"
 		/>
 	</div>
 </div>

@@ -35,14 +35,6 @@
 	<div class="pdf-container">
 		<iframe src={googleViewerUrl} title="Arshveer Gahir Resume" class="pdf-viewer" frameborder="0"
 		></iframe>
-		<div class="fallback-message">
-			<p>
-				Can't see the resume? <a href={resumePdfUrl} target="_blank">View in new tab</a> or
-				<a href={resumePdfUrl} download="Arshveer_Gahir_Resume.pdf" target="_blank"
-					>download it here</a
-				>
-			</p>
-		</div>
 	</div>
 </div>
 
@@ -113,35 +105,6 @@
 		box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
 	}
 
-	.fallback-message {
-		position: absolute;
-		bottom: 20px;
-		left: 50%;
-		transform: translateX(-50%);
-		text-align: center;
-		background: rgba(255, 255, 255, 0.95);
-		padding: 15px 20px;
-		border-radius: 8px;
-		box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-		z-index: 10;
-	}
-
-	.fallback-message p {
-		margin: 0;
-		color: #666666;
-		font-size: 14px;
-	}
-
-	.fallback-message a {
-		color: #ff611a;
-		text-decoration: none;
-		font-weight: 500;
-	}
-
-	.fallback-message a:hover {
-		text-decoration: underline;
-	}
-
 	/* Responsive design */
 	@media (max-width: 768px) {
 		.resume-page {
@@ -176,15 +139,6 @@
 		.pdf-viewer {
 			width: 100%;
 			max-width: 100%;
-		}
-
-		.fallback-message {
-			bottom: 10px;
-			padding: 12px 16px;
-		}
-
-		.fallback-message p {
-			font-size: 12px;
 		}
 	}
 </style>

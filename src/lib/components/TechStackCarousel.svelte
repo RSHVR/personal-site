@@ -20,7 +20,7 @@
 	const duplicatedStack = [...techStack, ...techStack, ...techStack];
 
 	// Track which images failed to load
-	let failedImages = /** @type {Record<string, boolean>} */ ({});
+	let failedImages = $state(/** @type {Record<string, boolean>} */ ({}));
 </script>
 
 <div class="carousel-container">
@@ -35,9 +35,8 @@
 					<img
 						src="/tech-icons/{tech}"
 						alt={tech.replace(/\.(svg|png|jpg)$/, '')}
-						on:error={() => {
+						onerror={() => {
 							failedImages[`${tech}-${index}`] = true;
-							failedImages = failedImages; // Trigger reactivity
 						}}
 					/>
 				{/if}

@@ -1,19 +1,25 @@
 <script>
-	export let title = '';
-	export let description = '';
-	export let images = []; // Array of image URLs
-	export let imageSrc = ''; // Backward compatibility
-	export let readMoreLink = '#';
-	export let readMoreText = 'GitHub';
+	let {
+		title = '',
+		description = '',
+		images = [],
+		imageSrc = '',
+		repoLink = '',
+		repoType = 'GitHub', // 'GitHub' or 'HuggingFace'
+		websiteLink = '',
+		websiteText = 'website' // 'website' or 'app'
+	} = $props();
 
-	let currentImageIndex = 0;
-	let showModal = false;
-	let modalImageIndex = 0;
+	let currentImageIndex = $state(0);
+	let showModal = $state(false);
+	let modalImageIndex = $state(0);
 
 	// Backward compatibility - if imageSrc is provided, use it as single image
-	$: if (typeof imageSrc === 'string' && imageSrc && images.length === 0) {
-		images = [imageSrc];
-	}
+	$effect(() => {
+		if (typeof imageSrc === 'string' && imageSrc && images.length === 0) {
+			images = [imageSrc];
+		}
+	});
 
 	function nextImage() {
 		currentImageIndex = (currentImageIndex + 1) % images.length;
@@ -53,7 +59,7 @@
 	}
 </script>
 
-<svelte:window on:keydown={handleKeydown} />
+<svelte:window onkeydown={handleKeydown} />
 
 <div class="project-card">
 	<div class="image-container">
@@ -62,7 +68,7 @@
 
 			<!-- Carousel navigation -->
 			{#if images.length > 1}
-				<button class="nav-btn nav-btn-left" on:click={prevImage}>
+				<button class="nav-btn nav-btn-left" onclick={prevImage}>
 					<svg width="24" height="24" viewBox="0 0 24 24" fill="none">
 						<path
 							d="M15 18L9 12L15 6"
@@ -73,7 +79,7 @@
 						/>
 					</svg>
 				</button>
-				<button class="nav-btn nav-btn-right" on:click={nextImage}>
+				<button class="nav-btn nav-btn-right" onclick={nextImage}>
 					<svg width="24" height="24" viewBox="0 0 24 24" fill="none">
 						<path
 							d="M9 18L15 12L9 6"
@@ -86,7 +92,7 @@
 				</button>
 
 				<!-- Expand button -->
-				<button class="expand-btn" on:click={openModal}>
+				<button class="expand-btn" onclick={openModal}>
 					<svg width="16" height="16" viewBox="0 0 24 24" fill="none">
 						<path
 							d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"
@@ -104,7 +110,7 @@
 						<button
 							class="indicator"
 							class:active={index === currentImageIndex}
-							on:click={() => (currentImageIndex = index)}
+							onclick={() => (currentImageIndex = index)}
 						></button>
 					{/each}
 				</div>
@@ -114,31 +120,47 @@
 	<div class="text-container">
 		<h3 class="project-title">{title}</h3>
 		<p class="project-description">{description}</p>
-		<div class="read-more-section">
-			<svg class="arrow" viewBox="0 0 40 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-				<path
-					d="M32 1L39 8L32 15M39 8H1"
-					stroke="currentColor"
-					stroke-width="2"
-					stroke-linecap="round"
-					stroke-linejoin="round"
-				/>
-			</svg>
-			<a href={readMoreLink} target="_blank" rel="noopener noreferrer" class="read-more"
-				>{readMoreText}</a
-			>
+		<div class="action-buttons">
+			{#if repoLink}
+				<a href={repoLink} target="_blank" rel="noopener noreferrer" class="btn btn-tertiary">
+					{#if repoType === 'GitHub'}
+						<svg class="btn-icon" viewBox="0 0 24 24" fill="currentColor">
+							<path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+						</svg>
+					{:else}
+						<svg class="btn-icon" viewBox="0 0 24 24" fill="currentColor">
+							<path d="M12 0C5.373 0 0 5.373 0 12c0 5.084 3.163 9.426 7.627 11.174-.105-.949-.2-2.405.042-3.441.218-.937 1.407-5.965 1.407-5.965s-.359-.719-.359-1.782c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.655 2.568-.994 3.995-.283 1.194.599 2.169 1.777 2.169 2.133 0 3.772-2.249 3.772-5.495 0-2.873-2.064-4.882-5.012-4.882-3.414 0-5.418 2.561-5.418 5.207 0 1.031.397 2.138.893 2.738.098.119.112.224.083.345l-.333 1.36c-.053.22-.174.267-.402.161-1.499-.698-2.436-2.889-2.436-4.649 0-3.785 2.75-7.262 7.929-7.262 4.163 0 7.398 2.967 7.398 6.931 0 4.136-2.607 7.464-6.227 7.464-1.216 0-2.359-.631-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146C9.57 23.812 10.763 24 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0z"/>
+						</svg>
+					{/if}
+					<span class="btn-text">{repoType}</span>
+				</a>
+			{/if}
+			{#if websiteLink}
+				<a href={websiteLink} target="_blank" rel="noopener noreferrer" class="btn btn-secondary">
+					<svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+						{#if websiteText === 'app'}
+							<rect x="3" y="3" width="18" height="18" rx="2" stroke-width="2"/>
+							<path d="M9 9h6v6H9z" stroke-width="2"/>
+						{:else}
+							<circle cx="12" cy="12" r="10" stroke-width="2"/>
+							<path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" stroke-width="2"/>
+						{/if}
+					</svg>
+					<span class="btn-text">{websiteText}</span>
+				</a>
+			{/if}
 		</div>
 	</div>
 </div>
 
 <!-- Modal -->
 {#if showModal}
-	<div class="modal-overlay" on:click={closeModal}>
-		<div class="modal-content" on:click|stopPropagation>
+	<div class="modal-overlay" onclick={closeModal}>
+		<div class="modal-content" onclick={(e) => e.stopPropagation()}>
 			<img src={images[modalImageIndex]} alt={title} />
 
 			{#if images.length > 1}
-				<button class="modal-nav-btn modal-nav-left" on:click={prevModalImage}>
+				<button class="modal-nav-btn modal-nav-left" onclick={prevModalImage}>
 					<svg width="32" height="32" viewBox="0 0 24 24" fill="none">
 						<path
 							d="M15 18L9 12L15 6"
@@ -149,7 +171,7 @@
 						/>
 					</svg>
 				</button>
-				<button class="modal-nav-btn modal-nav-right" on:click={nextModalImage}>
+				<button class="modal-nav-btn modal-nav-right" onclick={nextModalImage}>
 					<svg width="32" height="32" viewBox="0 0 24 24" fill="none">
 						<path
 							d="M9 18L15 12L9 6"
@@ -162,7 +184,7 @@
 				</button>
 			{/if}
 
-			<button class="modal-close" on:click={closeModal}>
+			<button class="modal-close" onclick={closeModal}>
 				<svg width="24" height="24" viewBox="0 0 24 24" fill="none">
 					<path
 						d="M18 6L6 18M6 6L18 18"
@@ -181,7 +203,7 @@
 						<button
 							class="modal-indicator"
 							class:active={index === modalImageIndex}
-							on:click={() => (modalImageIndex = index)}
+							onclick={() => (modalImageIndex = index)}
 						></button>
 					{/each}
 				</div>
@@ -191,22 +213,26 @@
 {/if}
 
 <style>
+	/* Base styles - mobile first */
 	.project-card {
-		width: 1041px; /* 1157 * 0.9 */
-		height: 365px; /* 405 * 0.9 */
+		width: 100%;
+		max-width: 1041px;
+		min-height: auto;
 		border-radius: 15px;
-		padding: 24px; /* 27 * 0.9 */
+		padding: 20px;
 		box-sizing: border-box;
 		display: flex;
-		gap: 20px; /* 22 * 0.9 */
-		align-items: flex-start;
+		flex-direction: column;
+		gap: 20px;
+		align-items: stretch;
 		background: #ffffff;
 		box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+		overflow: hidden;
 	}
 
 	.image-container {
-		width: 417px; /* 463 * 0.9 */
-		height: 326px; /* 362 * 0.9 */
+		width: 100%;
+		height: 250px;
 		border-radius: 15px;
 		overflow: hidden;
 		flex-shrink: 0;
@@ -220,14 +246,17 @@
 	}
 
 	.text-container {
-		width: 561px; /* 623 * 0.9 */
-		height: 327px; /* 363 * 0.9 */
+		width: 100%;
+		min-height: 200px;
 		display: flex;
 		flex-direction: column;
 		text-align: left;
 		position: relative;
 		font-weight: 300;
 		font-size: 16px;
+		padding-bottom: 50px;
+		overflow: hidden;
+		box-sizing: border-box;
 	}
 
 	.project-title {
@@ -236,48 +265,85 @@
 		font-size: 24px;
 		color: #222222;
 		font-weight: 400;
+		word-wrap: break-word;
+		overflow-wrap: break-word;
+		hyphens: auto;
+		max-width: 100%;
 		/*font-family: 'Poppins', sans-serif;*/
 	}
 
 	.project-description {
 		margin: 0;
-		flex: 1;
+		margin-bottom: 50px;
+		flex: 1 1 auto;
 		line-height: 1.5;
 		color: #666666;
 		font-size: 16px;
+		word-wrap: break-word;
+		overflow-wrap: break-word;
+		hyphens: auto;
+		max-width: 100%;
+		overflow-y: auto;
+		max-height: 200px;
 	}
 
-	.read-more-section {
+	/* Action Buttons */
+	.action-buttons {
 		position: absolute;
 		bottom: 0;
 		right: 0;
 		display: flex;
 		align-items: center;
-		gap: 19px; /* 21 * 0.9 */
+		gap: 12px;
 	}
 
-	.arrow {
-		width: 36px; /* 40 * 0.9 */
-		height: 14px; /* 16 * 0.9 */
-		color: #222222;
-	}
-
-	.read-more {
+	.btn {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		gap: 6px;
+		padding: 8px 16px;
+		border-radius: 8px;
+		font-family: 'Nunito', sans-serif;
+		font-weight: 600;
+		font-size: 14px;
 		text-decoration: none;
-		color: #222222;
-		font-weight: 500;
-		font-size: 16px;
-		transition: color 0.3s ease;
-	}
-
-	.read-more:hover {
-		color: #666666;
-	}
-
-	.read-more-section:hover .arrow {
-		color: #666666;
-		transform: translateX(4px);
 		transition: all 0.3s ease;
+		width: 110px;
+		height: 32px;
+		box-sizing: border-box;
+	}
+
+	.btn-icon {
+		width: 16px;
+		height: 16px;
+		flex-shrink: 0;
+	}
+
+	.btn-text {
+		display: inline;
+	}
+
+	.btn-secondary {
+		background: transparent;
+		color: #ff611a;
+		border: 2px solid #ff611a;
+	}
+
+	.btn-secondary:hover {
+		background: rgba(255, 97, 26, 0.1);
+		transform: translateY(-1px);
+	}
+
+	.btn-tertiary {
+		background: transparent;
+		color: #ff611a;
+		border: none;
+		text-decoration: underline;
+	}
+
+	.btn-tertiary:hover {
+		text-decoration: none;
 	}
 
 	/* Carousel navigation buttons */
@@ -481,5 +547,193 @@
 
 	.modal-indicator:hover {
 		background: rgba(255, 255, 255, 0.9);
+	}
+
+	/* Responsive breakpoints */
+
+	/* Small mobile (0-480px) */
+	@media (max-width: 480px) {
+		.project-card {
+			padding: 15px;
+			gap: 15px;
+		}
+
+		.image-container {
+			height: 200px;
+		}
+
+		.text-container {
+			padding-bottom: 45px;
+		}
+
+		.project-title {
+			font-size: 20px;
+			margin-bottom: 12px;
+		}
+
+		.project-description {
+			font-size: 14px;
+			line-height: 1.4;
+			margin-bottom: 45px;
+		}
+
+		/* Mobile: Icon-only buttons, centered */
+		.action-buttons {
+			left: 50%;
+			right: auto;
+			transform: translateX(-50%);
+			gap: 10px;
+		}
+
+		.btn {
+			width: 36px;
+			height: 36px;
+			padding: 8px;
+			font-size: 14px;
+		}
+
+		.btn-text {
+			display: none;
+		}
+
+		.btn-icon {
+			width: 20px;
+			height: 20px;
+		}
+
+		.nav-btn {
+			width: 32px;
+			height: 32px;
+		}
+
+		.expand-btn {
+			width: 28px;
+			height: 28px;
+		}
+	}
+
+	/* Medium mobile/tablet (481-768px) */
+	@media (min-width: 481px) and (max-width: 768px) {
+		.project-card {
+			padding: 18px;
+		}
+
+		.image-container {
+			height: 280px;
+		}
+
+		.text-container {
+			padding-bottom: 48px;
+		}
+
+		.project-title {
+			font-size: 22px;
+		}
+
+		.project-description {
+			font-size: 15px;
+			margin-bottom: 48px;
+		}
+
+		/* Tablet: Icon-only buttons, centered */
+		.action-buttons {
+			left: 50%;
+			right: auto;
+			transform: translateX(-50%);
+		}
+
+		.btn {
+			width: 40px;
+			height: 40px;
+			padding: 10px;
+		}
+
+		.btn-text {
+			display: none;
+		}
+
+		.btn-icon {
+			width: 20px;
+			height: 20px;
+		}
+	}
+
+	/* Tablet/small desktop (860-1279px) */
+	@media (min-width: 860px) and (max-width: 1279px) {
+		.project-card {
+			flex-direction: row;
+			padding: 22px;
+			height: 320px;
+		}
+
+		.image-container {
+			width: 380px;
+			height: 100%;
+			flex-shrink: 0;
+		}
+
+		.text-container {
+			width: auto;
+			flex: 1;
+			min-width: 0;
+			height: 100%;
+			padding-bottom: 50px;
+		}
+
+		.project-description {
+			margin-bottom: 0;
+		}
+	}
+
+	/* Large desktop (1280px+) */
+	@media (min-width: 1280px) {
+		.project-card {
+			flex-direction: row;
+			padding: 24px;
+			height: 365px;
+		}
+
+		.image-container {
+			width: 417px;
+			height: 326px;
+			flex-shrink: 0;
+		}
+
+		.text-container {
+			width: 561px;
+			max-width: 561px;
+			min-width: 0;
+			height: 327px;
+			padding-bottom: 50px;
+		}
+
+		.project-description {
+			margin-bottom: 0;
+		}
+	}
+
+	/* Modal responsive adjustments */
+	@media (max-width: 768px) {
+		.modal-nav-left {
+			left: 10px;
+		}
+
+		.modal-nav-right {
+			right: 10px;
+		}
+
+		.modal-nav-btn {
+			width: 40px;
+			height: 40px;
+		}
+
+		.modal-close {
+			top: 10px;
+			right: 10px;
+		}
+
+		.modal-indicators {
+			bottom: 10px;
+		}
 	}
 </style>

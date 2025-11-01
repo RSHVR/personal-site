@@ -8,14 +8,14 @@
 	import { dev } from '$app/environment';
 	import { page } from '$app/stores';
 
-	let showContactModal = false;
+	let showContactModal = $state(false);
 
 	function handleOpenContactModal() {
 		showContactModal = true;
 	}
 
 	// Check if current route is translate page
-	$: isTranslatePage = $page.url.pathname === '/how-do-you-say';
+	let isTranslatePage = $derived($page.url.pathname === '/how-do-you-say');
 </script>
 
 {#if isTranslatePage}

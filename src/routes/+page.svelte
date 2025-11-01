@@ -63,8 +63,8 @@
 					'/project-images/capfluence/capfluence-leads.png',
 					'/project-images/capfluence/capfluence-insights.png'
 				]}
-				readMoreLink="https://www.capfluence.app"
-				readMoreText="website"
+				websiteLink="https://www.capfluence.app"
+				websiteText="website"
 			/>
 			<ProjectCard
 				title="Highlyte - Compliance & Risk Management"
@@ -76,21 +76,21 @@
 					'/project-images/highlyte/highlyte-insights-1.png',
 					'/project-images/highlyte/highlyte-insights-2.png'
 				]}
-				readMoreLink="https://www.highlyte.ai"
-				readMoreText="website"
+				websiteLink="https://www.highlyte.ai"
+				websiteText="website"
 			/>
 		</div>
 	</div>
 </div>
 
 <style>
-	/* Base styles */
+	/* Base styles - mobile first */
 	.page-content {
 		display: flex;
 		flex-direction: column;
 		height: 100%;
 		width: 100%;
-		padding: 0 196px;
+		padding: 0 20px;
 		box-sizing: border-box;
 		transition:
 			padding 0.3s ease,
@@ -100,20 +100,22 @@
 
 	.hero-section-intro {
 		width: 100vw;
-		height: 70vh;
-		margin-left: -196px;
-		padding: 0px 196px 172px 196px;
+		min-height: auto;
+		margin-left: -20px;
+		padding: 20px 20px 40px;
 		box-sizing: border-box;
 		display: flex;
-		flex-direction: row;
-		align-items: flex-start;
+		flex-direction: column;
+		align-items: center;
+		gap: 24px;
 	}
 
 	.title-container {
 		text-align: left;
-		margin-left: 90px;
-		width: 934px;
-		height: 650px;
+		margin-left: 0;
+		width: 100%;
+		max-width: 100%;
+		min-height: auto;
 		padding-top: 0px;
 		transition:
 			margin-bottom 0.3s ease,
@@ -142,20 +144,23 @@
 	}
 
 	.hero-image {
-		padding-top: 35px;
-		height: 550px;
-		width: 400px;
+		padding-top: 0;
+		height: 300px;
+		width: 100%;
+		max-width: 350px;
 		flex-shrink: 0;
+		order: -1;
 	}
 
 	.hero-image img {
 		width: 100%;
 		height: 100%;
 		object-fit: cover;
+		border-radius: 8px;
 	}
 
 	.greeting-text {
-		font-size: 48px;
+		font-size: 22px;
 		font-weight: 300;
 		color: #222222;
 		margin-bottom: 16px;
@@ -164,7 +169,7 @@
 
 	.intro {
 		line-height: 1.5;
-		font-size: 18px;
+		font-size: 16px;
 		font-weight: 200;
 	}
 
@@ -209,7 +214,7 @@
 	.hero-section-stack {
 		width: 100vw;
 		height: 200px;
-		margin-left: -196px;
+		margin-left: -20px;
 		background: transparent;
 		position: relative;
 	}
@@ -217,8 +222,8 @@
 	.hero-section-projects {
 		width: 100vw;
 		height: auto;
-		margin-left: -196px;
-		padding: 60px 196px 100px 196px;
+		margin-left: -20px;
+		padding: 40px 20px 60px;
 		box-sizing: border-box;
 		display: flex;
 		flex-direction: column;
@@ -230,101 +235,212 @@
 		justify-content: space-between;
 		align-items: center;
 		width: 100%;
-		margin-bottom: 50px;
+		max-width: 1041px;
+		margin-bottom: 30px;
 	}
 
 	.projects-heading {
 		margin: 0;
-		font-size: 36px;
-		font-weight: 600;
+		font-size: 20px;
+		font-weight: 400;
 		color: #222222;
 	}
 
 	.see-all-link {
 		text-decoration: underline;
 		color: inherit;
-		font-size: 16px;
-		margin-right: 150px;
+		font-size: 14px;
+		margin-right: 0;
 	}
 
 	.projects-container {
 		display: flex;
 		flex-direction: column;
-		gap: 55px;
+		gap: 30px;
 		align-items: center;
 		width: 100%;
 	}
 
-	/* Extra small (0-480px) */
+	/* Responsive breakpoints */
+
+	/* Small mobile (0-480px) - base styles above */
 	@media (max-width: 480px) {
 		.page-content {
-			padding: 15px;
+			padding: 0 15px;
 		}
 
-		.title-container {
-			margin-bottom: 30px;
-			padding-top: 15px;
+		.hero-section-intro {
+			margin-left: -15px;
+			padding: 15px 15px 30px;
 		}
 
-		.site-title {
-			padding: 0 10px;
+		.hero-section-stack {
+			margin-left: -15px;
 		}
 
-		.site-title-text {
-			font-size: min(60px, 13vw);
-			letter-spacing: 1px;
+		.hero-section-projects {
+			margin-left: -15px;
+			padding: 30px 15px 50px;
+		}
+
+		.greeting-text {
+			font-size: 22px;
+		}
+
+		.intro {
+			font-size: 15px;
+		}
+
+		.projects-heading {
+			font-size: 20px;
 		}
 	}
 
-	/* Small (481-768px) */
+	/* Medium mobile/tablet (481-768px) */
 	@media (min-width: 481px) and (max-width: 768px) {
 		.page-content {
-			padding: 18px;
-			transform: translateY(-3%);
+			padding: 0 30px;
 		}
 
-		.title-container {
-			margin-bottom: 30px;
-			padding-top: 15px;
+		.hero-section-intro {
+			margin-left: -30px;
+			padding: 30px 30px 50px;
 		}
 
-		.site-title-text {
-			font-size: min(80px, 14vw);
-			letter-spacing: 1.2px;
+		.hero-section-stack {
+			margin-left: -30px;
+		}
+
+		.hero-section-projects {
+			margin-left: -30px;
+			padding: 50px 30px 70px;
+		}
+
+		.greeting-text {
+			font-size: 24px;
+		}
+
+		.intro {
+			font-size: 17px;
+		}
+
+		.projects-heading {
+			font-size: 22px;
+		}
+
+		.see-all-link {
+			font-size: 15px;
 		}
 	}
 
-	/* Medium (769-1279px) */
-	@media (min-width: 769px) and (max-width: 1279px) {
-		.title-container {
-			margin-bottom: 40px;
-		}
-
+	/* Tablet/small desktop (769-1200px) */
+	@media (min-width: 769px) and (max-width: 1200px) {
 		.page-content {
-			transform: translateY(-4%);
+			padding: 0 100px;
 		}
 
-		.site-title-text {
-			font-size: min(80px, 14vw);
-			letter-spacing: 1.5px;
-			white-space: nowrap; /* Prevent text from wrapping */
+		.hero-section-intro {
+			margin-left: -100px;
+			padding: 40px 100px 80px;
+			flex-direction: row;
+			align-items: flex-start;
+		}
+
+		.hero-image {
+			width: 320px;
+			height: 450px;
+			order: 0;
+			padding-top: 20px;
+		}
+
+		.title-container {
+			margin-left: 60px;
+			width: auto;
+			flex: 1;
+			padding-top: 20px;
+		}
+
+		.greeting-text {
+			font-size: 26px;
+		}
+
+		.intro {
+			font-size: 17px;
+		}
+
+		.hero-section-stack {
+			margin-left: -100px;
+		}
+
+		.hero-section-projects {
+			margin-left: -100px;
+			padding: 55px 100px 85px;
+		}
+
+		.projects-heading {
+			font-size: 24px;
+		}
+
+		.see-all-link {
+			font-size: 15px;
 		}
 	}
 
-	/* Large (1280px+) */
-	@media (min-width: 1280px) {
+	/* Large desktop (1201px+) */
+	@media (min-width: 1201px) {
+		.page-content {
+			padding: 0 196px;
+		}
+
+		.hero-section-intro {
+			height: 70vh;
+			margin-left: -196px;
+			padding: 0px 196px 172px 196px;
+			flex-direction: row;
+			align-items: flex-start;
+		}
+
+		.hero-image {
+			width: 400px;
+			height: 550px;
+			order: 0;
+			padding-top: 35px;
+		}
+
 		.title-container {
-			margin-bottom: 60px;
+			margin-left: 90px;
+			width: 934px;
+			height: 650px;
+			padding-top: 35px;
 		}
 
-		.site-title {
-			max-width: none; /* Remove max-width to prevent wrapping */
+		.greeting-text {
+			font-size: 32px;
 		}
 
-		.site-title-text {
-			font-size: min(120px, 16vw); /* Larger max font size */
-			letter-spacing: 2px;
-			white-space: nowrap; /* Prevent text from wrapping */
+		.intro {
+			font-size: 18px;
+		}
+
+		.hero-section-stack {
+			margin-left: -196px;
+		}
+
+		.hero-section-projects {
+			margin-left: -196px;
+			padding: 60px 196px 100px 196px;
+		}
+
+		.projects-heading {
+			font-size: 28px;
+		}
+
+		.projects-container {
+			gap: 55px;
+		}
+
+		.see-all-link {
+			font-size: 16px;
 		}
 	}
 </style>

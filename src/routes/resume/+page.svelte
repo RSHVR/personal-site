@@ -17,10 +17,10 @@
 			download="Arshveer_Gahir_Resume.pdf"
 			class="download-btn"
 			target="_blank"
+			aria-label="Download Resume"
 		>
 			<svg
-				width="20"
-				height="20"
+				class="download-icon"
 				viewBox="0 0 24 24"
 				fill="none"
 				xmlns="http://www.w3.org/2000/svg"
@@ -28,29 +28,19 @@
 				<path d="M12 16L16 12H13V4H11V12H8L12 16Z" fill="currentColor" />
 				<path d="M20 18H4V20H20V18Z" fill="currentColor" />
 			</svg>
-			Download Resume
 		</a>
 	</div>
 
 	<div class="pdf-container">
 		<iframe src={googleViewerUrl} title="Arshveer Gahir Resume" class="pdf-viewer" frameborder="0"
 		></iframe>
-		<div class="fallback-message">
-			<p>
-				Can't see the resume? <a href={resumePdfUrl} target="_blank">View in new tab</a> or
-				<a href={resumePdfUrl} download="Arshveer_Gahir_Resume.pdf" target="_blank"
-					>download it here</a
-				>
-			</p>
-		</div>
 	</div>
 </div>
 
 <style>
 	.resume-page {
 		width: 100%;
-		min-height: 100vh;
-		padding: 40px 196px;
+		padding: 40px 196px 60px;
 		box-sizing: border-box;
 		display: flex;
 		flex-direction: column;
@@ -67,9 +57,9 @@
 	}
 
 	.resume-header h1 {
-		margin: 0 0 20px 0;
-		font-size: 36px;
-		font-weight: 600;
+		margin: 0;
+		font-size: 28px;
+		font-weight: 400;
 		color: #222222;
 		font-family: 'Nunito', sans-serif;
 	}
@@ -77,16 +67,19 @@
 	.download-btn {
 		display: flex;
 		align-items: center;
-		gap: 8px;
-		padding: 12px 24px;
+		justify-content: center;
+		padding: 8px;
 		background: #ff611a;
 		color: white;
 		text-decoration: none;
 		border-radius: 8px;
-		font-weight: 500;
-		font-size: 16px;
 		transition: all 0.3s ease;
-		font-family: 'Nunito', sans-serif;
+		flex-shrink: 0;
+	}
+
+	.download-icon {
+		width: 16px;
+		height: 16px;
 	}
 
 	.download-btn:hover {
@@ -96,99 +89,90 @@
 	}
 
 	.pdf-container {
-		flex: 1;
 		position: relative;
 		display: flex;
 		justify-content: center;
-		align-items: center;
+		align-items: flex-start;
 		background: transparent;
+		width: 100%;
 	}
 
 	.pdf-viewer {
 		width: 70%;
 		max-width: 800px;
-		height: 100vh;
-		min-height: 800px;
+		aspect-ratio: 8.5 / 11;
+		height: auto;
 		border: none;
 		border-radius: 8px;
 		box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
 	}
 
-	.fallback-message {
-		position: absolute;
-		bottom: 20px;
-		left: 50%;
-		transform: translateX(-50%);
-		text-align: center;
-		background: rgba(255, 255, 255, 0.95);
-		padding: 15px 20px;
-		border-radius: 8px;
-		box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-		z-index: 10;
-	}
-
-	.fallback-message p {
-		margin: 0;
-		color: #666666;
-		font-size: 14px;
-	}
-
-	.fallback-message a {
-		color: #ff611a;
-		text-decoration: none;
-		font-weight: 500;
-	}
-
-	.fallback-message a:hover {
-		text-decoration: underline;
-	}
-
 	/* Responsive design */
-	@media (max-width: 768px) {
+	@media (max-width: 480px) {
 		.resume-page {
-			padding: 20px;
-		}
-
-		.resume-header {
-			flex-direction: column;
-			gap: 20px;
-			text-align: center;
+			padding: 15px 15px 30px;
 		}
 
 		.resume-header h1 {
-			font-size: 28px;
+			font-size: 20px;
 		}
 
 		.pdf-viewer {
-			width: 85%;
-			height: 90vh;
-			min-height: 700px;
+			width: 100%;
+			max-width: 100%;
 		}
 	}
 
-	@media (max-width: 480px) {
+	@media (min-width: 481px) and (max-width: 768px) {
 		.resume-page {
-			padding: 15px;
+			padding: 30px 30px 60px;
+		}
+
+		.resume-header h1 {
+			font-size: 22px;
+		}
+
+		.download-icon {
+			width: 18px;
+			height: 18px;
 		}
 
 		.download-btn {
-			padding: 10px 20px;
-			font-size: 14px;
+			padding: 10px;
 		}
 
 		.pdf-viewer {
-			width: 95%;
-			height: 85vh;
-			min-height: 600px;
+			width: 90%;
+		}
+	}
+
+	@media (min-width: 769px) and (max-width: 1200px) {
+		.resume-page {
+			padding: 40px 100px 80px;
 		}
 
-		.fallback-message {
-			bottom: 10px;
-			padding: 12px 16px;
+		.resume-header h1 {
+			font-size: 24px;
 		}
 
-		.fallback-message p {
-			font-size: 12px;
+		.download-icon {
+			width: 20px;
+			height: 20px;
+		}
+
+		.download-btn {
+			padding: 12px;
+		}
+	}
+
+	@media (min-width: 1201px) {
+		.download-icon {
+			width: 20px;
+			height: 20px;
+		}
+
+		.download-btn {
+			padding: 12px;
 		}
 	}
 </style>

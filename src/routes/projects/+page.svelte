@@ -26,8 +26,10 @@
 				'/project-images/how-do-you-say/hdys-failure-mode.png',
 				'/project-images/how-do-you-say/hdys-menu.png'
 			]}
-			readMoreLink="https://capfluence.app"
-			readMoreText="website"
+			repoLink="https://github.com/RSHVR/hdys"
+			repoType="GitHub"
+			websiteLink="/how-do-you-say"
+			websiteText="website"
 		/>
 
 		<ProjectCard
@@ -40,8 +42,8 @@
 				'/project-images/capfluence/capfluence-leads.png',
 				'/project-images/capfluence/capfluence-insights.png'
 			]}
-			readMoreLink="https://capfluence.app"
-			readMoreText="website"
+			websiteLink="https://capfluence.app"
+			websiteText="website"
 		/>
 
 		<ProjectCard
@@ -54,8 +56,8 @@
 				'/project-images/highlyte/highlyte-insights-1.png',
 				'/project-images/highlyte/highlyte-insights-2.png'
 			]}
-			readMoreLink="https://www.highlyte.ai"
-			readMoreText="website"
+			websiteLink="https://www.highlyte.ai"
+			websiteText="website"
 		/>
 	</div>
 </div>
@@ -81,8 +83,8 @@
 
 	.projects-header h1 {
 		margin: 0 0 20px 0;
-		font-size: 36px;
-		font-weight: 600;
+		font-size: 28px;
+		font-weight: 400;
 		color: #222222;
 		font-family: 'Nunito', sans-serif;
 	}
@@ -101,7 +103,7 @@
 		}
 
 		.projects-header h1 {
-			font-size: 40px;
+			font-size: 28px;
 		}
 	}
 
@@ -115,7 +117,7 @@
 		}
 
 		.projects-header h1 {
-			font-size: 32px;
+			font-size: 22px;
 		}
 
 		.projects-subtitle {
@@ -133,7 +135,7 @@
 		}
 
 		.projects-header h1 {
-			font-size: 28px;
+			font-size: 20px;
 		}
 
 		.projects-container {

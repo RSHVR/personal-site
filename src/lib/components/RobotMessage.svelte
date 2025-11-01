@@ -1,6 +1,6 @@
 <script>
 	import StatusIndicator from './StatusIndicator.svelte';
-	export let message = "I'm working on it";
+	let { message = "I'm working on it" } = $props();
 </script>
 
 <div class="robot-container">

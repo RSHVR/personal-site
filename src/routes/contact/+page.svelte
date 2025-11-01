@@ -3,7 +3,7 @@
 	import { goto } from '$app/navigation';
 	import ContactModal from '$lib/components/ContactModal.svelte';
 
-	let showModal = false;
+	let showModal = $state(false);
 
 	onMount(() => {
 		// Show modal immediately when page loads
@@ -105,12 +105,11 @@
 	}
 
 	.contact-header h1 {
-		margin: 0 0 20px 0;
-		font-size: 36px;
-		font-weight: 600;
+		margin: 0 0 30px 0;
+		font-size: 28px;
+		font-weight: 400;
 		color: #222222;
 		font-family: 'Nunito', sans-serif;
-		margin-bottom: 30px;
 		padding-bottom: 20px;
 		border-bottom: 1px solid #e0e0e0;
 		width: 100%;
@@ -208,9 +207,58 @@
 	}
 
 	/* Responsive design */
-	@media (max-width: 768px) {
+	@media (max-width: 480px) {
 		.contact-page {
-			padding: 40px 20px 80px 20px;
+			padding: 30px 15px 60px 15px;
+		}
+
+		.contact-section {
+			flex-direction: column;
+			gap: 20px;
+		}
+
+		.contact-header h1 {
+			font-size: 24px;
+		}
+
+		.contact-subtitle {
+			margin: 0 0 30px 0;
+			font-size: 16px;
+		}
+
+		.contact-info {
+			flex-direction: column;
+			gap: 15px;
+			margin-bottom: 30px;
+		}
+
+		.contact-card {
+			width: 100%;
+			height: auto;
+			padding: 20px 15px;
+		}
+
+		.contact-content {
+			justify-content: flex-start;
+		}
+
+		.inline-booking-container {
+			min-height: 450px;
+		}
+
+		.inline-booking-container iframe {
+			height: 500px;
+		}
+
+		.open-form-btn {
+			padding: 14px 28px;
+			font-size: 16px;
+		}
+	}
+
+	@media (min-width: 481px) and (max-width: 768px) {
+		.contact-page {
+			padding: 40px 30px 80px 30px;
 		}
 
 		.contact-section {
@@ -219,7 +267,11 @@
 		}
 
 		.contact-header h1 {
-			font-size: 36px;
+			font-size: 22px;
+		}
+
+		.contact-subtitle {
+			font-size: 17px;
 		}
 
 		.contact-info {
@@ -236,20 +288,23 @@
 		.contact-content {
 			justify-content: flex-start;
 		}
+
+		.inline-booking-container iframe {
+			height: 550px;
+		}
+
+		.inline-booking-container {
+			min-height: 500px;
+		}
 	}
 
-	@media (max-width: 480px) {
+	@media (min-width: 769px) and (max-width: 1200px) {
 		.contact-page {
-			padding: 30px 15px 60px 15px;
+			padding: 40px 100px 100px 100px;
 		}
 
 		.contact-header h1 {
-			font-size: 28px;
-		}
-
-		.open-form-btn {
-			padding: 14px 28px;
-			font-size: 16px;
+			font-size: 24px;
 		}
 	}
 </style>

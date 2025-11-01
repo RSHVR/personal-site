@@ -160,7 +160,7 @@
 	}
 
 	.greeting-text {
-		font-size: 32px;
+		font-size: 22px;
 		font-weight: 300;
 		color: #222222;
 		margin-bottom: 16px;
@@ -235,13 +235,14 @@
 		justify-content: space-between;
 		align-items: center;
 		width: 100%;
+		max-width: 1041px;
 		margin-bottom: 30px;
 	}
 
 	.projects-heading {
 		margin: 0;
-		font-size: 28px;
-		font-weight: 600;
+		font-size: 20px;
+		font-weight: 400;
 		color: #222222;
 	}
 
@@ -283,7 +284,7 @@
 		}
 
 		.greeting-text {
-			font-size: 28px;
+			font-size: 22px;
 		}
 
 		.intro {
@@ -291,7 +292,7 @@
 		}
 
 		.projects-heading {
-			font-size: 24px;
+			font-size: 20px;
 		}
 	}
 
@@ -316,7 +317,7 @@
 		}
 
 		.greeting-text {
-			font-size: 36px;
+			font-size: 24px;
 		}
 
 		.intro {
@@ -324,7 +325,7 @@
 		}
 
 		.projects-heading {
-			font-size: 32px;
+			font-size: 22px;
 		}
 
 		.see-all-link {
@@ -332,15 +333,15 @@
 		}
 	}
 
-	/* Tablet/small desktop (769-1279px) */
-	@media (min-width: 769px) and (max-width: 1279px) {
+	/* Tablet/small desktop (769-1200px) */
+	@media (min-width: 769px) and (max-width: 1200px) {
 		.page-content {
-			padding: 0 60px;
+			padding: 0 100px;
 		}
 
 		.hero-section-intro {
-			margin-left: -60px;
-			padding: 40px 60px 80px;
+			margin-left: -100px;
+			padding: 40px 100px 80px;
 			flex-direction: row;
 			align-items: flex-start;
 		}
@@ -356,10 +357,11 @@
 			margin-left: 60px;
 			width: auto;
 			flex: 1;
+			padding-top: 20px;
 		}
 
 		.greeting-text {
-			font-size: 42px;
+			font-size: 26px;
 		}
 
 		.intro {
@@ -367,26 +369,25 @@
 		}
 
 		.hero-section-stack {
-			margin-left: -60px;
+			margin-left: -100px;
 		}
 
 		.hero-section-projects {
-			margin-left: -60px;
-			padding: 55px 60px 85px;
+			margin-left: -100px;
+			padding: 55px 100px 85px;
 		}
 
 		.projects-heading {
-			font-size: 34px;
+			font-size: 24px;
 		}
 
 		.see-all-link {
 			font-size: 15px;
-			margin-right: 80px;
 		}
 	}
 
-	/* Large desktop (1280px+) */
-	@media (min-width: 1280px) {
+	/* Large desktop (1201px+) */
+	@media (min-width: 1201px) {
 		.page-content {
 			padding: 0 196px;
 		}
@@ -406,18 +407,15 @@
 			padding-top: 35px;
 		}
 
-		.hero-image img {
-			border-radius: 0;
-		}
-
 		.title-container {
 			margin-left: 90px;
 			width: 934px;
 			height: 650px;
+			padding-top: 35px;
 		}
 
 		.greeting-text {
-			font-size: 48px;
+			font-size: 32px;
 		}
 
 		.intro {
@@ -434,7 +432,7 @@
 		}
 
 		.projects-heading {
-			font-size: 36px;
+			font-size: 28px;
 		}
 
 		.projects-container {
@@ -443,7 +441,6 @@
 
 		.see-all-link {
 			font-size: 16px;
-			margin-right: 150px;
 		}
 	}
 </style>

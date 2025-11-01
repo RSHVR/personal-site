@@ -59,8 +59,8 @@
 
 	.resume-header h1 {
 		margin: 0 0 20px 0;
-		font-size: 36px;
-		font-weight: 600;
+		font-size: 28px;
+		font-weight: 400;
 		color: #222222;
 		font-family: 'Nunito', sans-serif;
 	}

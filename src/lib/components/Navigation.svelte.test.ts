@@ -98,3 +98,129 @@ describe('Navigation Component', () => {
 		expect(svgAfter).toHaveClass('rotated');
 	});
 });
+
+describe('Navigation Responsive Behavior', () => {
+	// Helper to set viewport size
+	const setViewportSize = (width: number) => {
+		Object.defineProperty(window, 'innerWidth', {
+			writable: true,
+			configurable: true,
+			value: width,
+		});
+		window.dispatchEvent(new Event('resize'));
+	};
+
+	test('should render title "Arshveer Gahir" at all viewport sizes', () => {
+		const viewports = [320, 480, 768, 1024, 1280, 1920];
+
+		viewports.forEach(width => {
+			setViewportSize(width);
+			const { unmount } = render(Navigation);
+
+			const title = screen.getByRole('heading', { name: /Arshveer Gahir/i });
+			expect(title).toBeInTheDocument();
+			expect(title).toBeVisible();
+
+			unmount();
+		});
+	});
+
+	test('should have nav-bar element with proper structure', () => {
+		render(Navigation);
+
+		const navBar = document.querySelector('.nav-bar');
+		expect(navBar).toBeInTheDocument();
+	});
+
+	test('should have title in title-container', () => {
+		render(Navigation);
+
+		const titleContainer = document.querySelector('.title-container');
+		expect(titleContainer).toBeInTheDocument();
+
+		const title = titleContainer?.querySelector('h1');
+		expect(title).toBeInTheDocument();
+		expect(title).toHaveTextContent('Arshveer Gahir');
+	});
+
+	test('should have desktop nav-links container', () => {
+		render(Navigation);
+
+		const navLinks = document.querySelector('.nav-links');
+		expect(navLinks).toBeInTheDocument();
+	});
+
+	test('should have hamburger button for mobile', () => {
+		render(Navigation);
+
+		const hamburger = document.querySelector('.hamburger-btn');
+		expect(hamburger).toBeInTheDocument();
+	});
+
+	test('should toggle mobile menu when hamburger clicked', async () => {
+		render(Navigation);
+
+		const hamburger = document.querySelector('.hamburger-btn') as HTMLElement;
+		expect(hamburger).toBeInTheDocument();
+
+		// Mobile menu should not be visible initially
+		let mobileMenu = document.querySelector('.mobile-menu');
+		expect(mobileMenu).not.toBeInTheDocument();
+
+		// Click hamburger to open
+		await fireEvent.click(hamburger);
+
+		// Mobile menu should be visible
+		mobileMenu = document.querySelector('.mobile-menu');
+		expect(mobileMenu).toBeInTheDocument();
+	});
+
+	test('should have mobile nav-links in mobile menu', async () => {
+		render(Navigation);
+
+		const hamburger = document.querySelector('.hamburger-btn') as HTMLElement;
+		await fireEvent.click(hamburger);
+
+		const mobileNavLinks = document.querySelector('.mobile-menu .mobile-nav-links');
+		expect(mobileNavLinks).toBeInTheDocument();
+	});
+
+	test('should have title with proper classes', () => {
+		render(Navigation);
+
+		const title = screen.getByRole('heading', { name: /Arshveer Gahir/i });
+		expect(title).toHaveClass('site-title');
+
+		const titleContainer = document.querySelector('.title-container');
+		expect(titleContainer).toContainElement(title);
+	});
+
+	test('should have nav-bar with flex layout classes', () => {
+		render(Navigation);
+
+		const navBar = document.querySelector('.nav-bar') as HTMLElement;
+		// Check for Tailwind flex classes
+		expect(navBar).toHaveClass('flex');
+		expect(navBar).toHaveClass('items-center');
+		expect(navBar).toHaveClass('justify-between');
+	});
+
+	test('should not overflow viewport width', () => {
+		const viewports = [320, 480, 768, 1024, 1280];
+
+		viewports.forEach(width => {
+			setViewportSize(width);
+			const { container, unmount } = render(Navigation);
+
+			const navBar = container.querySelector('.nav-bar') as HTMLElement;
+			if (navBar) {
+				// Nav bar should not exceed viewport width
+				const rect = navBar.getBoundingClientRect();
+				// Account for potential scrollbar (15px buffer)
+				expect(rect.width).toBeLessThanOrEqual(width + 15);
+			}
+
+			unmount();
+		});
+	});
+});

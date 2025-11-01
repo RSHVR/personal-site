@@ -283,7 +283,8 @@
 		overflow-wrap: break-word;
 		hyphens: auto;
 		max-width: 100%;
-		overflow: hidden;
+		overflow-y: auto;
+		max-height: 200px;
 	}
 
 	/* Action Buttons */
@@ -657,8 +658,8 @@
 		}
 	}
 
-	/* Tablet/small desktop (769-1279px) */
-	@media (min-width: 769px) and (max-width: 1279px) {
+	/* Tablet/small desktop (860-1279px) */
+	@media (min-width: 860px) and (max-width: 1279px) {
 		.project-card {
 			flex-direction: row;
 			padding: 22px;

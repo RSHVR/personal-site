@@ -256,7 +256,9 @@
 
 	.project-description {
 		margin: 0;
-		flex: 1;
+		margin-bottom: 40px;
+		padding-right: 120px;
+		flex: 1 1 auto;
 		line-height: 1.5;
 		color: #666666;
 		font-size: 16px;
@@ -528,6 +530,8 @@
 		.project-description {
 			font-size: 14px;
 			line-height: 1.4;
+			margin-bottom: 35px;
+			padding-right: 100px;
 		}
 
 		.read-more-section {
@@ -574,6 +578,8 @@
 
 		.project-description {
 			font-size: 15px;
+			margin-bottom: 38px;
+			padding-right: 110px;
 		}
 	}
 
@@ -596,7 +602,12 @@
 			flex: 1;
 			min-width: 0;
 			height: 100%;
-			padding-bottom: 0;
+			padding-bottom: 40px;
+		}
+
+		.project-description {
+			margin-bottom: 0;
+			padding-right: 140px;
 		}
 	}
 
@@ -619,7 +630,12 @@
 			max-width: 561px;
 			min-width: 0;
 			height: 327px;
-			padding-bottom: 0;
+			padding-bottom: 40px;
+		}
+
+		.project-description {
+			margin-bottom: 0;
+			padding-right: 150px;
 		}
 	}
 

@@ -256,8 +256,7 @@
 
 	.project-description {
 		margin: 0;
-		margin-bottom: 40px;
-		padding-right: 120px;
+		margin-bottom: 50px;
 		flex: 1 1 auto;
 		line-height: 1.5;
 		color: #666666;
@@ -530,8 +529,7 @@
 		.project-description {
 			font-size: 14px;
 			line-height: 1.4;
-			margin-bottom: 35px;
-			padding-right: 100px;
+			margin-bottom: 45px;
 		}
 
 		.read-more-section {
@@ -578,8 +576,7 @@
 
 		.project-description {
 			font-size: 15px;
-			margin-bottom: 38px;
-			padding-right: 110px;
+			margin-bottom: 48px;
 		}
 	}
 
@@ -602,12 +599,11 @@
 			flex: 1;
 			min-width: 0;
 			height: 100%;
-			padding-bottom: 40px;
+			padding-bottom: 50px;
 		}
 
 		.project-description {
 			margin-bottom: 0;
-			padding-right: 140px;
 		}
 	}
 
@@ -630,12 +626,11 @@
 			max-width: 561px;
 			min-width: 0;
 			height: 327px;
-			padding-bottom: 40px;
+			padding-bottom: 50px;
 		}
 
 		.project-description {
 			margin-bottom: 0;
-			padding-right: 150px;
 		}
 	}
 

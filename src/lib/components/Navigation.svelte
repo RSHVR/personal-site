@@ -82,10 +82,10 @@
 
 	<!-- Desktop navigation -->
 	<div class="nav-links desktop-nav flex gap-8">
-		<!-- More dropdown (progressively shows hidden items) -->
+		<!-- Menu dropdown (progressively shows hidden items) -->
 		<div class="more-dropdown" class:open={showMoreDropdown} bind:this={moreDropdownElement}>
 			<button class="more-btn" onclick={toggleMoreDropdown}>
-				More
+				Menu
 				<svg
 					class="dropdown-icon"
 					class:rotated={showMoreDropdown}

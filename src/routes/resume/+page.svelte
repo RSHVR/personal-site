@@ -49,8 +49,7 @@
 <style>
 	.resume-page {
 		width: 100%;
-		min-height: 100vh;
-		padding: 40px 196px;
+		padding: 40px 196px 60px;
 		box-sizing: border-box;
 		display: flex;
 		flex-direction: column;
@@ -96,19 +95,19 @@
 	}
 
 	.pdf-container {
-		flex: 1;
 		position: relative;
 		display: flex;
 		justify-content: center;
-		align-items: center;
+		align-items: flex-start;
 		background: transparent;
+		width: 100%;
 	}
 
 	.pdf-viewer {
 		width: 70%;
 		max-width: 800px;
-		height: 100vh;
-		min-height: 800px;
+		aspect-ratio: 8.5 / 11;
+		height: auto;
 		border: none;
 		border-radius: 8px;
 		box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
@@ -146,7 +145,7 @@
 	/* Responsive design */
 	@media (max-width: 768px) {
 		.resume-page {
-			padding: 20px;
+			padding: 20px 20px 40px;
 		}
 
 		.resume-header {
@@ -160,15 +159,13 @@
 		}
 
 		.pdf-viewer {
-			width: 85%;
-			height: 90vh;
-			min-height: 700px;
+			width: 90%;
 		}
 	}
 
 	@media (max-width: 480px) {
 		.resume-page {
-			padding: 15px;
+			padding: 15px 15px 30px;
 		}
 
 		.download-btn {
@@ -177,9 +174,8 @@
 		}
 
 		.pdf-viewer {
-			width: 95%;
-			height: 85vh;
-			min-height: 600px;
+			width: 100%;
+			max-width: 100%;
 		}
 
 		.fallback-message {

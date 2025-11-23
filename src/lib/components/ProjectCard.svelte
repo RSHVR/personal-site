@@ -7,7 +7,8 @@
 		repoLink = '',
 		repoType = 'GitHub', // 'GitHub' or 'HuggingFace'
 		websiteLink = '',
-		websiteText = 'website' // 'website' or 'app'
+		websiteText = 'website', // 'website' or 'app'
+		actionButtons = [] // Array of button objects: { type, url, label }
 	} = $props();
 
 	let currentImageIndex = $state(0);
@@ -57,6 +58,73 @@
 			prevModalImage();
 		}
 	}
+
+	// Get button icon SVG based on type
+	function getButtonIcon(type) {
+		const icons = {
+			github: '<path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>',
+			huggingface: '<path d="M12 0C5.373 0 0 5.373 0 12c0 5.084 3.163 9.426 7.627 11.174-.105-.949-.2-2.405.042-3.441.218-.937 1.407-5.965 1.407-5.965s-.359-.719-.359-1.782c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.655 2.568-.994 3.995-.283 1.194.599 2.169 1.777 2.169 2.133 0 3.772-2.249 3.772-5.495 0-2.873-2.064-4.882-5.012-4.882-3.414 0-5.418 2.561-5.418 5.207 0 1.031.397 2.138.893 2.738.098.119.112.224.083.345l-.333 1.36c-.053.22-.174.267-.402.161-1.499-.698-2.436-2.889-2.436-4.649 0-3.785 2.75-7.262 7.929-7.262 4.163 0 7.398 2.967 7.398 6.931 0 4.136-2.607 7.464-6.227 7.464-1.216 0-2.359-.631-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146C9.57 23.812 10.763 24 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0z"/>',
+			website: '<circle cx="12" cy="12" r="10" stroke-width="2"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" stroke-width="2"/>',
+			app: '<rect x="3" y="3" width="18" height="18" rx="2" stroke-width="2"/><path d="M9 9h6v6H9z" stroke-width="2"/>',
+			chromestore: '<path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 4.894c1.737 1.737 2.65 4.013 2.65 6.106H15.85c0-2.12-.87-4.065-2.294-5.488l4.338-4.338c.533.533 1.013 1.107 1.45 1.72zm-6.738 10.95c-2.12 0-4.064-.87-5.488-2.294l4.338-4.338c.533.533 1.107 1.013 1.72 1.45v4.338c-.527.15-1.067.23-1.62.23zm-5.7-4.157c0-2.12.87-4.064 2.294-5.488l4.338 4.338c-.533.533-1.013 1.107-1.45 1.72H4.456c-.15-.527-.23-1.067-.23-1.62zm10.388-5.7c.527.15 1.067.23 1.62.23 2.12 0 4.064.87 5.488 2.294l-4.338 4.338c-.533-.533-1.107-1.013-1.72-1.45V5.987z" fill="currentColor"/>',
+			devpost: '<path d="M6.002 1.61L0 12.004L6.002 22.39h11.996L24 12.004L17.998 1.61H6.002zm1.593 4.084h3.947c3.605 0 6.276 1.695 6.276 6.31c0 4.436-3.21 6.302-6.456 6.302H7.595V5.694zm2.517 2.449v7.714h1.241c2.646 0 3.862-1.55 3.862-3.861c0-2.502-1.216-3.853-3.767-3.853H10.112z" fill="currentColor"/>',
+			youtube: '<path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" fill="currentColor"/>'
+		};
+		return icons[type] || '';
+	}
+
+	// Get button class based on type
+	function getButtonClass(type) {
+		if (type === 'github' || type === 'huggingface') return 'btn-tertiary';
+		return 'btn-secondary';
+	}
+
+	// Determine if icon should have stroke or fill
+	function isStrokeIcon(type) {
+		return type === 'website' || type === 'app';
+	}
+
+	// Check if a URL is a YouTube video
+	function isYouTubeUrl(url) {
+		return url?.includes('youtube.com') || url?.includes('youtu.be');
+	}
+
+	// Extract YouTube video ID from URL
+	function getYouTubeVideoId(url) {
+		if (!url) return null;
+		// Handle youtu.be format
+		if (url.includes('youtu.be/')) {
+			return url.split('youtu.be/')[1]?.split('?')[0];
+		}
+		// Handle youtube.com format
+		const match = url.match(/[?&]v=([^&]+)/);
+		return match ? match[1] : null;
+	}
+
+	// Build action buttons array from both old props and new actionButtons prop
+	$effect(() => {
+		// For backward compatibility, if actionButtons is empty but old props are set, use them
+		if (actionButtons.length === 0) {
+			const buttons = [];
+			if (repoLink) {
+				buttons.push({
+					type: repoType.toLowerCase(),
+					url: repoLink,
+					label: repoType
+				});
+			}
+			if (websiteLink) {
+				buttons.push({
+					type: websiteText,
+					url: websiteLink,
+					label: websiteText
+				});
+			}
+			if (buttons.length > 0) {
+				actionButtons = buttons;
+			}
+		}
+	});
 </script>
 
 <svelte:window onkeydown={handleKeydown} />
@@ -64,7 +132,18 @@
 <div class="project-card">
 	<div class="image-container">
 		{#if images.length > 0}
-			<img src={images[currentImageIndex]} alt={title} />
+			{#if isYouTubeUrl(images[currentImageIndex])}
+				<iframe
+					src="https://www.youtube.com/embed/{getYouTubeVideoId(images[currentImageIndex])}"
+					title={title}
+					frameborder="0"
+					allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+					allowfullscreen
+					class="youtube-embed"
+				></iframe>
+			{:else}
+				<img src={images[currentImageIndex]} alt={title} />
+			{/if}
 
 			<!-- Carousel navigation -->
 			{#if images.length > 1}
@@ -121,34 +200,20 @@
 		<h3 class="project-title">{title}</h3>
 		<p class="project-description">{description}</p>
 		<div class="action-buttons">
-			{#if repoLink}
-				<a href={repoLink} target="_blank" rel="noopener noreferrer" class="btn btn-tertiary">
-					{#if repoType === 'GitHub'}
-						<svg class="btn-icon" viewBox="0 0 24 24" fill="currentColor">
-							<path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+			{#each actionButtons as button}
+				<a href={button.url} target="_blank" rel="noopener noreferrer" class="btn {getButtonClass(button.type)}">
+					{#if isStrokeIcon(button.type)}
+						<svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+							{@html getButtonIcon(button.type)}
 						</svg>
 					{:else}
 						<svg class="btn-icon" viewBox="0 0 24 24" fill="currentColor">
-							<path d="M12 0C5.373 0 0 5.373 0 12c0 5.084 3.163 9.426 7.627 11.174-.105-.949-.2-2.405.042-3.441.218-.937 1.407-5.965 1.407-5.965s-.359-.719-.359-1.782c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.655 2.568-.994 3.995-.283 1.194.599 2.169 1.777 2.169 2.133 0 3.772-2.249 3.772-5.495 0-2.873-2.064-4.882-5.012-4.882-3.414 0-5.418 2.561-5.418 5.207 0 1.031.397 2.138.893 2.738.098.119.112.224.083.345l-.333 1.36c-.053.22-.174.267-.402.161-1.499-.698-2.436-2.889-2.436-4.649 0-3.785 2.75-7.262 7.929-7.262 4.163 0 7.398 2.967 7.398 6.931 0 4.136-2.607 7.464-6.227 7.464-1.216 0-2.359-.631-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146C9.57 23.812 10.763 24 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0z"/>
+							{@html getButtonIcon(button.type)}
 						</svg>
 					{/if}
-					<span class="btn-text">{repoType}</span>
+					<span class="btn-text">{button.label}</span>
 				</a>
-			{/if}
-			{#if websiteLink}
-				<a href={websiteLink} target="_blank" rel="noopener noreferrer" class="btn btn-secondary">
-					<svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-						{#if websiteText === 'app'}
-							<rect x="3" y="3" width="18" height="18" rx="2" stroke-width="2"/>
-							<path d="M9 9h6v6H9z" stroke-width="2"/>
-						{:else}
-							<circle cx="12" cy="12" r="10" stroke-width="2"/>
-							<path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" stroke-width="2"/>
-						{/if}
-					</svg>
-					<span class="btn-text">{websiteText}</span>
-				</a>
-			{/if}
+			{/each}
 		</div>
 	</div>
 </div>
@@ -157,7 +222,18 @@
 {#if showModal}
 	<div class="modal-overlay" onclick={closeModal}>
 		<div class="modal-content" onclick={(e) => e.stopPropagation()}>
-			<img src={images[modalImageIndex]} alt={title} />
+			{#if isYouTubeUrl(images[modalImageIndex])}
+				<iframe
+					src="https://www.youtube.com/embed/{getYouTubeVideoId(images[modalImageIndex])}"
+					title={title}
+					frameborder="0"
+					allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+					allowfullscreen
+					class="modal-youtube-embed"
+				></iframe>
+			{:else}
+				<img src={images[modalImageIndex]} alt={title} />
+			{/if}
 
 			{#if images.length > 1}
 				<button class="modal-nav-btn modal-nav-left" onclick={prevModalImage}>
@@ -239,10 +315,15 @@
 		position: relative;
 	}
 
-	.image-container img {
+	.image-container img,
+	.youtube-embed {
 		width: 100%;
 		height: 100%;
 		object-fit: cover;
+	}
+
+	.youtube-embed {
+		border: none;
 	}
 
 	.text-container {
@@ -456,11 +537,19 @@
 		justify-content: center;
 	}
 
-	.modal-content img {
+	.modal-content img,
+	.modal-youtube-embed {
 		max-width: 100%;
 		max-height: 100%;
 		object-fit: contain;
 		border-radius: 8px;
+	}
+
+	.modal-youtube-embed {
+		border: none;
+		width: 85vw;
+		height: 48vw; /* 16:9 aspect ratio */
+		max-height: 85vh;
 	}
 
 	/* Modal navigation buttons */

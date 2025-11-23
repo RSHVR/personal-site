@@ -17,6 +17,24 @@
 
 	<div class="projects-container">
 		<ProjectCard
+			title="Ruh - AI Product Safety Analyzer"
+			description="AI-powered product safety analyzer for Amazon. Instantly detects harmful substances, allergens, PFAS compounds, and toxic chemicals with 0-100 harm scores. Features smart caching and detailed breakdowns with scientific citations. Built with Svelte 5, TypeScript, Claude Sonnet 4.5, and deployed on Google Cloud Run."
+			imageSrc="https://youtu.be/sbAvW0giNwM"
+			images={[
+				'https://youtu.be/sbAvW0giNwM',
+				'/project-images/ruh/ruh-1-score.png',
+				'/project-images/ruh/ruh-2-ingredients.png',
+				'/project-images/ruh/ruh-3-allergens.png',
+				'/project-images/ruh/ruh-4-other-concerns.png'
+			]}
+			actionButtons={[
+				{ type: 'github', url: 'https://github.com/RSHVR/ruh', label: 'GitHub' },
+				{ type: 'chromestore', url: 'https://chromewebstore.google.com/detail/ruh/mjgicecpbfabjaebiaioaijelbepihcl', label: 'Chrome' },
+				{ type: 'devpost', url: 'https://devpost.com/software/ruh', label: 'Devpost' }
+			]}
+		/>
+
+		<ProjectCard
 			title="How Do You Say? - Language Model Powered Translation"
 			description="AI-powered translation tool built with Svelte and TypeScript, using Cohere's Command-A translation model (released August 28, 2025) and hosted on Cloudflare. Provides accurate translations that preserve meaning and context across multiple languages, with pronunciation guides included. This results in more natural, contextually appropriate translations that sound right in the target language."
 			imageSrc="/project-images/how-do-you-say/hdys-dashboard.png"

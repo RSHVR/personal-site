@@ -54,6 +54,23 @@
 		</div>
 		<div class="projects-container">
 			<ProjectCard
+				title="Ruh - AI Product Safety Analyzer"
+				description="AI-powered product safety analyzer for Amazon. Instantly detects harmful substances, allergens, PFAS compounds, and toxic chemicals with 0-100 harm scores. Features smart caching and detailed breakdowns with scientific citations."
+				imageSrc="https://youtu.be/sbAvW0giNwM"
+				images={[
+					'https://youtu.be/sbAvW0giNwM',
+					'/project-images/ruh/ruh-1-score.png',
+					'/project-images/ruh/ruh-2-ingredients.png',
+					'/project-images/ruh/ruh-3-allergens.png',
+					'/project-images/ruh/ruh-4-other-concerns.png'
+				]}
+				actionButtons={[
+					{ type: 'github', url: 'https://github.com/RSHVR/ruh', label: 'GitHub' },
+					{ type: 'chromestore', url: 'https://chromewebstore.google.com/detail/ruh/mjgicecpbfabjaebiaioaijelbepihcl', label: 'Chrome' },
+					{ type: 'devpost', url: 'https://devpost.com/software/ruh', label: 'Devpost' }
+				]}
+			/>
+			<ProjectCard
 				title="Capfluence - Leads Generation & Enrichment"
 				description="AI-powered lead discovery platform that saves financial advisors 100+ hours monthly through automated prospect identification and data-driven insights. Built with modern ML techniques and scalable architecture."
 				imageSrc="/project-images/capfluence/capfluence-dashboard.png"

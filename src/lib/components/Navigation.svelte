@@ -117,7 +117,7 @@
 		<a href="/projects" class="nav-projects">Projects</a>
 		<div class="tools-dropdown" class:open={showToolsDropdown} bind:this={dropdownElement}>
 			<button class="tools-btn" onclick={toggleToolsDropdown}>
-				Tools
+				Products
 				<svg
 					class="dropdown-icon"
 					class:rotated={showToolsDropdown}
@@ -135,8 +135,8 @@
 			</button>
 			{#if showToolsDropdown}
 				<div class="dropdown-menu">
-					<a href="/how-do-you-say" class="dropdown-item" onclick={closeToolsDropdown}
-						>Translation Chatbot</a
+					<a href="/ruh" class="dropdown-item" onclick={closeToolsDropdown}
+						>ruh</a
 					>
 				</div>
 			{/if}
@@ -154,10 +154,10 @@
 				<a href="resume" onclick={closeMobileMenu}>Resume</a>
 				<a href="/projects" onclick={closeMobileMenu}>Projects</a>
 
-				<!-- Mobile tools section -->
+				<!-- Mobile products section -->
 				<div class="mobile-tools">
 					<button class="mobile-tools-btn" onclick={toggleToolsDropdown}>
-						Tools
+						Products
 						<svg
 							class="dropdown-icon"
 							class:rotated={showToolsDropdown}
@@ -175,7 +175,7 @@
 					</button>
 					{#if showToolsDropdown}
 						<div class="mobile-dropdown-menu">
-							<a href="/how-do-you-say" onclick={closeMobileMenu}>Translation Chatbot</a>
+							<a href="/ruh" onclick={closeMobileMenu}>ruh</a>
 						</div>
 					{/if}
 				</div>

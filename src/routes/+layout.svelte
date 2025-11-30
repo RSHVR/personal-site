@@ -14,12 +14,13 @@
 		showContactModal = true;
 	}
 
-	// Check if current route is translate page
+	// Check if current route is translate page or ruh page
 	let isTranslatePage = $derived($page.url.pathname === '/how-do-you-say');
+	let isRuhPage = $derived($page.url.pathname === '/ruh');
 </script>
 
-{#if isTranslatePage}
-	<!-- Clean layout for translate page -->
+{#if isTranslatePage || isRuhPage}
+	<!-- Clean layout for translate and ruh pages -->
 	<slot />
 {:else}
 	<!-- Normal layout with header and footer -->

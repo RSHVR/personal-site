@@ -457,7 +457,7 @@
 			<div class="footer-links">
 				<a href="https://github.com/RSHVR/ruh" target="_blank" rel="noopener">GitHub</a>
 				<span>•</span>
-				<a href="/privacy">Privacy</a>
+				<a href="/ruh/privacy">Privacy</a>
 				<span>•</span>
 				<a href="/">Home</a>
 			</div>

@@ -16,7 +16,12 @@
 
 	// Check if current route is translate page or ruh page
 	let isTranslatePage = $derived($page.url.pathname === '/how-do-you-say');
-	let isRuhPage = $derived($page.url.pathname === '/ruh');
+	let isRuhPage = $derived(
+		$page.url.pathname === '/ruh' ||
+			$page.url.pathname.startsWith('/ruh/') ||
+			$page.url.hostname === 'ruh.rshvr.com' ||
+			$page.url.hostname === 'ruh.localhost'
+	);
 </script>
 
 {#if isTranslatePage || isRuhPage}

@@ -35,6 +35,20 @@
 		/>
 
 		<ProjectCard
+			title="Simple Time Tracker"
+			description="Lightweight time tracking Chrome extension with real-time earnings calculation and break time tracking. Features pause/resume functionality, editable timer names, and session persistence. All data stored locally for privacy - no backend required. Designed with minimalist UI/UX inspired by Dieter Rams principles."
+			imageSrc="/project-images/simple-time-tracker/simple_time_tracker_timer.png"
+			images={[
+				'/project-images/simple-time-tracker/simple_time_tracker_timer.png',
+				'/project-images/simple-time-tracker/simple_time_tracker_summary.png',
+				'/project-images/simple-time-tracker/simple_time_tracker_settings.png'
+			]}
+			actionButtons={[
+				{ type: 'chromestore', url: 'https://chromewebstore.google.com/detail/onjafojammohedeppldnglheinjnjekm', label: 'Chrome' }
+			]}
+		/>
+
+		<ProjectCard
 			title="How Do You Say? - Language Model Powered Translation"
 			description="AI-powered translation tool built with Svelte and TypeScript, using Cohere's Command-A translation model (released August 28, 2025) and hosted on Cloudflare. Provides accurate translations that preserve meaning and context across multiple languages, with pronunciation guides included. This results in more natural, contextually appropriate translations that sound right in the target language."
 			imageSrc="/project-images/how-do-you-say/hdys-dashboard.png"

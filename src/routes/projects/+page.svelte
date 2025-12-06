@@ -21,12 +21,12 @@
 			description="AI-powered product safety analyzer for Amazon. Instantly detects harmful substances, allergens, PFAS compounds, and toxic chemicals with 0-100 harm scores. Features smart caching and detailed breakdowns with scientific citations. Built with Svelte 5, TypeScript, Claude Sonnet 4.5, and deployed on Google Cloud Run."
 			imageSrc="https://youtu.be/sbAvW0giNwM"
 			images={[
-				'https://youtu.be/sbAvW0giNwM',
 				'/project-images/ruh/ruh-1-main.png',
 				'/project-images/ruh/ruh-2-privacy.png',
 				'/project-images/ruh/ruh-3-loading.png',
 				'/project-images/ruh/ruh-4-score.png',
-				'/project-images/ruh/ruh-5-analysis.png'
+				'/project-images/ruh/ruh-5-analysis.png',
+				'https://youtu.be/sbAvW0giNwM'
 			]}
 			actionButtons={[
 				{ type: 'github', url: 'https://github.com/RSHVR/ruh', label: 'GitHub' },

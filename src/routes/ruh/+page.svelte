@@ -2,19 +2,14 @@
 	import { onMount } from 'svelte';
 	import { browser } from '$app/environment';
 	import { fade, fly, scale } from 'svelte/transition';
-	import { quintOut, cubicOut } from 'svelte/easing';
+	import { quintOut, cubicOut, cubicInOut } from 'svelte/easing';
 
 	let headerScrolled = $state(false);
 	let currentSlide = $state(0);
+	let slideDirection = $state('next');
 	let hasTriggeredPopup = $state(false);
 
 	const screenshots = [
-		{
-			type: 'video',
-			src: 'https://www.youtube.com/embed/sbAvW0giNwM',
-			alt: 'ruh demo video',
-			caption: 'Watch ruh analyze products in real-time.'
-		},
 		{
 			type: 'image',
 			src: '/project-images/ruh/ruh-1-main.png',
@@ -44,10 +39,14 @@
 			src: '/project-images/ruh/ruh-5-analysis.png',
 			alt: 'ruh detailed ingredient analysis breakdown',
 			caption: 'Every ingredient, explained. Scientific backing without the jargon.'
+		},
+		{
+			type: 'video',
+			src: 'https://www.youtube.com/embed/sbAvW0giNwM',
+			alt: 'ruh demo video',
+			caption: 'Watch ruh analyze products in real-time.'
 		}
 	];
-
-	let slideDirection = $state('next');
 
 	const features = [
 		{
@@ -226,7 +225,10 @@
 				your soul deserves safer choices
 			</h1>
 			<p class="hero-subtitle" in:fly={{ y: 20, duration: 600, delay: 300 }}>
-				Ever wonder what's really in the products you buy? <strong><span class="ruh-text">ruh</span></strong> is your AI-powered safety assistant that analyzes Amazon products in real-time—detecting harmful chemicals, allergens, and PFAS "forever chemicals" before you click "Add to Cart."
+				Ever wonder what's really in the products you buy? <strong
+					><span class="ruh-text">ruh</span></strong
+				> is your AI-powered safety assistant that analyzes Amazon products in real-time—detecting harmful
+				chemicals, allergens, and PFAS "forever chemicals" before you click "Add to Cart."
 			</p>
 			<div class="hero-features" in:fly={{ y: 20, duration: 600, delay: 400 }}>
 				<div class="hero-feature-item">
@@ -261,20 +263,34 @@
 			<div class="what-is-text">
 				<h2>What is <span class="ruh-text">ruh</span>?</h2>
 				<p class="intro-paragraph">
-					<strong><span class="ruh-text">ruh</span></strong> is a Chrome extension that brings AI-powered product safety analysis directly into your Amazon shopping experience. No more opening new tabs, copying ingredient lists, or spending 15+ minutes researching if a product is safe for you and your family.
+					<strong><span class="ruh-text">ruh</span></strong> is a Chrome extension that brings AI-powered
+					product safety analysis directly into your Amazon shopping experience. No more opening new
+					tabs, copying ingredient lists, or spending 15+ minutes researching if a product is safe for
+					you and your family.
 				</p>
 				<p class="intro-paragraph">
 					The moment you visit any Amazon product page, <span class="ruh-text">ruh</span> automatically:
 				</p>
 				<ul class="intro-list">
 					<li><strong>Scrapes ingredients</strong> from the product listing</li>
-					<li><strong>Analyzes each ingredient</strong> using Claude AI with web search capabilities</li>
-					<li><strong>Identifies harmful substances</strong> including allergens, PFAS compounds, and toxic chemicals</li>
-					<li><strong>Calculates a 0-100 harm score</strong> with clear risk classification (Low/Medium/High)</li>
-					<li><strong>Displays detailed breakdowns</strong> in an elegant sidebar—right on the product page</li>
+					<li>
+						<strong>Analyzes each ingredient</strong> using Claude AI with web search capabilities
+					</li>
+					<li>
+						<strong>Identifies harmful substances</strong> including allergens, PFAS compounds, and toxic
+						chemicals
+					</li>
+					<li>
+						<strong>Calculates a 0-100 harm score</strong> with clear risk classification (Low/Medium/High)
+					</li>
+					<li>
+						<strong>Displays detailed breakdowns</strong> in an elegant sidebar—right on the product
+						page
+					</li>
 				</ul>
 				<p class="intro-paragraph">
-					All of this happens in <strong>under 3 seconds</strong>, and results are cached for 30 days so repeat visits are instant.
+					All of this happens in <strong>under 3 seconds</strong>, and results are cached for 30
+					days so repeat visits are instant.
 				</p>
 			</div>
 			<div class="what-is-visual glass-medium">
@@ -317,7 +333,8 @@
 	<section class="demo">
 		<h2 class="section-heading observe-scroll">from curiosity to clarity in three seconds</h2>
 		<p class="demo-intro observe-scroll">
-			See <span class="ruh-text">ruh</span> in action analyzing a real product. Watch how it transforms complex ingredient lists into clear, actionable safety insights.
+			See <span class="ruh-text">ruh</span> in action analyzing a real product. Watch how it transforms
+			complex ingredient lists into clear, actionable safety insights.
 		</p>
 
 		<div class="demo-container glass-major observe-scroll">
@@ -325,8 +342,18 @@
 				{#key currentSlide}
 					<div
 						class="carousel-slide"
-						in:fly={{ x: slideDirection === 'next' ? 300 : -300, duration: 400, easing: cubicOut }}
-						out:fly={{ x: slideDirection === 'next' ? -300 : 300, duration: 400, easing: cubicOut }}
+						in:fly={{
+							x: slideDirection === 'next' ? 300 : -300,
+							duration: 500,
+							easing: cubicInOut,
+							delay: 0
+						}}
+						out:fly={{
+							x: slideDirection === 'next' ? -300 : 300,
+							duration: 500,
+							easing: cubicInOut,
+							delay: 0
+						}}
 					>
 						{#if screenshots[currentSlide].type === 'video'}
 							<div class="carousel-video-wrapper">
@@ -341,7 +368,12 @@
 								></iframe>
 							</div>
 						{:else}
-							<img src={screenshots[currentSlide].src} alt={screenshots[currentSlide].alt} loading="lazy" class="demo-image" />
+							<img
+								src={screenshots[currentSlide].src}
+								alt={screenshots[currentSlide].alt}
+								loading="lazy"
+								class="demo-image"
+							/>
 						{/if}
 
 						<p class="carousel-caption">{screenshots[currentSlide].caption}</p>
@@ -374,7 +406,10 @@
 			<div class="step glass-medium observe-scroll">
 				<div class="step-number">1</div>
 				<h3>Browse Amazon</h3>
-				<p>Visit any product page like you normally would. <span class="ruh-text">ruh</span> automatically detects when you're looking at a product.</p>
+				<p>
+					Visit any product page like you normally would. <span class="ruh-text">ruh</span> automatically
+					detects when you're looking at a product.
+				</p>
 			</div>
 
 			<div class="step-arrow observe-scroll">→</div>
@@ -382,7 +417,10 @@
 			<div class="step glass-medium observe-scroll">
 				<div class="step-number">2</div>
 				<h3>AI Analysis</h3>
-				<p>Claude AI scrapes the ingredient list, searches medical databases, and analyzes every component for safety concerns.</p>
+				<p>
+					Claude AI scrapes the ingredient list, searches medical databases, and analyzes every
+					component for safety concerns.
+				</p>
 			</div>
 
 			<div class="step-arrow observe-scroll">→</div>
@@ -390,7 +428,10 @@
 			<div class="step glass-medium observe-scroll">
 				<div class="step-number">3</div>
 				<h3>Instant Results</h3>
-				<p>A clean sidebar appears with your harm score, allergen warnings, PFAS detection, and detailed ingredient breakdowns.</p>
+				<p>
+					A clean sidebar appears with your harm score, allergen warnings, PFAS detection, and
+					detailed ingredient breakdowns.
+				</p>
 			</div>
 		</div>
 	</section>
@@ -415,11 +456,12 @@
 			<h2>built by someone who cares, not a corporation</h2>
 			<p class="trust-story">
 				After watching family members struggle with allergic reactions and reading countless labels
-				without understanding the real risks, I built <span class="ruh-text">ruh</span>. This isn't a startup trying to scale—it's
-				a tool I wish existed when my family needed it.
+				without understanding the real risks, I built <span class="ruh-text">ruh</span>. This isn't
+				a startup trying to scale—it's a tool I wish existed when my family needed it.
 			</p>
 			<p class="trust-story">
-				The name "<span class="ruh-text">ruh</span>" means soul or essence in multiple languages. Pronounced "rooh."
+				The name "<span class="ruh-text">ruh</span>" means soul or essence in multiple languages.
+				Pronounced "rooh."
 			</p>
 
 			<div class="tech-badges">
@@ -469,7 +511,12 @@
 	.ruh-page {
 		min-height: 100vh;
 		background: linear-gradient(to bottom, #fffbf5 0%, #f5f0e8 100%);
-		font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+		font-family:
+			'Inter',
+			-apple-system,
+			BlinkMacSystemFont,
+			'Segoe UI',
+			sans-serif;
 		color: #3a3633;
 		overflow-x: hidden;
 	}
@@ -823,7 +870,7 @@
 	}
 
 	.demo-container {
-		padding: 60px;
+		padding: 30px;
 		border-radius: 24px;
 		max-width: 900px;
 		margin: 0 auto;
@@ -831,11 +878,11 @@
 
 	.carousel {
 		position: relative;
-		min-height: 500px;
+		min-height: 600px;
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		overflow: visible;
+		overflow: hidden;
 	}
 
 	.carousel-slide {
@@ -844,6 +891,8 @@
 		position: absolute;
 		left: 0;
 		right: 0;
+		will-change: transform;
+		transform: translateZ(0);
 	}
 
 	.demo-image {
@@ -852,10 +901,10 @@
 		max-height: 500px;
 		height: auto;
 		border-radius: 12px;
-		box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
 		margin: 0 auto 24px auto;
 		display: block;
 		object-fit: contain;
+		backface-visibility: hidden;
 	}
 
 	.carousel-video-wrapper {
@@ -864,7 +913,6 @@
 		margin: 0 auto 24px auto;
 		border-radius: 12px;
 		overflow: hidden;
-		box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
 		aspect-ratio: 16 / 9;
 	}
 
@@ -873,6 +921,7 @@
 		height: 100%;
 		border: none;
 		display: block;
+		backface-visibility: hidden;
 	}
 
 	.carousel-caption {
@@ -1270,11 +1319,19 @@
 		}
 
 		.demo-container {
-			padding: 32px 24px;
+			padding: 20px 16px;
 		}
 
 		.carousel {
-			min-height: 300px;
+			min-height: 280px;
+		}
+
+		.demo-image {
+			max-height: 250px;
+		}
+
+		.carousel-controls {
+			margin-top: 20px;
 		}
 
 		.features-grid {
@@ -1387,7 +1444,8 @@
 		}
 
 		.demo-container {
-			padding: 48px 40px;
+			padding: 20px;
+			max-height: fit-content;
 		}
 
 		.features-grid {

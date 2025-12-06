@@ -17,27 +17,33 @@
 		},
 		{
 			type: 'image',
-			src: '/project-images/ruh/ruh-1-score.png',
-			alt: 'ruh harm score interface showing 33/100 score',
+			src: '/project-images/ruh/ruh-1-main.png',
+			alt: 'ruh Chrome extension main interface',
+			caption: 'Your product safety companion on every Amazon page.'
+		},
+		{
+			type: 'image',
+			src: '/project-images/ruh/ruh-2-privacy.png',
+			alt: 'ruh privacy screen protecting sensitive ingredient data',
+			caption: 'Your data stays yours. Privacy-first ingredient analysis.'
+		},
+		{
+			type: 'image',
+			src: '/project-images/ruh/ruh-3-loading.png',
+			alt: 'ruh loading screen analyzing product ingredients',
+			caption: 'Analyzing in real-time. Results in seconds, not hours.'
+		},
+		{
+			type: 'image',
+			src: '/project-images/ruh/ruh-4-score.png',
+			alt: 'ruh harm score interface showing product safety rating',
 			caption: 'Your harm score, instantly. 0-100 scale with clear risk levels.'
 		},
 		{
 			type: 'image',
-			src: '/project-images/ruh/ruh-2-ingredients.png',
-			alt: 'ruh ingredient analysis showing 49 analyzed ingredients',
-			caption: 'Every ingredient, analyzed. No more mystery chemicals.'
-		},
-		{
-			type: 'image',
-			src: '/project-images/ruh/ruh-3-allergens.png',
-			alt: 'ruh allergen detection showing soy protein and lecithin warnings',
-			caption: 'Your allergens, flagged. 8 major allergens detected automatically.'
-		},
-		{
-			type: 'image',
-			src: '/project-images/ruh/ruh-4-other-concerns.png',
-			alt: 'ruh safety concerns panel with retinol risk analysis',
-			caption: 'Real concerns, explained. Scientific backing without the jargon.'
+			src: '/project-images/ruh/ruh-5-analysis.png',
+			alt: 'ruh detailed ingredient analysis breakdown',
+			caption: 'Every ingredient, explained. Scientific backing without the jargon.'
 		}
 	];
 
@@ -273,7 +279,7 @@
 			</div>
 			<div class="what-is-visual glass-medium">
 				<img
-					src="/project-images/ruh/ruh-1-score.png"
+					src="/project-images/ruh/ruh-1-main.png"
 					alt="Ruh Chrome extension showing harm score analysis on Amazon product page"
 					loading="lazy"
 					class="intro-screenshot"
@@ -357,13 +363,6 @@
 				</div>
 				<button class="carousel-btn" onclick={nextSlide} aria-label="Next screenshot">›</button>
 			</div>
-		</div>
-
-		<!-- Add context below carousel -->
-		<div class="demo-context observe-scroll">
-			<p class="context-note">
-				This is a real analysis of Paula's Choice 1% Retinol Treatment. <span class="ruh-text">ruh</span> detected 49 ingredients, identified allergens (soy protein, lecithin), and flagged retinol as a potential concern for sensitive skin—all with scientific citations and confidence scores.
-			</p>
 		</div>
 	</section>
 

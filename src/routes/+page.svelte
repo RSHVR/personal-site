@@ -59,10 +59,11 @@
 				imageSrc="https://youtu.be/sbAvW0giNwM"
 				images={[
 					'https://youtu.be/sbAvW0giNwM',
-					'/project-images/ruh/ruh-1-score.png',
-					'/project-images/ruh/ruh-2-ingredients.png',
-					'/project-images/ruh/ruh-3-allergens.png',
-					'/project-images/ruh/ruh-4-other-concerns.png'
+					'/project-images/ruh/ruh-1-main.png',
+					'/project-images/ruh/ruh-2-privacy.png',
+					'/project-images/ruh/ruh-3-loading.png',
+					'/project-images/ruh/ruh-4-score.png',
+					'/project-images/ruh/ruh-5-analysis.png'
 				]}
 				actionButtons={[
 					{ type: 'github', url: 'https://github.com/RSHVR/ruh', label: 'GitHub' },

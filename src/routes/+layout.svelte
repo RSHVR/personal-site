@@ -5,7 +5,8 @@
 	import Footer from '$lib/components/Footer.svelte';
 	import ContactModal from '$lib/components/ContactModal.svelte';
 	import BreakpointDebugger from '$lib/components/BreakpointDebugger.svelte';
-	import { dev } from '$app/environment';
+	import { dev, browser } from '$app/environment';
+	import { afterNavigate } from '$app/navigation';
 	import { page } from '$app/stores';
 
 	let showContactModal = $state(false);
@@ -22,6 +23,15 @@
 			$page.url.hostname === 'ruh.rshvr.com' ||
 			$page.url.hostname === 'ruh.localhost'
 	);
+
+	// Track page views for SPA navigations
+	afterNavigate((navigation) => {
+		if (browser && typeof gtag !== 'undefined') {
+			gtag('config', 'G-R58GBYG0KC', {
+				page_path: navigation.to?.url?.pathname
+			});
+		}
+	});
 </script>
 
 {#if isTranslatePage || isRuhPage}

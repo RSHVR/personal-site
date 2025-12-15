@@ -26,9 +26,11 @@
 
 	// Track page views for SPA navigations
 	afterNavigate((navigation) => {
-		if (browser && typeof gtag !== 'undefined') {
-			gtag('config', 'G-R58GBYG0KC', {
-				page_path: navigation.to?.url?.pathname
+		if (browser && typeof gtag !== 'undefined' && navigation.to) {
+			gtag('event', 'page_view', {
+				page_title: document.title,
+				page_location: navigation.to.url.href,
+				page_path: navigation.to.url.pathname
 			});
 		}
 	});

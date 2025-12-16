@@ -1,5 +1,12 @@
 <div class="footer">
 	<div class="footer-content">
+		<div class="footer-nav">
+			<a href="/resume">Resume</a>
+			<span class="separator">•</span>
+			<a href="/faq">FAQ</a>
+			<span class="separator">•</span>
+			<a href="/contact">Contact</a>
+		</div>
 		<div class="social-links">
 			<a
 				href="https://www.linkedin.com/in/arshveer-singh-gahir/"
@@ -55,23 +62,47 @@
 <style>
 	.footer {
 		width: 100%;
-		height: 60px; /* Fixed height */
+		min-height: 90px;
 		background: transparent;
 		display: flex;
 		flex-direction: column;
 		align-items: center;
 		justify-content: center;
-		position: relative; /* Ensure footer maintains its position */
-		z-index: 1; /* Ensure footer stays above content */
+		position: relative;
+		z-index: 1;
+		padding: 20px 0;
+		box-sizing: border-box;
 	}
 
 	.footer-content {
 		display: flex;
+		flex-direction: column;
 		align-items: center;
 		justify-content: center;
-		height: 100%;
-		padding: 5px 0;
-		box-sizing: border-box;
+		gap: 12px;
+	}
+
+	.footer-nav {
+		display: flex;
+		align-items: center;
+		gap: 8px;
+	}
+
+	.footer-nav a {
+		color: #2a2a2a;
+		text-decoration: none;
+		font-size: 14px;
+		font-weight: 400;
+		transition: color 0.3s ease;
+	}
+
+	.footer-nav a:hover {
+		color: #666666;
+	}
+
+	.footer-nav .separator {
+		color: #999999;
+		font-size: 12px;
 	}
 
 	.social-links {

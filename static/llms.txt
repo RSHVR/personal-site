@@ -8,6 +8,7 @@
 - [Projects](/projects): Full portfolio of AI/ML projects
 - [Resume](/resume): Professional resume and experience
 - [Contact](/contact): Contact information and appointment booking
+- [FAQ](/faq): Frequently asked questions for employers, co-workers, and clients
 
 ## Featured Projects
 
@@ -27,4 +28,4 @@
 
 - Email: arshveer@hey.com
 - LinkedIn: /in/arshveergahir
-- Location: San Francisco, CA
+- Location: Toronto, Canada

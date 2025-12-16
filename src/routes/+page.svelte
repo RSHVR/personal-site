@@ -14,31 +14,30 @@
 				<span class="greeting-text">Hello, Veer here</span>
 			</h1>
 			<p class="intro">
-				I am a product-focused ML/AI Engineer with proven track record of building enterprise AI
-				solutions that deliver measurable business impact. Currently building <a
+				I turn complex AI challenges into revenue-generating systems that deliver measurable
+				business impact. Companies work with me when they need ML/AI solutions that solve real
+				problems, not just proof of concepts.
+				<br /><br />
+
+				Currently working on <a
 					class="previous-workplace"
 					href="https://www.capfluence.app"
 					target="_blank"
 					rel="noopener noreferrer">Capfluence</a
 				>, an AI-powered lead discovery platform that saves financial advisors 100+ hours monthly
-				through automated prospect identification and data-driven insights.
-				<br /><br />
-
-				At
-				<a
+				through automated prospect identification and data-driven insights. Previously at <a
 					class="previous-workplace"
 					href="https://www.highlyte.ai"
 					target="_blank"
 					rel="noopener noreferrer">Highlyte</a
-				>, I architected and deployed computer vision and NLP models that automated compliance
-				verification for cannabis industry clients across all 50 US states and Instagram, processing
-				thousands of marketing materials and eliminating manual review bottlenecks.
+				>, I architected computer vision and NLP models that automated compliance verification for
+				cannabis brands across all 50 US states, processing thousands of marketing materials and
+				eliminating manual review bottlenecks.
 				<br /><br />
 
-				I excel at the intersection of technology and business strategy, translating complex
-				technical capabilities into user-centric products that solve real problems. My analytical
-				approach allows me to architect scalable solutions that align technical innovation with
-				business objectives.
+				I care about impact you can measure. My approach: start with the business outcome,
+				architect backwards to the solution. Every system I build answers one question: what
+				outcome does this enable? If the answer isn't clear, the solution isn't ready.
 			</p>
 		</div>
 	</div>

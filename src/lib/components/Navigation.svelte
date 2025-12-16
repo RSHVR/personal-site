@@ -108,6 +108,7 @@
 					<a href="/projects" class="dropdown-item nav-projects" onclick={closeMoreDropdown}
 						>Projects</a
 					>
+					<a href="/faq" class="dropdown-item nav-faq" onclick={closeMoreDropdown}>FAQ</a>
 				</div>
 			{/if}
 		</div>
@@ -115,6 +116,7 @@
 		<a href="/" class="nav-home">Home</a>
 		<a href="resume" class="nav-resume">Resume</a>
 		<a href="/projects" class="nav-projects">Projects</a>
+		<a href="/faq" class="nav-faq">FAQ</a>
 		<div class="tools-dropdown" class:open={showToolsDropdown} bind:this={dropdownElement}>
 			<button class="tools-btn" onclick={toggleToolsDropdown}>
 				Products
@@ -153,6 +155,7 @@
 				<a href="/" onclick={closeMobileMenu}>Home</a>
 				<a href="resume" onclick={closeMobileMenu}>Resume</a>
 				<a href="/projects" onclick={closeMobileMenu}>Projects</a>
+				<a href="/faq" onclick={closeMobileMenu}>FAQ</a>
 
 				<!-- Mobile products section -->
 				<div class="mobile-tools">
@@ -548,10 +551,11 @@
 		}
 
 		/* Progressive hiding - start showing More dropdown */
-		/* Hide Home, Resume, Projects in nav-links, show in More dropdown */
+		/* Hide Home, Resume, Projects, FAQ in nav-links, show in More dropdown */
 		.nav-links > .nav-home,
 		.nav-links > .nav-resume,
-		.nav-links > .nav-projects {
+		.nav-links > .nav-projects,
+		.nav-links > .nav-faq {
 			display: none !important;
 		}
 
@@ -562,7 +566,8 @@
 		/* Hide items not yet collapsed from More dropdown */
 		.more-dropdown .nav-home,
 		.more-dropdown .nav-resume,
-		.more-dropdown .nav-projects {
+		.more-dropdown .nav-projects,
+		.more-dropdown .nav-faq {
 			display: block !important;
 		}
 	}
@@ -574,7 +579,8 @@
 			display: none !important;
 		}
 
-		.nav-links > .nav-projects {
+		.nav-links > .nav-projects,
+		.nav-links > .nav-faq {
 			display: inline !important;
 		}
 
@@ -587,7 +593,8 @@
 			display: block !important;
 		}
 
-		.more-dropdown .nav-projects {
+		.more-dropdown .nav-projects,
+		.more-dropdown .nav-faq {
 			display: none !important;
 		}
 	}
@@ -599,7 +606,8 @@
 		}
 
 		.nav-links > .nav-resume,
-		.nav-links > .nav-projects {
+		.nav-links > .nav-projects,
+		.nav-links > .nav-faq {
 			display: inline !important;
 		}
 
@@ -612,7 +620,8 @@
 		}
 
 		.more-dropdown .nav-resume,
-		.more-dropdown .nav-projects {
+		.more-dropdown .nav-projects,
+		.more-dropdown .nav-faq {
 			display: none !important;
 		}
 	}
@@ -621,7 +630,8 @@
 	@media (min-width: 1201px) {
 		.nav-links > .nav-home,
 		.nav-links > .nav-resume,
-		.nav-links > .nav-projects {
+		.nav-links > .nav-projects,
+		.nav-links > .nav-faq {
 			display: inline !important;
 		}
 

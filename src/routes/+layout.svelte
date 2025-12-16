@@ -5,6 +5,7 @@
 	import Footer from '$lib/components/Footer.svelte';
 	import ContactModal from '$lib/components/ContactModal.svelte';
 	import BreakpointDebugger from '$lib/components/BreakpointDebugger.svelte';
+	import { ChatPopup } from 'embeddable-chatbot';
 	import { dev, browser } from '$app/environment';
 	import { afterNavigate } from '$app/navigation';
 	import { page } from '$app/stores';
@@ -55,6 +56,7 @@
 		</footer>
 
 		<ContactModal bind:showModal={showContactModal} />
+		<ChatPopup bodyBg="/wave-background.mp4" buttonIconColor="#007AFF" />
 	</div>
 {/if}
 

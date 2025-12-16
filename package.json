@@ -46,8 +46,10 @@
 		"vitest": "^3.0.0"
 	},
 	"dependencies": {
+		"@cloudflare/workerd-darwin-arm64": "^1.20251216.0",
 		"@notionhq/client": "^2.3.0",
 		"drizzle-orm": "^0.40.0",
+		"embeddable-chatbot": "github:RSHVR/embeddable-chatbot",
 		"postgres": "^3.4.5"
 	}
 }

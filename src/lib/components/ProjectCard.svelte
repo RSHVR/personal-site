@@ -11,6 +11,16 @@
 		actionButtons = [] // Array of button objects: { type, url, label }
 	} = $props();
 
+	// Portal action to teleport modal to body (avoids carousel transform issues)
+	function portal(node) {
+		document.body.appendChild(node);
+		return {
+			destroy() {
+				node.remove();
+			}
+		};
+	}
+
 	let currentImageIndex = $state(0);
 	let showModal = $state(false);
 	let modalImageIndex = $state(0);
@@ -218,9 +228,9 @@
 	</div>
 </div>
 
-<!-- Modal -->
+<!-- Modal - using portal action to render outside carousel transform -->
 {#if showModal}
-	<div class="modal-overlay" onclick={closeModal}>
+	<div class="modal-overlay" onclick={closeModal} use:portal>
 		<div class="modal-content" onclick={(e) => e.stopPropagation()}>
 			{#if isYouTubeUrl(images[modalImageIndex])}
 				<iframe
@@ -530,8 +540,8 @@
 
 	.modal-content {
 		position: relative;
-		max-width: 85vw;
-		max-height: 85vh;
+		max-width: 50vw;
+		max-height: 50vh;
 		display: flex;
 		align-items: center;
 		justify-content: center;
@@ -547,9 +557,9 @@
 
 	.modal-youtube-embed {
 		border: none;
-		width: 85vw;
-		height: 48vw; /* 16:9 aspect ratio */
-		max-height: 85vh;
+		width: 50vw;
+		height: 28vw; /* 16:9 aspect ratio */
+		max-height: 50vh;
 	}
 
 	/* Modal navigation buttons */

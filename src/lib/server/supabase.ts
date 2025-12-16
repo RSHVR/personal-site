@@ -1,7 +1,14 @@
-import { createClient } from '@supabase/supabase-js';
-import { SUPABASE_URL, SUPABASE_SECRET_KEY } from '$env/static/private';
+import { createClient, type SupabaseClient } from '@supabase/supabase-js';
+import { env } from '$env/dynamic/private';
 
-export const supabase = createClient(SUPABASE_URL, SUPABASE_SECRET_KEY);
+let supabaseInstance: SupabaseClient | null = null;
+
+export function getSupabase(): SupabaseClient {
+	if (!supabaseInstance) {
+		supabaseInstance = createClient(env.SUPABASE_URL!, env.SUPABASE_SECRET_KEY!);
+	}
+	return supabaseInstance;
+}
 
 export interface ChatMessage {
 	sender: 'user' | 'bot';
@@ -9,7 +16,7 @@ export interface ChatMessage {
 }
 
 export async function saveChat(sessionId: string, messages: ChatMessage[]): Promise<void> {
-	const { error } = await supabase
+	const { error } = await getSupabase()
 		.from('chats')
 		.upsert(
 			{
@@ -27,7 +34,7 @@ export async function saveChat(sessionId: string, messages: ChatMessage[]): Prom
 }
 
 export async function loadChat(sessionId: string): Promise<ChatMessage[] | null> {
-	const { data, error } = await supabase
+	const { data, error } = await getSupabase()
 		.from('chats')
 		.select('messages')
 		.eq('session_id', sessionId)

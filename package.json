@@ -49,7 +49,7 @@
 		"@notionhq/client": "^2.3.0",
 		"@supabase/supabase-js": "^2.88.0",
 		"drizzle-orm": "^0.40.0",
-		"embeddable-chatbot": "github:RSHVR/embeddable-chatbot",
+		"embeddable-chatbot": "file:../embeddable-chatbot",
 		"postgres": "^3.4.5"
 	}
 }

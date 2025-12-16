@@ -56,6 +56,7 @@
 				</svg>
 			</a>
 		</div>
+		<p class="copyright">© 2026 Arshveer Gahir. All rights reserved.</p>
 	</div>
 </div>
 
@@ -121,6 +122,13 @@
 
 	.social-links a:hover {
 		color: #666666;
+	}
+
+	.copyright {
+		margin: 12px 0 0 0;
+		font-size: 12px;
+		color: #999999;
+		font-weight: 400;
 	}
 
 	/* Responsive adjustments */

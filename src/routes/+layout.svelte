@@ -59,7 +59,7 @@
 
 		<ContactModal bind:showModal={showContactModal} />
 		{#if !isContactPage}
-			<ChatPopup bodyBg="/wave-background.mp4" buttonIconColor="#007AFF" loadEndpoint="/api/chat/load" />
+			<ChatPopup bodyBg="/wave-background.mp4" buttonIconColor="#007AFF" loadEndpoint="/api/chat/load" popupGlass={false} popupBgColor="transparent" inputGlass={true} />
 		{/if}
 	</div>
 {/if}

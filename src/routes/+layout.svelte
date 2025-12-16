@@ -24,6 +24,8 @@
 			$page.url.hostname === 'ruh.rshvr.com' ||
 			$page.url.hostname === 'ruh.localhost'
 	);
+	// Hide ChatPopup on contact page since it has its own full chat
+	let isContactPage = $derived($page.url.pathname === '/contact');
 
 	// Track page views for SPA navigations
 	afterNavigate((navigation) => {
@@ -56,7 +58,9 @@
 		</footer>
 
 		<ContactModal bind:showModal={showContactModal} />
-		<ChatPopup bodyBg="/wave-background.mp4" buttonIconColor="#007AFF" loadEndpoint="/api/chat/load" />
+		{#if !isContactPage}
+			<ChatPopup bodyBg="/wave-background.mp4" buttonIconColor="#007AFF" loadEndpoint="/api/chat/load" />
+		{/if}
 	</div>
 {/if}
 

@@ -51,6 +51,20 @@
 		height: 100%;
 		overflow: hidden;
 		position: relative;
+		mask-image: linear-gradient(
+			to right,
+			transparent,
+			black 5%,
+			black 95%,
+			transparent
+		);
+		-webkit-mask-image: linear-gradient(
+			to right,
+			transparent,
+			black 5%,
+			black 95%,
+			transparent
+		);
 	}
 
 	.carousel-track {

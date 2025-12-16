@@ -1,7 +1,67 @@
 <script>
 	import RobotMessage from '$lib/components/RobotMessage.svelte';
 	import TechStackCarousel from '$lib/components/TechStackCarousel.svelte';
-	import ProjectCard from '$lib/components/ProjectCard.svelte';
+	import InfiniteProjectCarousel from '$lib/components/InfiniteProjectCarousel.svelte';
+
+	const projects = [
+		{
+			title: 'Ruh - AI Product Safety Analyzer',
+			description: 'AI-powered product safety analyzer for Amazon. Instantly detects harmful substances, allergens, PFAS compounds, and toxic chemicals with 0-100 harm scores. Features smart caching and detailed breakdowns with scientific citations.',
+			imageSrc: 'https://youtu.be/sbAvW0giNwM',
+			images: [
+				'/project-images/ruh/ruh-1-main.png',
+				'/project-images/ruh/ruh-2-privacy.png',
+				'/project-images/ruh/ruh-3-loading.png',
+				'/project-images/ruh/ruh-4-score.png',
+				'/project-images/ruh/ruh-5-analysis.png',
+				'https://youtu.be/sbAvW0giNwM'
+			],
+			actionButtons: [
+				{ type: 'github', url: 'https://github.com/RSHVR/ruh', label: 'GitHub' },
+				{ type: 'chromestore', url: 'https://chromewebstore.google.com/detail/ruh/mjgicecpbfabjaebiaioaijelbepihcl', label: 'Chrome' },
+				{ type: 'devpost', url: 'https://devpost.com/software/ruh', label: 'Devpost' }
+			]
+		},
+		{
+			title: 'Lekhi - Embeddable Chatbot Widget',
+			description: 'Embeddable AI chatbot widget with dual-mode deployment (container or floating popup), real-time streaming via Claude Agent SDK, glassmorphic UI, live video backgrounds, and Supabase-powered chat persistence.',
+			imageSrc: '/project-images/lekhi/lekhi-container-mode.png',
+			images: [
+				'/project-images/lekhi/lekhi-container-mode.png',
+				'/project-images/lekhi/lekhi-popup-mode.png'
+			],
+			actionButtons: [
+				{ type: 'github', url: 'https://github.com/RSHVR/embeddable-chatbot', label: 'GitHub' },
+				{ type: 'website', url: '/contact', label: 'Demo' }
+			]
+		},
+		{
+			title: 'Capfluence - Leads Generation & Enrichment',
+			description: 'AI-powered lead discovery platform that saves financial advisors 100+ hours monthly through automated prospect identification and data-driven insights. Built with modern ML techniques and scalable architecture.',
+			imageSrc: '/project-images/capfluence/capfluence-dashboard.png',
+			images: [
+				'/project-images/capfluence/capfluence-dashboard.png',
+				'/project-images/capfluence/capfluence-prospects.png',
+				'/project-images/capfluence/capfluence-leads.png',
+				'/project-images/capfluence/capfluence-insights.png'
+			],
+			websiteLink: 'https://www.capfluence.app',
+			websiteText: 'website'
+		},
+		{
+			title: 'Highlyte - Compliance & Risk Management',
+			description: 'Computer vision and NLP models that automated compliance verification across all 50 US states and Instagram, processing thousands of marketing materials and eliminating manual review bottlenecks for cannabis industry clients.',
+			imageSrc: '/project-images/highlyte/highlyte-dashboard-1.png',
+			images: [
+				'/project-images/highlyte/highlyte-dashboard-1.png',
+				'/project-images/highlyte/highlyte-dashboard-2.png',
+				'/project-images/highlyte/highlyte-insights-1.png',
+				'/project-images/highlyte/highlyte-insights-2.png'
+			],
+			websiteLink: 'https://www.highlyte.ai',
+			websiteText: 'website'
+		}
+	];
 </script>
 
 <div class="page-content">
@@ -48,54 +108,11 @@
 
 	<div class="hero-section-projects">
 		<div class="projects-header">
-			<h1 class="projects-heading">Recent Projects</h1>
+			<h1 class="projects-heading">Featured Projects</h1>
 			<a href="/projects" class="see-all-link">see all</a>
 		</div>
-		<div class="projects-container">
-			<ProjectCard
-				title="Ruh - AI Product Safety Analyzer"
-				description="AI-powered product safety analyzer for Amazon. Instantly detects harmful substances, allergens, PFAS compounds, and toxic chemicals with 0-100 harm scores. Features smart caching and detailed breakdowns with scientific citations."
-				imageSrc="https://youtu.be/sbAvW0giNwM"
-				images={[
-					'/project-images/ruh/ruh-1-main.png',
-					'/project-images/ruh/ruh-2-privacy.png',
-					'/project-images/ruh/ruh-3-loading.png',
-					'/project-images/ruh/ruh-4-score.png',
-					'/project-images/ruh/ruh-5-analysis.png',
-					'https://youtu.be/sbAvW0giNwM'
-				]}
-				actionButtons={[
-					{ type: 'github', url: 'https://github.com/RSHVR/ruh', label: 'GitHub' },
-					{ type: 'chromestore', url: 'https://chromewebstore.google.com/detail/ruh/mjgicecpbfabjaebiaioaijelbepihcl', label: 'Chrome' },
-					{ type: 'devpost', url: 'https://devpost.com/software/ruh', label: 'Devpost' }
-				]}
-			/>
-			<ProjectCard
-				title="Capfluence - Leads Generation & Enrichment"
-				description="AI-powered lead discovery platform that saves financial advisors 100+ hours monthly through automated prospect identification and data-driven insights. Built with modern ML techniques and scalable architecture."
-				imageSrc="/project-images/capfluence/capfluence-dashboard.png"
-				images={[
-					'/project-images/capfluence/capfluence-dashboard.png',
-					'/project-images/capfluence/capfluence-prospects.png',
-					'/project-images/capfluence/capfluence-leads.png',
-					'/project-images/capfluence/capfluence-insights.png'
-				]}
-				websiteLink="https://www.capfluence.app"
-				websiteText="website"
-			/>
-			<ProjectCard
-				title="Highlyte - Compliance & Risk Management"
-				description="Computer vision and NLP models that automated compliance verification across all 50 US states and Instagram, processing thousands of marketing materials and eliminating manual review bottlenecks for cannabis industry clients."
-				imageSrc="/project-images/highlyte/highlyte-dashboard-1.png"
-				images={[
-					'/project-images/highlyte/highlyte-dashboard-1.png',
-					'/project-images/highlyte/highlyte-dashboard-2.png',
-					'/project-images/highlyte/highlyte-insights-1.png',
-					'/project-images/highlyte/highlyte-insights-2.png'
-				]}
-				websiteLink="https://www.highlyte.ai"
-				websiteText="website"
-			/>
+		<div class="projects-carousel-wrapper">
+			<InfiniteProjectCarousel {projects} speed="slow" />
 		</div>
 	</div>
 </div>
@@ -270,12 +287,10 @@
 		margin-right: 0;
 	}
 
-	.projects-container {
-		display: flex;
-		flex-direction: column;
-		gap: 30px;
-		align-items: center;
-		width: 100%;
+	.projects-carousel-wrapper {
+		width: 100vw;
+		margin-left: calc(-50vw + 50%);
+		overflow: hidden;
 	}
 
 	/* Responsive breakpoints */
@@ -450,10 +465,6 @@
 
 		.projects-heading {
 			font-size: 28px;
-		}
-
-		.projects-container {
-			gap: 55px;
 		}
 
 		.see-all-link {

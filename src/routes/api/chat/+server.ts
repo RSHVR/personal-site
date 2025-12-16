@@ -1,5 +1,5 @@
+import { env } from '$env/dynamic/private';
 import { createChatHandler } from 'embeddable-chatbot/server';
-import { ANTHROPIC_API_KEY } from '$env/static/private';
 import { saveChat } from '$lib/server/supabase';
 import type { RequestHandler } from './$types';
 
@@ -16,12 +16,11 @@ Guidelines:
 - If asked about specific projects or work, mention you can help connect them with Veer
 - For booking meetings or detailed inquiries, suggest they reach out directly`;
 
-const handler = createChatHandler({
-	apiKey: ANTHROPIC_API_KEY,
-	systemPrompt: SYSTEM_PROMPT,
-	onSave: saveChat
-});
-
 export const POST: RequestHandler = async ({ request }) => {
+	const handler = createChatHandler({
+		apiKey: env.ANTHROPIC_API_KEY!,
+		systemPrompt: SYSTEM_PROMPT,
+		onSave: saveChat
+	});
 	return handler(request);
 };

@@ -36,6 +36,20 @@
 		/>
 
 		<ProjectCard
+			title="Lekhi - Embeddable Chatbot Widget"
+			description="Embeddable AI chatbot widget with dual-mode deployment (container or floating popup), real-time streaming via Claude Agent SDK, glassmorphic UI, live video backgrounds, and Supabase-powered chat persistence. Built with Svelte 5, TypeScript, optimized for edge runtimes. Roadmap: vector database knowledge embedding, Ollama/self-hosted AI, messaging tools, and calendar booking. Try it live - click the chat icon or visit the contact page."
+			imageSrc="/project-images/lekhi/lekhi-container-mode.png"
+			images={[
+				'/project-images/lekhi/lekhi-container-mode.png',
+				'/project-images/lekhi/lekhi-popup-mode.png'
+			]}
+			actionButtons={[
+				{ type: 'github', url: 'https://github.com/RSHVR/embeddable-chatbot', label: 'GitHub' },
+				{ type: 'website', url: '/contact', label: 'Demo' }
+			]}
+		/>
+
+		<ProjectCard
 			title="Simple Time Tracker"
 			description="Lightweight time tracking Chrome extension with real-time earnings calculation and break time tracking. Features pause/resume functionality, editable timer names, and session persistence. All data stored locally for privacy - no backend required. Designed with minimalist UI/UX inspired by Dieter Rams principles."
 			imageSrc="/project-images/simple-time-tracker/simple_time_tracker_timer.png"

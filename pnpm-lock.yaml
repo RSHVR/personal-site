@@ -8,9 +8,6 @@ importers:
 
   .:
     dependencies:
-      '@cloudflare/workerd-darwin-arm64':
-        specifier: ^1.20251216.0
-        version: 1.20251216.0
       '@notionhq/client':
         specifier: ^2.3.0
         version: 2.3.0
@@ -150,12 +147,6 @@ packages:
 
   '@cloudflare/workerd-darwin-arm64@1.20250823.0':
     resolution: {integrity: sha512-KJnikUe6J29Ga1QMPKNCc8eHD56DdBlu5XE5LoBH/AYRrbS5UI1d5F844hUWoFKJb8KRaPIH9F849HZWfNa1vw==}
-    engines: {node: '>=16'}
-    cpu: [arm64]
-    os: [darwin]
-
-  '@cloudflare/workerd-darwin-arm64@1.20251216.0':
-    resolution: {integrity: sha512-o//m0GLqyjLcK3QgrA/dRYsI5cP2zHYzh3NH5j4eNcB60WLzv2laOFQOHk+Uggg4pXqcxxg7b89Rln84qIsASw==}
     engines: {node: '>=16'}
     cpu: [arm64]
     os: [darwin]
@@ -3213,8 +3204,6 @@ snapshots:
 
   '@cloudflare/workerd-darwin-arm64@1.20250823.0':
     optional: true
-
-  '@cloudflare/workerd-darwin-arm64@1.20251216.0': {}
 
   '@cloudflare/workerd-linux-64@1.20250823.0':
     optional: true

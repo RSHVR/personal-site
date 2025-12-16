@@ -1,5 +1,6 @@
 import { createChatHandler } from 'embeddable-chatbot/server';
 import { ANTHROPIC_API_KEY } from '$env/static/private';
+import { saveChat } from '$lib/server/supabase';
 import type { RequestHandler } from './$types';
 
 const SYSTEM_PROMPT = `You are Veer's AI assistant on his personal website. Be friendly, helpful, and conversational.
@@ -17,7 +18,8 @@ Guidelines:
 
 const handler = createChatHandler({
 	apiKey: ANTHROPIC_API_KEY,
-	systemPrompt: SYSTEM_PROMPT
+	systemPrompt: SYSTEM_PROMPT,
+	onSave: saveChat
 });
 
 export const POST: RequestHandler = async ({ request }) => {

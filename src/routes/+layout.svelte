@@ -56,7 +56,7 @@
 		</footer>
 
 		<ContactModal bind:showModal={showContactModal} />
-		<ChatPopup bodyBg="/wave-background.mp4" buttonIconColor="#007AFF" />
+		<ChatPopup bodyBg="/wave-background.mp4" buttonIconColor="#007AFF" loadEndpoint="/api/chat/load" />
 	</div>
 {/if}
 

@@ -17,4 +17,5 @@
 	welcomeText="Hey! I'm Veer's AI assistant. What brings you here today? Looking to chat about a project, ask about my work, or book some time?"
 	placeholder="Message Veer..."
 	apiEndpoint="/api/chat"
+	loadEndpoint="/api/chat/load"
 />

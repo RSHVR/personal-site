@@ -17,8 +17,17 @@ Guidelines:
 - For booking meetings or detailed inquiries, suggest they reach out directly`;
 
 export const POST: RequestHandler = async ({ request }) => {
+	// Validate API key is present
+	if (!env.ANTHROPIC_API_KEY) {
+		console.error('ANTHROPIC_API_KEY is not set');
+		return new Response(JSON.stringify({ error: 'Chat service not configured' }), {
+			status: 500,
+			headers: { 'Content-Type': 'application/json' }
+		});
+	}
+
 	const handler = createChatHandler({
-		apiKey: env.ANTHROPIC_API_KEY!,
+		apiKey: env.ANTHROPIC_API_KEY,
 		systemPrompt: SYSTEM_PROMPT,
 		onSave: saveChat
 	});

@@ -1,0 +1,30 @@
+# Arshveer Gahir - Portfolio
+
+> Personal portfolio of Arshveer (Veer) Gahir, a product-focused ML/AI Engineer specializing in enterprise AI solutions.
+
+## Pages
+
+- [Home](/): Overview, tech stack, and featured projects
+- [Projects](/projects): Full portfolio of AI/ML projects
+- [Resume](/resume): Professional resume and experience
+- [Contact](/contact): Contact information and appointment booking
+
+## Featured Projects
+
+- [ruh](/ruh): AI Product Safety Analyzer - Chrome extension for analyzing product ingredients
+  - [Privacy Policy](/ruh/privacy): ruh privacy policy and data handling practices
+- [Capfluence](https://capfluence.com): AI-powered lead discovery platform for financial advisors
+- [Highlyte](https://highlyte.com): Compliance & risk management using computer vision and NLP
+
+## Expertise
+
+- ML/AI Engineering
+- Product Development
+- Computer Vision & NLP
+- Cloud Architecture
+
+## Contact
+
+- Email: arshveer@hey.com
+- LinkedIn: /in/arshveergahir
+- Location: San Francisco, CA

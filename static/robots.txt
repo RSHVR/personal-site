@@ -3,3 +3,4 @@ User-agent: *
 Allow: /
 
 Sitemap: https://www.rshvr.com/sitemap.xml
+Llms-txt: https://www.rshvr.com/llms.txt

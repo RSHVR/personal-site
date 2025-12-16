@@ -49,8 +49,10 @@
 <style>
 	.carousel-container {
 		width: 100%;
-		overflow: hidden;
+		overflow: clip;
+		overflow-clip-margin: 20px;
 		position: relative;
+		padding: 20px 0;
 		mask-image: linear-gradient(
 			to right,
 			transparent,
@@ -73,6 +75,8 @@
 		animation: scroll var(--animation-duration, 40s) linear infinite;
 		animation-direction: var(--animation-direction, normal);
 		width: fit-content;
+		will-change: transform;
+		backface-visibility: hidden;
 	}
 
 	.carousel-track.pause-on-hover:hover {
@@ -88,8 +92,7 @@
 	.carousel-item :global(.project-card) {
 		flex-direction: column !important;
 		width: 350px !important;
-		height: auto !important;
-		min-height: 480px;
+		height: 500px !important;
 		padding: 16px !important;
 		gap: 16px !important;
 	}
@@ -102,8 +105,10 @@
 	.carousel-item :global(.text-container) {
 		width: 100% !important;
 		height: auto !important;
-		min-height: 220px;
-		padding-bottom: 50px !important;
+		flex: 1 !important;
+		display: flex !important;
+		flex-direction: column !important;
+		padding-bottom: 16px !important;
 	}
 
 	.carousel-item :global(.project-title) {
@@ -116,13 +121,17 @@
 		line-height: 1.4 !important;
 		max-height: 140px !important;
 		overflow: hidden !important;
+		margin-bottom: 16px !important;
 	}
 
-	/* Force icon-only buttons */
+	/* Force icon-only buttons - consistent position */
 	.carousel-item :global(.action-buttons) {
-		left: 50% !important;
+		position: relative !important;
+		margin-top: auto !important;
+		left: auto !important;
 		right: auto !important;
-		transform: translateX(-50%) !important;
+		transform: none !important;
+		justify-content: center !important;
 		gap: 10px !important;
 	}
 

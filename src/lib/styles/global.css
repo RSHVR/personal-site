@@ -1,14 +1,28 @@
 /* Global styles */
-body {
+html, body {
+    height: auto;
+    min-height: 100%;
     margin: 0;
     padding: 0;
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+}
+
+body {
     font-family: "Nunito", sans-serif;
     background: #FCF7F2;
 }
 
-:global(body) {
+:global(html), :global(body) {
+    height: auto;
+    min-height: 100%;
     margin: 0;
     padding: 0;
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+}
+
+:global(body) {
     font-family: "Nunito", sans-serif;
     background: #FCF7F2;
 }

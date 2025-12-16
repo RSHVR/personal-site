@@ -73,6 +73,8 @@
 		height: 100%;
 		align-items: center;
 		width: calc(64px * 39); /* 39 items (13 * 3) * (24px width + 40px margin) */
+		will-change: transform;
+		backface-visibility: hidden;
 	}
 
 	.carousel-item {

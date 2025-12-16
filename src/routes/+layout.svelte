@@ -72,12 +72,9 @@
 	/* Base styles */
 	.under-construction {
 		width: 100%;
-		min-height: 100vh;
+		min-height: 100%;
 		position: relative;
 		background: #fcf7f2;
-		display: flex;
-		flex-direction: column;
-		overflow-x: hidden; /* Allow vertical scrolling but prevent horizontal */
 	}
 
 	.header {
@@ -94,19 +91,13 @@
 	.main-content {
 		position: relative;
 		width: 100%;
-		flex: 1; /* Take up all available space between header and footer */
-		display: flex;
-		flex-direction: column;
-		padding-bottom: 20px; /* Smaller padding to ensure footer is visible */
-		transition: padding-bottom 0.3s ease;
+		padding-bottom: 20px;
 	}
 
 	.footer-wrapper {
 		width: 100%;
-		height: 60px; /* Fixed height for footer */
-		flex-shrink: 0; /* Prevent footer from shrinking */
-		position: relative; /* Ensure proper stacking context */
-		z-index: 1; /* Make sure footer is above other elements */
+		position: relative;
+		z-index: 1;
 	}
 
 	/* Extra small (0-480px) */
@@ -155,10 +146,6 @@
 
 	/* For very short height screens */
 	@media (max-height: 600px) {
-		.under-construction {
-			min-height: 600px; /* Minimum height for very short screens */
-		}
-
 		.header {
 			height: 80px;
 		}

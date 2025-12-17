@@ -331,72 +331,28 @@
 		}
 	}
 
-	/* Medium mobile/tablet (481-768px) */
-	@media (min-width: 481px) and (max-width: 768px) {
+	/* Tablet (481-1200px) - vertical stacking */
+	@media (min-width: 481px) and (max-width: 1200px) {
 		.page-content {
-			padding: 0 30px;
+			padding: 0 50px;
 		}
 
 		.hero-section-intro {
-			margin-left: -30px;
-			padding: 30px 30px 50px;
+			margin-left: -50px;
+			padding: 40px 50px 60px;
 		}
 
 		.hero-section-stack {
-			margin-left: -30px;
+			margin-left: -50px;
 		}
 
 		.hero-section-projects {
-			margin-left: -30px;
+			margin-left: -50px;
 			padding: 50px 0 70px;
 		}
 
 		.projects-header {
-			padding: 0 30px;
-		}
-
-		.greeting-text {
-			font-size: 24px;
-		}
-
-		.intro {
-			font-size: 17px;
-		}
-
-		.projects-heading {
-			font-size: 22px;
-		}
-
-		.see-all-link {
-			font-size: 15px;
-		}
-	}
-
-	/* Tablet/small desktop (769-1200px) */
-	@media (min-width: 769px) and (max-width: 1200px) {
-		.page-content {
-			padding: 0 100px;
-		}
-
-		.hero-section-intro {
-			margin-left: -100px;
-			padding: 40px 100px 80px;
-			flex-direction: row;
-			align-items: flex-start;
-		}
-
-		.hero-image {
-			width: 320px;
-			height: 450px;
-			order: 0;
-			padding-top: 20px;
-		}
-
-		.title-container {
-			margin-left: 60px;
-			width: auto;
-			flex: 1;
-			padding-top: 20px;
+			padding: 0 50px;
 		}
 
 		.greeting-text {
@@ -405,19 +361,6 @@
 
 		.intro {
 			font-size: 17px;
-		}
-
-		.hero-section-stack {
-			margin-left: -100px;
-		}
-
-		.hero-section-projects {
-			margin-left: -100px;
-			padding: 55px 0 85px;
-		}
-
-		.projects-header {
-			padding: 0 100px;
 		}
 
 		.projects-heading {
@@ -445,7 +388,8 @@
 
 		.hero-image {
 			width: 400px;
-			height: 550px;
+			height: 500px;
+			min-height: 350px;
 			order: 0;
 			padding-top: 35px;
 		}
@@ -453,7 +397,6 @@
 		.title-container {
 			margin-left: 90px;
 			width: 934px;
-			height: 650px;
 			padding-top: 35px;
 		}
 
@@ -462,7 +405,7 @@
 		}
 
 		.intro {
-			font-size: 18px;
+			font-size: 17px;
 		}
 
 		.hero-section-stack {

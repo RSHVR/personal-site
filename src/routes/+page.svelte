@@ -24,7 +24,7 @@
 		},
 		{
 			title: 'Lekhi - Embeddable Chatbot Widget',
-			description: 'Embeddable AI chatbot widget with dual-mode deployment (container or floating popup), real-time streaming via Claude Agent SDK, glassmorphic UI, live video backgrounds, and Supabase-powered chat persistence.',
+			description: 'RAG-enabled AI chatbot widget with Claude Agent SDK streaming, Cohere Embed v4 + Rerank v2, liquid glass UI, video backgrounds, and Supabase persistence. Drop it into any website.',
 			imageSrc: '/project-images/lekhi/lekhi-container-mode.png',
 			images: [
 				'/project-images/lekhi/lekhi-container-mode.png',

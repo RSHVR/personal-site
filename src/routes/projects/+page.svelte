@@ -37,7 +37,7 @@
 
 		<ProjectCard
 			title="Lekhi - Embeddable Chatbot Widget"
-			description="Embeddable AI chatbot widget with dual-mode deployment (container or floating popup), real-time streaming via Claude Agent SDK, glassmorphic UI, live video backgrounds, and Supabase-powered chat persistence. Built with Svelte 5, TypeScript, optimized for edge runtimes. Roadmap: vector database knowledge embedding, Ollama/self-hosted AI, messaging tools, and calendar booking. Try it live - click the chat icon or visit the contact page."
+			description="RAG-enabled AI chatbot you can drop into any website. Features Claude Agent SDK streaming, Cohere Embed v4 + Rerank v2 for smart retrieval, liquid glass UI, video backgrounds, and Supabase persistence. Built with Svelte 5, TypeScript for edge runtimes. Roadmap: Ollama support, messaging tools, calendar booking."
 			imageSrc="/project-images/lekhi/lekhi-container-mode.png"
 			images={[
 				'/project-images/lekhi/lekhi-container-mode.png',

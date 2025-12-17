@@ -1,4 +1,5 @@
 <script>
+	import LiquidGlass from '$lib/components/LiquidGlass.svelte';
 </script>
 
 <div class="page-content">
@@ -81,9 +82,13 @@
 		</section>
 	</div>
 
-	<div class="faq-cta">
-		<p>Have a question that's not answered here?</p>
-		<a href="/contact" class="contact-link">Let's talk</a>
+	<div class="faq-cta-wrapper">
+		<LiquidGlass contrast="light" roundness={12} blur={4} opacity={0.3}>
+			<div class="faq-cta">
+				<p>Have a question that's not answered here?</p>
+				<a href="/contact" class="contact-link">Let's talk</a>
+			</div>
+		</LiquidGlass>
 	</div>
 </div>
 
@@ -166,12 +171,13 @@
 		text-decoration-color: #333333;
 	}
 
-	.faq-cta {
+	.faq-cta-wrapper {
 		margin-top: 64px;
+	}
+
+	.faq-cta {
 		text-align: center;
 		padding: 32px;
-		background: rgba(0, 0, 0, 0.02);
-		border-radius: 8px;
 	}
 
 	.faq-cta p {
@@ -227,8 +233,11 @@
 			font-size: 14px;
 		}
 
-		.faq-cta {
+		.faq-cta-wrapper {
 			margin-top: 48px;
+		}
+
+		.faq-cta {
 			padding: 24px 20px;
 		}
 	}

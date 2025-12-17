@@ -126,7 +126,7 @@ const SITE_CONTENT: SiteContent[] = [
 			},
 			{
 				heading: 'Lekhi - Embeddable Chatbot Widget',
-				content: `Lekhi is an embeddable AI chatbot widget with dual-mode deployment (container or floating popup), real-time streaming via Claude Agent SDK, glassmorphic UI, live video backgrounds, and Supabase-powered chat persistence. Built with Svelte 5, TypeScript, optimized for edge runtimes. Roadmap includes vector database knowledge embedding, Ollama/self-hosted AI, messaging tools, and calendar booking.`
+				content: `Lekhi is a RAG-enabled AI chatbot widget you can drop into any website. Features dual-mode deployment (container or floating popup), real-time streaming via Claude Agent SDK, Cohere Embed v4 and Rerank v2 for smart context retrieval, liquid glass UI, live video backgrounds, and Supabase-powered chat persistence. Built with Svelte 5, TypeScript, optimized for edge runtimes. Roadmap includes Ollama/self-hosted AI, messaging tools, and calendar booking.`
 			},
 			{
 				heading: 'Simple Time Tracker',

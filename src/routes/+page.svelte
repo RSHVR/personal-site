@@ -257,11 +257,8 @@
 		width: 100vw;
 		height: auto;
 		margin-left: -20px;
-		padding: 40px 20px 60px;
+		padding: 40px 0 60px;
 		box-sizing: border-box;
-		display: flex;
-		flex-direction: column;
-		align-items: center;
 	}
 
 	.projects-header {
@@ -270,7 +267,9 @@
 		align-items: center;
 		width: 100%;
 		max-width: 1041px;
-		margin-bottom: 30px;
+		margin: 0 auto 30px;
+		padding: 0 20px;
+		box-sizing: border-box;
 	}
 
 	.projects-heading {
@@ -312,7 +311,11 @@
 
 		.hero-section-projects {
 			margin-left: -15px;
-			padding: 30px 15px 50px;
+			padding: 30px 0 50px;
+		}
+
+		.projects-header {
+			padding: 0 15px;
 		}
 
 		.greeting-text {
@@ -345,7 +348,11 @@
 
 		.hero-section-projects {
 			margin-left: -30px;
-			padding: 50px 30px 70px;
+			padding: 50px 0 70px;
+		}
+
+		.projects-header {
+			padding: 0 30px;
 		}
 
 		.greeting-text {
@@ -406,7 +413,11 @@
 
 		.hero-section-projects {
 			margin-left: -100px;
-			padding: 55px 100px 85px;
+			padding: 55px 0 85px;
+		}
+
+		.projects-header {
+			padding: 0 100px;
 		}
 
 		.projects-heading {
@@ -460,7 +471,11 @@
 
 		.hero-section-projects {
 			margin-left: -196px;
-			padding: 60px 196px 100px 196px;
+			padding: 60px 0 100px;
+		}
+
+		.projects-header {
+			padding: 0 196px;
 		}
 
 		.projects-heading {

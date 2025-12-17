@@ -53,20 +53,6 @@
 		overflow-clip-margin: 20px;
 		position: relative;
 		padding: 20px 0;
-		mask-image: linear-gradient(
-			to right,
-			transparent,
-			black 5%,
-			black 95%,
-			transparent
-		);
-		-webkit-mask-image: linear-gradient(
-			to right,
-			transparent,
-			black 5%,
-			black 95%,
-			transparent
-		);
 	}
 
 	.carousel-track {

@@ -48,11 +48,13 @@
 		"vitest": "^3.0.0"
 	},
 	"dependencies": {
+		"@cloudflare/workerd-darwin-arm64": "^1.20251219.0",
 		"@notionhq/client": "^2.3.0",
 		"@supabase/supabase-js": "^2.88.0",
 		"cohere-ai": "^7.20.0",
 		"drizzle-orm": "^0.40.0",
 		"embeddable-chatbot": "github:RSHVR/embeddable-chatbot",
-		"postgres": "^3.4.5"
+		"postgres": "^3.4.5",
+		"tsuji": "github:RSHVR/tsuji"
 	}
 }

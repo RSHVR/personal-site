@@ -13,7 +13,7 @@ export interface PendingSMS {
 	tool_use_id: string;
 	message_to_owner: string;
 	owner_reply: string | null;
-	status: 'pending' | 'replied' | 'timeout';
+	status: 'pending' | 'replied' | 'timeout' | 'processed';
 	created_at: string;
 	replied_at: string | null;
 	conversation_context: Record<string, unknown> | null;
@@ -140,14 +140,22 @@ export function createSMSState(options: SMSStateOptions) {
 	}
 
 	/**
-	 * Check if a session has a replied SMS (for polling)
+	 * Check if a specific tool call has received a reply (for polling)
+	 * Uses tool_use_id to ensure we only get THIS tool call's reply, not old ones
 	 */
-	async function checkForReply(sessionId: string): Promise<PendingSMS | null> {
-		const { data, error } = await supabase
+	async function checkForReply(sessionId: string, toolUseId?: string): Promise<PendingSMS | null> {
+		let query = supabase
 			.from('pending_sms')
 			.select('*')
 			.eq('session_id', sessionId)
-			.eq('status', 'replied')
+			.eq('status', 'replied');
+
+		// If toolUseId provided, only look for that specific tool call's reply
+		if (toolUseId) {
+			query = query.eq('tool_use_id', toolUseId);
+		}
+
+		const { data, error } = await query
 			.order('replied_at', { ascending: false })
 			.limit(1)
 			.single();
@@ -164,22 +172,25 @@ export function createSMSState(options: SMSStateOptions) {
 	}
 
 	/**
-	 * Clear the current reply so we can receive the next one (for multi-turn conversations)
-	 * Sets the record back to pending state so the next SMS can be captured
+	 * Mark a reply as processed so it won't be found again
+	 * Instead of resetting to 'pending', we mark as 'processed' to avoid race conditions
 	 */
-	async function clearCurrentReply(sessionId: string): Promise<void> {
-		const { error } = await supabase
+	async function clearCurrentReply(sessionId: string, toolUseId?: string): Promise<void> {
+		let query = supabase
 			.from('pending_sms')
-			.update({
-				owner_reply: null,
-				replied_at: null,
-				status: 'pending'
-			})
+			.update({ status: 'processed' })
 			.eq('session_id', sessionId)
 			.eq('status', 'replied');
 
+		// If toolUseId provided, only mark that specific record
+		if (toolUseId) {
+			query = query.eq('tool_use_id', toolUseId);
+		}
+
+		const { error } = await query;
+
 		if (error) {
-			console.error('Error clearing current reply:', error);
+			console.error('Error marking reply as processed:', error);
 		}
 	}
 

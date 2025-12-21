@@ -1,3 +1,4 @@
 @import 'tailwindcss';
+@source "../node_modules/tsuji/dist";
 @plugin '@tailwindcss/forms';
 @plugin '@tailwindcss/typography';

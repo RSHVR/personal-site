@@ -64,19 +64,19 @@
 		/>
 
 		<ProjectCard
-			title="How Do You Say? - Language Model Powered Translation"
-			description="AI-powered translation tool built with Svelte and TypeScript, using Cohere's Command-A translation model (released August 28, 2025) and hosted on Cloudflare. Provides accurate translations that preserve meaning and context across multiple languages, with pronunciation guides included. This results in more natural, contextually appropriate translations that sound right in the target language."
-			imageSrc="/project-images/how-do-you-say/hdys-dashboard.png"
+			title="Tsuji - AI Translation Tool"
+			description="AI-powered translation tool built with Svelte 5 and TypeScript, using Cohere's Command-A translation model. Supports 23 languages with multiple translation modes: standard with pronunciation, literal word-for-word, cultural explanations, and formal/informal registers. Features streaming responses, chat history persistence, and a traditional Japanese-inspired UI. Available as an embeddable npm package."
+			imageSrc="/project-images/tsuji/tsuji-01-japanese-translation.png"
 			images={[
-				'/project-images/how-do-you-say/hdys-dashboard.png',
-				'/project-images/how-do-you-say/hdys-translation.png',
-				'/project-images/how-do-you-say/hdys-failure-mode.png',
-				'/project-images/how-do-you-say/hdys-menu.png'
+				'/project-images/tsuji/tsuji-01-japanese-translation.png',
+				'/project-images/tsuji/tsuji-02-italian-translation.png',
+				'/project-images/tsuji/tsuji-03-hindi-translation.png',
+				'/project-images/tsuji/tsuji-04-blank.png'
 			]}
-			repoLink="https://github.com/RSHVR/hdys"
-			repoType="GitHub"
-			websiteLink="/how-do-you-say"
-			websiteText="website"
+			actionButtons={[
+				{ type: 'github', url: 'https://github.com/RSHVR/tsuji', label: 'GitHub' },
+				{ type: 'website', url: '/tsuji', label: 'Demo' }
+			]}
 		/>
 
 		<ProjectCard

@@ -16,8 +16,8 @@
 		showContactModal = true;
 	}
 
-	// Check if current route is translate page or ruh page
-	let isTranslatePage = $derived($page.url.pathname === '/how-do-you-say');
+	// Check if current route is tsuji page or ruh page
+	let isTsujiPage = $derived($page.url.pathname === '/tsuji');
 	let isRuhPage = $derived(
 		$page.url.pathname === '/ruh' ||
 			$page.url.pathname.startsWith('/ruh/') ||
@@ -39,8 +39,8 @@
 	});
 </script>
 
-{#if isTranslatePage || isRuhPage}
-	<!-- Clean layout for translate and ruh pages -->
+{#if isTsujiPage || isRuhPage}
+	<!-- Clean layout for tsuji and ruh pages -->
 	<slot />
 {:else}
 	<!-- Normal layout with header and footer -->

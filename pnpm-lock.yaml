@@ -31,7 +31,7 @@ importers:
         version: 3.4.7
       tsuji:
         specifier: github:RSHVR/tsuji
-        version: https://codeload.github.com/RSHVR/tsuji/tar.gz/70951ea417a64d3178505cb2adb0d2a40a6f4215(svelte@5.46.0)
+        version: https://codeload.github.com/RSHVR/tsuji/tar.gz/f658c3a212fb0ef500af205e139b8257841b1796(svelte@5.46.0)
     devDependencies:
       '@eslint/compat':
         specifier: ^1.2.5
@@ -3196,8 +3196,8 @@ packages:
   tslib@2.8.1:
     resolution: {integrity: sha512-oJFu94HQb+KVduSUQL7wnpmqnfmLsOA/nAh6b6EH0wCEoK0/mPeXU6c3wKDV83MkOuHPRHtSXKKU99IBazS/2w==}
 
-  tsuji@https://codeload.github.com/RSHVR/tsuji/tar.gz/70951ea417a64d3178505cb2adb0d2a40a6f4215:
-    resolution: {tarball: https://codeload.github.com/RSHVR/tsuji/tar.gz/70951ea417a64d3178505cb2adb0d2a40a6f4215}
+  tsuji@https://codeload.github.com/RSHVR/tsuji/tar.gz/f658c3a212fb0ef500af205e139b8257841b1796:
+    resolution: {tarball: https://codeload.github.com/RSHVR/tsuji/tar.gz/f658c3a212fb0ef500af205e139b8257841b1796}
     version: 0.1.0
     peerDependencies:
       svelte: ^5.0.0
@@ -6472,7 +6472,7 @@ snapshots:
 
   tslib@2.8.1: {}
 
-  tsuji@https://codeload.github.com/RSHVR/tsuji/tar.gz/70951ea417a64d3178505cb2adb0d2a40a6f4215(svelte@5.46.0):
+  tsuji@https://codeload.github.com/RSHVR/tsuji/tar.gz/f658c3a212fb0ef500af205e139b8257841b1796(svelte@5.46.0):
     dependencies:
       svelte: 5.46.0
 

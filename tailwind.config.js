@@ -2,7 +2,8 @@
 export default {
   content: [
     './src/**/*.{html,js,svelte,ts}',
-    './src/**/*.svx'
+    './src/**/*.svx',
+    './node_modules/tsuji/dist/**/*.{svelte,js}'
   ],
   theme: {
     extend: {

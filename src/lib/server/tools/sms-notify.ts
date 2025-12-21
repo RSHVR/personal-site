@@ -11,36 +11,82 @@
  * - OWNER_PHONE_NUMBER
  */
 
-import type { Tool } from '@anthropic-ai/sdk/resources/messages';
+/**
+ * Extended tool type that supports programmatic calling
+ */
+export interface ProgrammaticTool {
+	name: string;
+	description: string;
+	input_schema: {
+		type: 'object';
+		properties: Record<string, unknown>;
+		required?: string[];
+	};
+	allowed_callers?: ('direct' | 'code_execution_20250825')[];
+}
 
 /**
  * Tool definition for Claude to notify Veer via SMS
+ *
+ * This tool is marked for programmatic calling - Claude writes Python code
+ * that loops through SMS interactions without re-sampling each time.
+ * Massive token savings as intermediate results don't enter context.
  */
-export const smsNotifyOwnerTool: Tool = {
+export const smsNotifyOwnerTool: ProgrammaticTool = {
 	name: 'notify_owner_sms',
-	description: `Send an SMS message to Veer for real-time input during the conversation. Use this tool when:
-- A visitor wants to discuss a project, freelance work, or consulting opportunity
-- Someone has a specific question only Veer can answer (rates, availability, custom work)
-- A lead seems qualified and interested in working together
-- The visitor explicitly asks to speak with Veer or a human
+	description: `Send an SMS to Veer for real-time input. Returns the owner's reply.
 
-The conversation will pause until Veer replies via SMS. Include all relevant context in your message so Veer can respond effectively. Keep messages concise but informative.`,
+OUTPUT FORMAT: Returns a string with the owner's reply.
+- If reply is exactly "SEND", the conversation is complete
+- Otherwise, the reply contains private context for formulating response
+
+USAGE IN CODE:
+\`\`\`python
+reply = await notify_owner_sms(message="Someone asking about availability")
+if reply == "SEND":
+    # Owner approved, formulate response
+    print("Ready to respond to visitor")
+else:
+    # Owner provided context, may need follow-up
+    reply2 = await notify_owner_sms(message="They want React consulting")
+    if reply2 == "SEND":
+        print("Ready to respond with context from first reply")
+\`\`\`
+
+WHEN TO USE:
+✅ Visitor wants to discuss a project, freelance work, or consulting
+✅ Specific questions only Veer can answer (rates, availability, custom work)
+✅ Qualified lead genuinely interested in working together
+✅ Visitor explicitly asks to speak with Veer or a human
+
+WHEN NOT TO USE:
+❌ General questions answerable from website content
+❌ Technical questions about Veer's public work
+❌ Simple greetings or small talk
+
+PRIVACY RULES:
+- All replies before "SEND" are PRIVATE context
+- Never reveal private context to visitor
+- Never say "Veer said", "he mentioned", "apparently"
+- Respond AS IF you naturally know the answer`,
 	input_schema: {
 		type: 'object' as const,
 		properties: {
 			message: {
 				type: 'string',
 				description:
-					'The message to send to Veer. Include context about the visitor, their question or need, and what kind of response would be helpful.'
+					'Message to Veer. Include visitor context and what response would help.'
 			},
 			context_summary: {
 				type: 'string',
 				description:
-					'Brief summary of the conversation context for reference (e.g., "Visitor asking about freelance rates for React project")'
+					'Brief summary (e.g., "Visitor asking about freelance React project")'
 			}
 		},
 		required: ['message']
 	}
+	// NOTE: allowed_callers removed - SDK doesn't support it yet (wraps under 'custom')
+	// Re-add when SDK supports PTC: allowed_callers: ['code_execution_20250825']
 };
 
 export interface SMSToolInput {

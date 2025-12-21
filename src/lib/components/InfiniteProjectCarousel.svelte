@@ -78,14 +78,15 @@
 	.carousel-item :global(.project-card) {
 		flex-direction: column !important;
 		width: 350px !important;
-		height: 500px !important;
+		height: 480px !important;
 		padding: 16px !important;
 		gap: 16px !important;
 	}
 
 	.carousel-item :global(.image-container) {
 		width: 100% !important;
-		height: 200px !important;
+		aspect-ratio: 16/10 !important;
+		height: auto !important;
 	}
 
 	.carousel-item :global(.text-container) {

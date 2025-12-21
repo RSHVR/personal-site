@@ -318,7 +318,7 @@
 
 	.image-container {
 		width: 100%;
-		height: 250px;
+		aspect-ratio: 16/10;
 		border-radius: 15px;
 		overflow: hidden;
 		flex-shrink: 0;
@@ -657,10 +657,6 @@
 			gap: 15px;
 		}
 
-		.image-container {
-			height: 200px;
-		}
-
 		.text-container {
 			padding-bottom: 45px;
 		}
@@ -717,10 +713,6 @@
 			padding: 18px;
 		}
 
-		.image-container {
-			height: 280px;
-		}
-
 		.text-container {
 			padding-bottom: 48px;
 		}
@@ -768,7 +760,7 @@
 		.image-container {
 			width: 380px;
 			height: 100%;
-			flex-shrink: 0;
+			aspect-ratio: 16/10;
 		}
 
 		.text-container {
@@ -795,7 +787,7 @@
 		.image-container {
 			width: 417px;
 			height: 326px;
-			flex-shrink: 0;
+			aspect-ratio: 16/10;
 		}
 
 		.text-container {

@@ -36,6 +36,21 @@
 			]
 		},
 		{
+			title: 'Tsuji - AI Translation Tool',
+			description: 'AI-powered translation tool with Cohere Command-A. Supports 23 languages with pronunciation guides, literal translations, cultural explanations, and formal/informal modes. Traditional Japanese-inspired UI.',
+			imageSrc: '/project-images/tsuji/tsuji-01-japanese-translation.png',
+			images: [
+				'/project-images/tsuji/tsuji-01-japanese-translation.png',
+				'/project-images/tsuji/tsuji-02-italian-translation.png',
+				'/project-images/tsuji/tsuji-03-hindi-translation.png',
+				'/project-images/tsuji/tsuji-04-blank.png'
+			],
+			actionButtons: [
+				{ type: 'github', url: 'https://github.com/RSHVR/tsuji', label: 'GitHub' },
+				{ type: 'website', url: '/tsuji', label: 'Demo' }
+			]
+		},
+		{
 			title: 'Capfluence - Leads Generation & Enrichment',
 			description: 'AI-powered lead discovery platform that saves financial advisors 100+ hours monthly through automated prospect identification and data-driven insights. Built with modern ML techniques and scalable architecture.',
 			imageSrc: '/project-images/capfluence/capfluence-dashboard.png',

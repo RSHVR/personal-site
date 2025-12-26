@@ -317,7 +317,7 @@
 
 			<div class="problem-card glass-medium observe-scroll">
 				<div class="problem-stat">15+</div>
-				<h3>minutes per product</h3>
+				<h3>minutes wasted researching</h3>
 				<p>Researching safety shouldn't take longer than shopping itself.</p>
 			</div>
 

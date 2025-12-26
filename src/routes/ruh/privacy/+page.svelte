@@ -10,7 +10,7 @@
 <div class="privacy-page" in:fade={{ duration: 300 }}>
 	<div class="privacy-container">
 		<header class="privacy-header">
-			<a href="/ruh" class="back-link">← Back to <span class="ruh-text">ruh</span></a>
+			<a href=".." class="back-link">← Back to <span class="ruh-text">ruh</span></a>
 			<h1>Privacy Policy</h1>
 			<p class="last-updated">Last updated: January 2025</p>
 		</header>
@@ -98,7 +98,7 @@
 		</section>
 
 		<footer class="privacy-footer">
-			<a href="/ruh">Back to <span class="ruh-text">ruh</span></a>
+			<a href="..">Back to <span class="ruh-text">ruh</span></a>
 			<span>•</span>
 			<a href="/">Home</a>
 		</footer>

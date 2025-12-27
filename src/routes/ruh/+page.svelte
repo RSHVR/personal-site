@@ -3,6 +3,7 @@
 	import { browser } from '$app/environment';
 	import { fade, fly, scale } from 'svelte/transition';
 	import { quintOut, cubicOut, cubicInOut } from 'svelte/easing';
+	import MovingBorderButton from '$lib/components/MovingBorderButton.svelte';
 
 	let headerScrolled = $state(false);
 	let currentSlide = $state(0);
@@ -55,6 +56,11 @@
 			description: 'Instant safety assessment while browsing Amazon. No copy-paste needed.'
 		},
 		{
+			icon: '🎯',
+			title: 'Personalized Analysis',
+			description: 'Tell ruh your concerns—acne, allergies, hormones—and get insights tailored to your body.'
+		},
+		{
 			icon: '🥜',
 			title: 'Allergen Detection',
 			description: 'Automatically flags 8 major allergens with severity levels.'
@@ -62,7 +68,7 @@
 		{
 			icon: '🧪',
 			title: 'PFAS Screening',
-			description: 'Detects forever chemicals linked to long-term health issues.'
+			description: 'Detects forever chemicals linked to acne, hormone disruption, and fertility issues.'
 		},
 		{
 			icon: '📊',
@@ -78,6 +84,11 @@
 			icon: '📖',
 			title: 'Detailed Breakdowns',
 			description: 'Scientific citations and toxicity explanations in plain language.'
+		},
+		{
+			icon: '🔬',
+			title: 'Deep Research',
+			description: 'Reviews, Reddit threads, and scientific studies—all synthesized in seconds.'
 		}
 	];
 
@@ -225,15 +236,17 @@
 				your soul deserves safer choices
 			</h1>
 			<p class="hero-subtitle" in:fly={{ y: 20, duration: 600, delay: 300 }}>
-				Ever wonder what's really in the products you buy? <strong
-					><span class="ruh-text">ruh</span></strong
-				> is your AI-powered safety assistant that analyzes Amazon products in real-time—detecting harmful
-				chemicals, allergens, and PFAS "forever chemicals" before you click "Add to Cart."
+				Skincare. Snacks. Supplements. Cleaning products. <strong>What's actually in them?</strong>
+				<span class="ruh-text">ruh</span> analyzes ingredients in real-time—flagging <strong>allergens</strong>, <strong>hormone disruptors</strong>, and <strong>PFAS</strong> before you buy.
 			</p>
 			<div class="hero-features" in:fly={{ y: 20, duration: 600, delay: 400 }}>
 				<div class="hero-feature-item">
 					<span class="check-icon">✓</span>
 					<span>Instant 0-100 harm scores</span>
+				</div>
+				<div class="hero-feature-item">
+					<span class="check-icon">✓</span>
+					<span>Tailored to your skin & health concerns</span>
 				</div>
 				<div class="hero-feature-item">
 					<span class="check-icon">✓</span>
@@ -243,16 +256,62 @@
 					<span class="check-icon">✓</span>
 					<span>PFAS & toxic chemical screening</span>
 				</div>
+				<div class="hero-feature-item">
+					<span class="check-icon">✓</span>
+					<span>Reviews & Reddit deep-dived</span>
+				</div>
+				<div class="hero-feature-item">
+					<span class="check-icon">✓</span>
+					<span>Research explained, jargon-free</span>
+				</div>
+				<div class="hero-feature-item">
+					<span class="check-icon">✓</span>
+					<span>40 seconds, not 15+ minutes</span>
+				</div>
 			</div>
 			<div class="hero-ctas" in:scale={{ start: 0.95, duration: 400, delay: 500 }}>
-				<button
-					class="cta-primary"
-					data-tally-open="xXV9Mk"
-					data-tally-emoji-text="👋"
-					data-tally-emoji-animation="wave"
-				>
-					Join Waitlist
-				</button>
+				<MovingBorderButton>Join Waitlist for Early Access</MovingBorderButton>
+			</div>
+			<div class="coming-soon-section" in:fly={{ y: 20, duration: 600, delay: 550 }}>
+				<span class="coming-soon-label">Coming soon</span>
+				<div class="coming-soon-logos">
+					<!-- Sephora -->
+					<svg class="brand-logo" viewBox="0 0 80 16" aria-label="Sephora">
+						<text x="0" y="13" font-family="Georgia, 'Times New Roman', serif" font-size="13" font-weight="400" letter-spacing="2" fill="currentColor">SEPHORA</text>
+					</svg>
+					<!-- Shein -->
+					<svg class="brand-logo" viewBox="0 0 50 16" aria-label="Shein">
+						<text x="0" y="13" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="14" font-weight="700" letter-spacing="0.5" fill="currentColor">SHEIN</text>
+					</svg>
+					<!-- Aritzia -->
+					<svg class="brand-logo" viewBox="0 0 50 16" aria-label="Aritzia">
+						<text x="0" y="13" font-family="Georgia, 'Times New Roman', serif" font-size="14" font-weight="400" font-style="italic" fill="currentColor">Aritzia</text>
+					</svg>
+					<!-- Garage -->
+					<svg class="brand-logo" viewBox="0 0 65 16" aria-label="Garage">
+						<text x="0" y="13" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="14" font-weight="500" letter-spacing="1" fill="currentColor">GARAGE</text>
+					</svg>
+					<!-- Uniqlo -->
+					<svg class="brand-logo" viewBox="0 0 60 16" aria-label="Uniqlo">
+						<text x="0" y="13" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" font-weight="700" letter-spacing="1.5" fill="currentColor">UNIQLO</text>
+					</svg>
+					<!-- H&M -->
+					<svg class="brand-logo" viewBox="0 0 40 16" aria-label="H&M">
+						<text x="0" y="13" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="14" font-weight="700" letter-spacing="0" fill="currentColor">H&amp;M</text>
+					</svg>
+					<!-- Costco -->
+					<svg class="brand-logo" viewBox="0 0 70 16" aria-label="Costco">
+						<text x="0" y="13" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="14" font-weight="700" letter-spacing="1" fill="currentColor">COSTCO</text>
+					</svg>
+					<!-- Walmart -->
+					<svg class="brand-logo" viewBox="0 0 55 16" aria-label="Walmart">
+						<text x="0" y="13" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="14" font-weight="400" letter-spacing="0" fill="currentColor">Walmart</text>
+					</svg>
+					<!-- Instacart -->
+					<svg class="brand-logo" viewBox="0 0 70 16" aria-label="Instacart">
+						<text x="0" y="13" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="14" font-weight="500" letter-spacing="0" fill="currentColor">Instacart</text>
+					</svg>
+				</div>
 			</div>
 		</div>
 	</section>
@@ -264,9 +323,8 @@
 				<h2>What is <span class="ruh-text">ruh</span>?</h2>
 				<p class="intro-paragraph">
 					<strong><span class="ruh-text">ruh</span></strong> is a Chrome extension that brings AI-powered
-					product safety analysis directly into your Amazon shopping experience. No more opening new
-					tabs, copying ingredient lists, or spending 15+ minutes researching if a product is safe for
-					you and your family.
+					product safety analysis directly into your shopping experience. No more opening new
+					tabs, copying ingredient lists, or spending <strong>15+ minutes</strong> researching if that <strong>serum</strong>, <strong>foundation</strong>, or <strong>face mask</strong> is safe for you.
 				</p>
 				<p class="intro-paragraph">
 					The moment you visit any Amazon product page, <span class="ruh-text">ruh</span> automatically:
@@ -274,7 +332,7 @@
 				<ul class="intro-list">
 					<li><strong>Scrapes ingredients</strong> from the product listing</li>
 					<li>
-						<strong>Analyzes each ingredient</strong> using Claude AI with web search capabilities
+						<strong>Analyzes each ingredient</strong> using the smartest AI with live web research
 					</li>
 					<li>
 						<strong>Identifies harmful substances</strong> including allergens, PFAS compounds, and toxic
@@ -291,6 +349,9 @@
 				<p class="intro-paragraph">
 					All of this happens in <strong>under 3 seconds</strong>, and results are cached for 30
 					days so repeat visits are instant.
+				</p>
+				<p class="intro-paragraph personalization-highlight">
+					<strong>Personalized to you.</strong> Tell <span class="ruh-text">ruh</span> about your concerns—<strong>acne-prone skin</strong>, <strong>hormonal sensitivities</strong>, <strong>allergies</strong>, <strong>pregnancy</strong>—and get analysis tailored specifically to your body. No generic advice. Just what matters to you.
 				</p>
 			</div>
 			<div class="what-is-visual glass-medium">
@@ -312,7 +373,7 @@
 			<div class="problem-card glass-medium observe-scroll">
 				<div class="problem-stat">99%</div>
 				<h3>of us have PFAS in our blood</h3>
-				<p>Forever chemicals are everywhere. It's time to know which products contain them.</p>
+				<p>Linked to <strong>acne</strong>, <strong>hormonal disruption</strong> & <strong>fertility issues</strong>. They're hiding in your skincare, makeup, and clothes.</p>
 			</div>
 
 			<div class="problem-card glass-medium observe-scroll">
@@ -418,7 +479,7 @@
 				<div class="step-number">2</div>
 				<h3>AI Analysis</h3>
 				<p>
-					Claude AI scrapes the ingredient list, searches medical databases, and analyzes every
+					Our AI scrapes the ingredient list, searches medical databases, and analyzes every
 					component for safety concerns.
 				</p>
 			</div>
@@ -465,7 +526,7 @@
 			</p>
 
 			<div class="tech-badges">
-				<span class="badge glass-subtle">Claude AI</span>
+				<span class="badge glass-subtle">AI-Powered</span>
 				<span class="badge glass-subtle">Chrome Extension</span>
 				<span class="badge glass-subtle">Real-time Analysis</span>
 			</div>
@@ -479,14 +540,7 @@
 			<p class="final-cta-subtitle">Join 500+ people making safer choices every day.</p>
 
 			<div class="final-cta-buttons">
-				<button
-					class="cta-primary glow-button"
-					data-tally-open="xXV9Mk"
-					data-tally-emoji-text="👋"
-					data-tally-emoji-animation="wave"
-				>
-					Join Waitlist
-				</button>
+				<MovingBorderButton>Join Waitlist for Early Access</MovingBorderButton>
 			</div>
 		</div>
 	</section>
@@ -626,7 +680,7 @@
 		position: relative;
 		max-width: 900px;
 		text-align: center;
-		padding: 80px 60px;
+		padding: 80px 60px 50px 60px;
 		border-radius: 24px;
 	}
 
@@ -682,6 +736,41 @@
 		flex-wrap: wrap;
 	}
 
+	.coming-soon-section {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 16px;
+		margin-top: 32px;
+	}
+
+	.coming-soon-label {
+		font-size: 12px;
+		text-transform: uppercase;
+		letter-spacing: 1.5px;
+		color: #9a9590;
+	}
+
+	.coming-soon-logos {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		justify-content: center;
+		gap: 24px;
+	}
+
+	.brand-logo {
+		height: 14px;
+		width: auto;
+		color: #3a3633;
+		opacity: 0.35;
+		transition: opacity 0.3s ease;
+	}
+
+	.brand-logo:hover {
+		opacity: 0.55;
+	}
+
 	/* CTAs */
 	.cta-primary,
 	.cta-secondary {
@@ -700,7 +789,7 @@
 	.cta-primary {
 		background: #e8dcc8;
 		color: #3a3633;
-		box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+		filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
 	}
 
 	.cta-primary:hover {
@@ -765,6 +854,14 @@
 
 	.intro-paragraph:last-of-type {
 		margin-bottom: 0;
+	}
+
+	.intro-paragraph.personalization-highlight {
+		background: rgba(168, 184, 159, 0.1);
+		padding: 20px 24px;
+		border-radius: 12px;
+		border-left: 3px solid #a8b89f;
+		margin-top: 24px;
 	}
 
 	.intro-list {
@@ -1296,14 +1393,15 @@
 	@media (max-width: 480px) {
 		.hero-content {
 			padding: 40px 24px;
+			margin-top: 70px;
 		}
 
 		.hero-title {
-			font-size: 32px;
+			font-size: 26px;
 		}
 
 		.hero-subtitle {
-			font-size: 16px;
+			font-size: 15px;
 		}
 
 		.section-heading {
@@ -1374,6 +1472,14 @@
 			text-align: center;
 		}
 
+		.coming-soon-logos {
+			gap: 16px;
+		}
+
+		.brand-logo {
+			height: 12px;
+		}
+
 		/* New sections responsive */
 		.what-is-content {
 			grid-template-columns: 1fr;
@@ -1429,6 +1535,7 @@
 	@media (min-width: 481px) and (max-width: 768px) {
 		.hero-content {
 			padding: 60px 40px;
+			margin-top: 50px;
 		}
 
 		.hero-title {

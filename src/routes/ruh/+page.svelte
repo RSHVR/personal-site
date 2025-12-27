@@ -4,11 +4,11 @@
 	import { fade, fly, scale } from 'svelte/transition';
 	import { quintOut, cubicOut, cubicInOut } from 'svelte/easing';
 	import MovingBorderButton from '$lib/components/MovingBorderButton.svelte';
+	import WaitlistForm from '$lib/components/WaitlistForm.svelte';
 
 	let headerScrolled = $state(false);
 	let currentSlide = $state(0);
 	let slideDirection = $state('next');
-	let hasTriggeredPopup = $state(false);
 
 	const screenshots = [
 		{
@@ -92,50 +92,15 @@
 		}
 	];
 
-	// Programmatically trigger Tally popup
-	function triggerWaitlistPopup() {
-		if (!browser || hasTriggeredPopup) return;
-
-		// Find the hidden trigger button and click it
-		const triggerButton = document.getElementById('tally-auto-trigger');
-		if (triggerButton) {
-			triggerButton.click();
-			hasTriggeredPopup = true;
-		}
-	}
-
 	onMount(() => {
 		if (!browser) return;
 
 		// Handle scroll for header effect
 		function handleScroll() {
 			headerScrolled = window.scrollY > 100;
-
-			// Auto-popup trigger: 60% scroll
-			if (!hasTriggeredPopup) {
-				const scrollPercent =
-					(window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
-
-				if (scrollPercent >= 60) {
-					const alreadySeen = localStorage.getItem('ruh-waitlist-seen');
-					if (!alreadySeen) {
-						triggerWaitlistPopup();
-						localStorage.setItem('ruh-waitlist-seen', 'true');
-					}
-				}
-			}
 		}
 
 		window.addEventListener('scroll', handleScroll);
-
-		// Auto-popup trigger: 15 seconds
-		const timeoutId = setTimeout(() => {
-			const alreadySeen = localStorage.getItem('ruh-waitlist-seen');
-			if (!alreadySeen && !hasTriggeredPopup) {
-				triggerWaitlistPopup();
-				localStorage.setItem('ruh-waitlist-seen', 'true');
-			}
-		}, 15000);
 
 		// Carousel auto-advance (disabled)
 		// const carouselInterval = setInterval(() => {
@@ -160,7 +125,6 @@
 
 		return () => {
 			window.removeEventListener('scroll', handleScroll);
-			clearTimeout(timeoutId);
 			// clearInterval(carouselInterval); // disabled auto-advance
 			observer.disconnect();
 		};
@@ -202,20 +166,7 @@
 		href="https://fonts.googleapis.com/css2?family=Cormorant+Infant:ital,wght@0,600;1,600&family=Inter:wght@400;500;600&display=swap"
 		rel="stylesheet"
 	/>
-
-	<!-- Tally popup script -->
-	<script async src="https://tally.so/widgets/embed.js"></script>
 </svelte:head>
-
-<!-- Hidden button to trigger Tally popup programmatically -->
-<button
-	id="tally-auto-trigger"
-	data-tally-open="xXV9Mk"
-	data-tally-emoji-text="👋"
-	data-tally-emoji-animation="wave"
-	style="display: none;"
-	aria-hidden="true"
-></button>
 
 <div class="ruh-page">
 	<!-- Section 1: Minimal Sticky Header -->
@@ -269,10 +220,16 @@
 					<span>40 seconds, not 15+ minutes</span>
 				</div>
 			</div>
-			<div class="hero-ctas" in:scale={{ start: 0.95, duration: 400, delay: 500 }}>
-				<MovingBorderButton>Join Waitlist for Early Access</MovingBorderButton>
+			<div class="waitlist-form-wrapper" in:scale={{ start: 0.95, duration: 400, delay: 500 }}>
+				<WaitlistForm>
+					{#snippet children(props)}
+						<MovingBorderButton type="submit" disabled={props.status === 'loading'} class="waitlist-btn">
+							{props.status === 'loading' ? 'Joining...' : 'Join Waitlist for Early Access'}
+						</MovingBorderButton>
+					{/snippet}
+				</WaitlistForm>
 			</div>
-			<div class="coming-soon-section" in:fly={{ y: 20, duration: 600, delay: 550 }}>
+			<div class="coming-soon-section" in:fly={{ y: 20, duration: 600, delay: 650 }}>
 				<span class="coming-soon-label">Coming soon</span>
 				<div class="coming-soon-logos">
 					<!-- Sephora -->
@@ -539,8 +496,14 @@
 			<h2>protect what matters most</h2>
 			<p class="final-cta-subtitle">Join 500+ people making safer choices every day.</p>
 
-			<div class="final-cta-buttons">
-				<MovingBorderButton>Join Waitlist for Early Access</MovingBorderButton>
+			<div class="final-cta-form">
+				<WaitlistForm>
+					{#snippet children(props)}
+						<MovingBorderButton type="submit" disabled={props.status === 'loading'} class="waitlist-btn">
+							{props.status === 'loading' ? 'Joining...' : 'Join Waitlist for Early Access'}
+						</MovingBorderButton>
+					{/snippet}
+				</WaitlistForm>
 			</div>
 		</div>
 	</section>
@@ -729,11 +692,10 @@
 		font-size: 20px;
 	}
 
-	.hero-ctas {
-		display: flex;
-		gap: 16px;
-		justify-content: center;
-		flex-wrap: wrap;
+	.waitlist-form-wrapper {
+		width: 100%;
+		max-width: 400px;
+		margin: 0 auto;
 	}
 
 	.coming-soon-section {
@@ -771,56 +733,6 @@
 		opacity: 0.55;
 	}
 
-	/* CTAs */
-	.cta-primary,
-	.cta-secondary {
-		padding: 16px 32px;
-		border-radius: 12px;
-		font-size: 16px;
-		font-weight: 500;
-		cursor: pointer;
-		transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-		text-decoration: none;
-		display: inline-block;
-		border: none;
-		font-family: 'Inter', sans-serif;
-	}
-
-	.cta-primary {
-		background: #e8dcc8;
-		color: #3a3633;
-		filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
-	}
-
-	.cta-primary:hover {
-		transform: translateY(-2px);
-		box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
-	}
-
-	.cta-secondary {
-		background: transparent;
-		color: #3a3633;
-		border: 2px solid #a8b89f;
-	}
-
-	.cta-secondary:hover {
-		background: rgba(168, 184, 159, 0.1);
-		transform: translateY(-2px);
-	}
-
-	.glow-button {
-		animation: glow-pulse 2s ease-in-out infinite;
-	}
-
-	@keyframes glow-pulse {
-		0%,
-		100% {
-			box-shadow: 0 0 20px rgba(168, 184, 159, 0.4);
-		}
-		50% {
-			box-shadow: 0 0 40px rgba(168, 184, 159, 0.7);
-		}
-	}
 
 	/* Section 2.5: What is Ruh */
 	.what-is-ruh {
@@ -1282,11 +1194,9 @@
 		margin: 0 0 40px 0;
 	}
 
-	.final-cta-buttons {
-		display: flex;
-		gap: 16px;
-		justify-content: center;
-		flex-wrap: wrap;
+	.final-cta-form {
+		max-width: 400px;
+		margin: 0 auto;
 	}
 
 	/* Section 8: Footer */
@@ -1460,17 +1370,6 @@
 			font-size: 16px;
 		}
 
-		.hero-ctas,
-		.final-cta-buttons {
-			flex-direction: column;
-			width: 100%;
-		}
-
-		.cta-primary,
-		.cta-secondary {
-			width: 100%;
-			text-align: center;
-		}
 
 		.coming-soon-logos {
 			gap: 16px;

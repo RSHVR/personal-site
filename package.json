@@ -54,6 +54,9 @@
 		"drizzle-orm": "^0.40.0",
 		"embeddable-chatbot": "github:RSHVR/embeddable-chatbot",
 		"postgres": "^3.4.5",
-		"tsuji": "github:RSHVR/tsuji"
+		"resend": "^6.6.0",
+		"sveltekit-superforms": "^2.29.1",
+		"tsuji": "github:RSHVR/tsuji",
+		"zod": "^4.2.1"
 	}
 }

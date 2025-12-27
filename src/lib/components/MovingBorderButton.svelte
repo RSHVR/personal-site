@@ -5,6 +5,8 @@
 	let className: string = '';
 	export { className as class };
 	export let duration: number = 4; // seconds per full rotation
+	export let type: 'button' | 'submit' = 'button';
+	export let disabled: boolean = false;
 
 	let rotation = 0;
 	let animationFrame: number;
@@ -31,10 +33,10 @@
 </script>
 
 <button
+	{type}
+	{disabled}
 	class="moving-border-button {className}"
-	data-tally-open="xXV9Mk"
-	data-tally-emoji-text="👋"
-	data-tally-emoji-animation="wave"
+	class:disabled
 >
 	<span class="button-content">
 		<slot>Join Waitlist</slot>
@@ -103,5 +105,15 @@
 	.moving-border-button:focus-visible {
 		outline: 2px solid #a8b89f;
 		outline-offset: 4px;
+	}
+
+	.moving-border-button.disabled {
+		opacity: 0.7;
+		cursor: not-allowed;
+	}
+
+	.moving-border-button.disabled:hover {
+		transform: none;
+		box-shadow: none;
 	}
 </style>

@@ -26,7 +26,7 @@
 		status = 'loading';
 
 		try {
-			const response = await fetch('/api/waitlist', {
+			const response = await fetch('https://rshvr.com/api/waitlist', {
 				method: 'POST',
 				headers: { 'Content-Type': 'application/json' },
 				body: JSON.stringify({ email: email.trim() })

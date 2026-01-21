@@ -97,7 +97,7 @@
 		</div>
 		<div class="title-container">
 			<h1 class="greeting">
-				<span class="greeting-text">Hello, Veer here</span>
+				<span class="greeting-text">Hi, I am Veer</span>
 			</h1>
 			<p class="intro">
 				I turn complex AI challenges into revenue-generating systems that deliver measurable

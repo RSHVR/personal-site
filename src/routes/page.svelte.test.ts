@@ -6,7 +6,7 @@ import Page from './+page.svelte';
 describe('Home Page (+page.svelte)', () => {
 	test('should render greeting heading', () => {
 		render(Page);
-		const greeting = screen.getByText(/Hello, Veer here/i);
+		const greeting = screen.getByText(/Hi, I am Veer/i);
 		expect(greeting).toBeInTheDocument();
 	});
 

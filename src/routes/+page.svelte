@@ -75,6 +75,17 @@
 			],
 			websiteLink: 'https://www.highlyte.ai',
 			websiteText: 'website'
+		},
+		{
+			title: 'Pettiness Meter',
+			description: 'A fun Claude Artifact that measures the pettiness level of any situation or statement. Built as an interactive web tool using Claude\'s artifact capabilities.',
+			imageSrc: '/project-images/pettiness-meter/pettiness-meter-01-main.png',
+			images: [
+				'/project-images/pettiness-meter/pettiness-meter-01-main.png',
+				'/project-images/pettiness-meter/pettiness-meter-02-input.png',
+				'/project-images/pettiness-meter/pettiness-meter-02-output.png'
+			],
+			actionButtons: [{ type: 'website', url: '/pettiness-meter', label: 'Demo' }]
 		}
 	];
 </script>

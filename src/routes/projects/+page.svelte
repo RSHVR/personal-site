@@ -36,6 +36,18 @@
 		/>
 
 		<ProjectCard
+			title="Pettiness Meter"
+			description="A fun Claude Artifact that measures the pettiness level of any situation or statement. Built as an interactive web tool using Claude's artifact capabilities."
+			imageSrc="/project-images/pettiness-meter/pettiness-meter-01-main.png"
+			images={[
+				'/project-images/pettiness-meter/pettiness-meter-01-main.png',
+				'/project-images/pettiness-meter/pettiness-meter-02-input.png',
+				'/project-images/pettiness-meter/pettiness-meter-02-output.png'
+			]}
+			actionButtons={[{ type: 'website', url: '/pettiness-meter', label: 'Demo' }]}
+		/>
+
+		<ProjectCard
 			title="Lekhi - Embeddable Chatbot Widget"
 			description="RAG-enabled AI chatbot you can drop into any website. Features Claude Agent SDK streaming, Cohere Embed v4 + Rerank v2 for smart retrieval, liquid glass UI, video backgrounds, and Supabase persistence. Built with Svelte 5, TypeScript for edge runtimes. Roadmap: Ollama support, messaging tools, calendar booking."
 			imageSrc="/project-images/lekhi/lekhi-container-mode.png"
@@ -106,6 +118,7 @@
 			websiteLink="https://www.highlyte.ai"
 			websiteText="website"
 		/>
+
 	</div>
 </div>
 

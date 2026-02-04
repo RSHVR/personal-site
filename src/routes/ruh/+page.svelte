@@ -229,6 +229,9 @@
 					{/snippet}
 				</WaitlistForm>
 			</div>
+			<a href="https://devpost.com/software/ruh" target="_blank" rel="noopener" class="hackathon-badge" in:fly={{ y: 10, duration: 500, delay: 600 }}>
+				🏆 1st Place — University of Toronto Anthropic AI Hackathon
+			</a>
 			<div class="coming-soon-section" in:fly={{ y: 20, duration: 600, delay: 650 }}>
 				<span class="coming-soon-label">Coming soon</span>
 				<div class="coming-soon-logos">
@@ -696,6 +699,19 @@
 		width: 100%;
 		max-width: 400px;
 		margin: 0 auto;
+	}
+
+	.hackathon-badge {
+		font-size: 13px;
+		color: #9a9590;
+		margin: 20px 0 0 0;
+		letter-spacing: 0.3px;
+		text-decoration: none;
+		transition: color 0.2s ease;
+	}
+
+	.hackathon-badge:hover {
+		color: #6b6560;
 	}
 
 	.coming-soon-section {

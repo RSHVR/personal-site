@@ -37,7 +37,7 @@
 		},
 		{
 			title: 'Tsuji - AI Translation Tool',
-			description: 'AI-powered translation tool with Cohere Command-A. Supports 23 languages with pronunciation guides, literal translations, cultural explanations, and formal/informal modes. Traditional Japanese-inspired UI.',
+			description: 'AI-powered translation tool with voice input, text-to-speech, and live interpreter mode. Supports 23 languages with pronunciation guides, literal translations, and cultural explanations. Powered by Cohere, Groq Whisper, and ElevenLabs.',
 			imageSrc: '/project-images/tsuji/tsuji-01-japanese-translation.png',
 			images: [
 				'/project-images/tsuji/tsuji-01-japanese-translation.png',

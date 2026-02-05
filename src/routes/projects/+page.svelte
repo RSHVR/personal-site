@@ -77,7 +77,7 @@
 
 		<ProjectCard
 			title="Tsuji - AI Translation Tool"
-			description="AI-powered translation tool built with Svelte 5 and TypeScript, using Cohere's Command-A translation model. Supports 23 languages with multiple translation modes: standard with pronunciation, literal word-for-word, cultural explanations, and formal/informal registers. Features streaming responses, chat history persistence, and a traditional Japanese-inspired UI. Available as an embeddable npm package."
+			description="AI-powered translation tool with voice input (Groq Whisper), text-to-speech (ElevenLabs), and live interpreter mode for real-time voice translation. Supports 23 languages with multiple modes: pronunciation guides, literal word-for-word, cultural explanations, and formal/informal registers. Built with Svelte 5, TypeScript, and Cohere Command-A. Available as an embeddable npm package."
 			imageSrc="/project-images/tsuji/tsuji-01-japanese-translation.png"
 			images={[
 				'/project-images/tsuji/tsuji-01-japanese-translation.png',

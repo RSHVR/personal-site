@@ -6,9 +6,17 @@
 	import MovingBorderButton from '$lib/components/MovingBorderButton.svelte';
 	import WaitlistForm from '$lib/components/WaitlistForm.svelte';
 
+	// ruh is live on the Chrome Web Store.
+	const CHROME_STORE_URL =
+		'https://chromewebstore.google.com/detail/mjgicecpbfabjaebiaioaijelbepihcl';
+
 	let headerScrolled = $state(false);
 	let currentSlide = $state(0);
 	let slideDirection = $state('next');
+
+	// Waitlist is now a de-emphasized, explicit-click-only "launch updates" option.
+	let showHeroUpdates = $state(false);
+	let showFinalUpdates = $state(false);
 
 	const screenshots = [
 		{
@@ -220,20 +228,47 @@
 					<span>40 seconds, not 15+ minutes</span>
 				</div>
 			</div>
-			<div class="waitlist-form-wrapper" in:scale={{ start: 0.95, duration: 400, delay: 500 }}>
-				<WaitlistForm>
-					{#snippet children(props)}
-						<MovingBorderButton type="submit" disabled={props.status === 'loading'} class="waitlist-btn">
-							{props.status === 'loading' ? 'Joining...' : 'Join Waitlist for Early Access'}
-						</MovingBorderButton>
-					{/snippet}
-				</WaitlistForm>
+			<div class="cta-wrapper" in:scale={{ start: 0.95, duration: 400, delay: 500 }}>
+				<MovingBorderButton
+					href={CHROME_STORE_URL}
+					target="_blank"
+					rel="noopener"
+					class="install-btn"
+				>
+					Add to Chrome — Free
+				</MovingBorderButton>
+
+				<div class="launch-updates">
+					{#if showHeroUpdates}
+						<div class="launch-updates-form" in:fade={{ duration: 200 }}>
+							<WaitlistForm>
+								{#snippet children(props)}
+									<button
+										type="submit"
+										class="launch-updates-submit"
+										disabled={props.status === 'loading'}
+									>
+										{props.status === 'loading' ? 'Joining...' : 'Notify me'}
+									</button>
+								{/snippet}
+							</WaitlistForm>
+						</div>
+					{:else}
+						<button
+							type="button"
+							class="launch-updates-toggle"
+							onclick={() => (showHeroUpdates = true)}
+						>
+							Get launch updates
+						</button>
+					{/if}
+				</div>
 			</div>
 			<a href="https://devpost.com/software/ruh" target="_blank" rel="noopener" class="hackathon-badge" in:fly={{ y: 10, duration: 500, delay: 600 }}>
 				🏆 1st Place — University of Toronto Anthropic AI Hackathon
 			</a>
 			<div class="coming-soon-section" in:fly={{ y: 20, duration: 600, delay: 650 }}>
-				<span class="coming-soon-label">Coming soon</span>
+				<span class="coming-soon-label">Now supporting 12 retailers</span>
 				<div class="coming-soon-logos">
 					<!-- Sephora -->
 					<svg class="brand-logo" viewBox="0 0 80 16" aria-label="Sephora">
@@ -497,16 +532,43 @@
 	<section class="final-cta">
 		<div class="final-cta-content glass-major observe-scroll">
 			<h2>protect what matters most</h2>
-			<p class="final-cta-subtitle">Join 500+ people making safer choices every day.</p>
+			<p class="final-cta-subtitle">Free to install. Analysis in seconds.</p>
 
-			<div class="final-cta-form">
-				<WaitlistForm>
-					{#snippet children(props)}
-						<MovingBorderButton type="submit" disabled={props.status === 'loading'} class="waitlist-btn">
-							{props.status === 'loading' ? 'Joining...' : 'Join Waitlist for Early Access'}
-						</MovingBorderButton>
-					{/snippet}
-				</WaitlistForm>
+			<div class="cta-wrapper">
+				<MovingBorderButton
+					href={CHROME_STORE_URL}
+					target="_blank"
+					rel="noopener"
+					class="install-btn"
+				>
+					Add to Chrome — Free
+				</MovingBorderButton>
+
+				<div class="launch-updates">
+					{#if showFinalUpdates}
+						<div class="launch-updates-form" in:fade={{ duration: 200 }}>
+							<WaitlistForm>
+								{#snippet children(props)}
+									<button
+										type="submit"
+										class="launch-updates-submit"
+										disabled={props.status === 'loading'}
+									>
+										{props.status === 'loading' ? 'Joining...' : 'Notify me'}
+									</button>
+								{/snippet}
+							</WaitlistForm>
+						</div>
+					{:else}
+						<button
+							type="button"
+							class="launch-updates-toggle"
+							onclick={() => (showFinalUpdates = true)}
+						>
+							Get launch updates
+						</button>
+					{/if}
+				</div>
 			</div>
 		</div>
 	</section>
@@ -695,10 +757,65 @@
 		font-size: 20px;
 	}
 
-	.waitlist-form-wrapper {
+	.cta-wrapper {
 		width: 100%;
 		max-width: 400px;
 		margin: 0 auto;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 20px;
+	}
+
+	/* Secondary, de-emphasized "get launch updates" affordance */
+	.launch-updates {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
+
+	.launch-updates-toggle {
+		background: none;
+		border: none;
+		color: #9a9590;
+		font-family: 'Inter', sans-serif;
+		font-size: 14px;
+		cursor: pointer;
+		padding: 4px 8px;
+		text-decoration: underline;
+		text-underline-offset: 3px;
+		transition: color 0.2s ease;
+	}
+
+	.launch-updates-toggle:hover {
+		color: #6b6560;
+	}
+
+	.launch-updates-form {
+		width: 100%;
+		max-width: 320px;
+	}
+
+	.launch-updates-submit {
+		background: rgba(168, 184, 159, 0.2);
+		border: 1px solid rgba(168, 184, 159, 0.4);
+		border-radius: 8px;
+		padding: 10px 20px;
+		font-family: 'Inter', sans-serif;
+		font-size: 14px;
+		font-weight: 500;
+		color: #3a3633;
+		cursor: pointer;
+		transition: background 0.2s ease;
+	}
+
+	.launch-updates-submit:hover:not(:disabled) {
+		background: rgba(168, 184, 159, 0.3);
+	}
+
+	.launch-updates-submit:disabled {
+		opacity: 0.7;
+		cursor: not-allowed;
 	}
 
 	.hackathon-badge {
@@ -1208,11 +1325,6 @@
 		font-size: 20px;
 		color: #6b6560;
 		margin: 0 0 40px 0;
-	}
-
-	.final-cta-form {
-		max-width: 400px;
-		margin: 0 auto;
 	}
 
 	/* Section 8: Footer */

@@ -7,6 +7,10 @@
 	export let duration: number = 4; // seconds per full rotation
 	export let type: 'button' | 'submit' = 'button';
 	export let disabled: boolean = false;
+	// When href is set the button renders as an anchor (e.g. external install link).
+	export let href: string | undefined = undefined;
+	export let target: string | undefined = undefined;
+	export let rel: string | undefined = undefined;
 
 	let rotation = 0;
 	let animationFrame: number;
@@ -32,11 +36,15 @@
 	});
 </script>
 
-<button
-	{type}
-	{disabled}
+<svelte:element
+	this={href ? 'a' : 'button'}
+	href={href || undefined}
+	target={href ? target : undefined}
+	rel={href ? rel : undefined}
+	type={href ? undefined : type}
+	disabled={href ? undefined : disabled}
 	class="moving-border-button {className}"
-	class:disabled
+	class:disabled={!href && disabled}
 >
 	<span class="button-content">
 		<slot>Join Waitlist</slot>
@@ -45,7 +53,7 @@
 		class="moving-border"
 		style="--rotation: {rotation}deg;"
 	></span>
-</button>
+</svelte:element>
 
 <style>
 	.moving-border-button {
@@ -58,6 +66,7 @@
 		background: #e8dcc8;
 		border: none;
 		cursor: pointer;
+		text-decoration: none;
 		overflow: hidden;
 		isolation: isolate;
 		transition: transform 0.3s ease, box-shadow 0.3s ease;

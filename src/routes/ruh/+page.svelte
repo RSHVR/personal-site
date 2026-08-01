@@ -235,7 +235,7 @@
 					rel="noopener"
 					class="install-btn"
 				>
-					Add to Chrome — Free
+					Add to Chrome — Free in Beta
 				</MovingBorderButton>
 
 				<div class="launch-updates">
@@ -532,7 +532,7 @@
 	<section class="final-cta">
 		<div class="final-cta-content glass-major observe-scroll">
 			<h2>protect what matters most</h2>
-			<p class="final-cta-subtitle">Free to install. Analysis in seconds.</p>
+			<p class="final-cta-subtitle">Free during the public beta. Analysis in seconds.</p>
 
 			<div class="cta-wrapper">
 				<MovingBorderButton
@@ -541,7 +541,7 @@
 					rel="noopener"
 					class="install-btn"
 				>
-					Add to Chrome — Free
+					Add to Chrome — Free in Beta
 				</MovingBorderButton>
 
 				<div class="launch-updates">

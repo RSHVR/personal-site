@@ -24,11 +24,14 @@
 			$page.url.hostname === 'ruh.rshvr.com' ||
 			$page.url.hostname === 'ruh.localhost'
 	);
+	// The evening page is personal: no site chrome, and its URL stays out of analytics
+	let isEveningPage = $derived($page.route.id?.startsWith('/[slug]') ?? false);
 	// Hide ChatPopup on contact page since it has its own full chat
 	let isContactPage = $derived($page.url.pathname === '/contact');
 
 	// Track page views for SPA navigations
 	afterNavigate((navigation) => {
+		if (navigation.to?.route.id?.startsWith('/[slug]')) return;
 		if (browser && typeof gtag !== 'undefined' && navigation.to) {
 			gtag('event', 'page_view', {
 				page_title: document.title,
@@ -39,7 +42,7 @@
 	});
 </script>
 
-{#if isTsujiPage || isRuhPage}
+{#if isTsujiPage || isRuhPage || isEveningPage}
 	<!-- Clean layout for tsuji and ruh pages -->
 	<slot />
 {:else}

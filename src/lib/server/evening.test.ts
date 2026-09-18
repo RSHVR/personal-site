@@ -5,6 +5,7 @@ import {
 	readEveningEnv,
 	slugMatches,
 	submitAnswers,
+	submitRsvp,
 	type Message
 } from './evening';
 import { fixturePlan as plan } from '$lib/evening/fixtures';
@@ -165,5 +166,48 @@ describe('emailSettings', () => {
 	test('returns null without a key or a recipient', () => {
 		expect(emailSettings({ ...env, RESEND_API_KEY: undefined })).toBeNull();
 		expect(emailSettings({ ...env, EVENING_NOTIFY_EMAIL: '' })).toBeNull();
+	});
+});
+
+describe('submitRsvp', () => {
+	const config = readEveningEnv(env)!;
+	const recorder = () => {
+		const sent: Message[] = [];
+		return { sent, send: async (message: Message) => (sent.push(message), true) };
+	};
+
+	test('rejects another path without sending anything', async () => {
+		const { sent, send } = recorder();
+		const result = await submitRsvp({
+			config,
+			slug: 'someone-else',
+			body: { notice: 'yes' },
+			send
+		});
+		expect(result.status).toBe(404);
+		expect(sent).toHaveLength(0);
+	});
+
+	test('rejects an unknown notice', async () => {
+		const { send } = recorder();
+		const result = await submitRsvp({ config, slug: 'alex', body: { notice: 'maybe' }, send });
+		expect(result.status).toBe(400);
+	});
+
+	test('emails Veer her answer', async () => {
+		const { sent, send } = recorder();
+		const result = await submitRsvp({ config, slug: 'alex', body: { notice: 'yes' }, send });
+		expect(result).toEqual({ status: 200, notified: true });
+		expect(sent[0].subject).toBe('Alex said yes');
+	});
+
+	test('reports a failed send as a 502', async () => {
+		const result = await submitRsvp({
+			config,
+			slug: 'alex',
+			body: { notice: 'no' },
+			send: async () => false
+		});
+		expect(result).toEqual({ status: 502, notified: false });
 	});
 });

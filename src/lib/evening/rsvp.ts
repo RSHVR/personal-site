@@ -11,6 +11,27 @@ export function nextRsvp(current: Rsvp, choice: 'yes' | 'no'): Rsvp {
 	return current === 'ask' ? 'no-once' : 'no';
 }
 
+/** The email each change of answer sends Veer; every tap sends one. */
+export const RSVP_NOTICES = ['yes', 'no', 'yes-after-no', 'no-again', 'changed-mind'] as const;
+export type RsvpNotice = (typeof RSVP_NOTICES)[number];
+
+export function rsvpNotice(previous: Rsvp, next: Rsvp): RsvpNotice | null {
+	if (next === 'yes') {
+		if (previous === 'no') return 'changed-mind';
+		return previous === 'no-once' ? 'yes-after-no' : 'yes';
+	}
+	if (next === 'no-once') return 'no';
+	if (next === 'no') return 'no-again';
+	return null;
+}
+
+/** Keeps only notices this page knows, from a saved queue of unsent ones. */
+export function parseNotices(value: unknown): RsvpNotice[] {
+	return Array.isArray(value)
+		? value.filter((n): n is RsvpNotice => RSVP_NOTICES.includes(n as RsvpNotice))
+		: [];
+}
+
 /** Reads a saved state; anything unknown starts from the question. */
 export function parseRsvp(value: unknown): Rsvp {
 	return RSVP_STATES.includes(value as Rsvp) ? (value as Rsvp) : 'ask';

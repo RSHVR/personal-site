@@ -1,7 +1,8 @@
 import { buildIcs } from '$lib/evening/calendar';
 import { resolveItinerary } from '$lib/evening/itinerary';
 import { answersSchemaFor, ARRIVALS, type Arrival, type Plan } from '$lib/evening/schema';
-import { formatAnswers } from '$lib/evening/message';
+import { formatAnswers, formatRsvp } from '$lib/evening/message';
+import { RSVP_NOTICES, type RsvpNotice } from '$lib/evening/rsvp';
 
 /**
  * The private half of the evening page. Her name, the date, the URL and Veer's number
@@ -88,6 +89,25 @@ export async function submitAnswers({ plan, config, slug, body, send }: SubmitIn
 		updated: payload?.updated === true
 	});
 	const notified = await send(message);
+	return { status: notified ? 200 : 502, notified };
+}
+
+interface RsvpInput {
+	config: EveningConfig | null;
+	slug: string;
+	body: unknown;
+	send: (message: Message) => Promise<boolean>;
+}
+
+export async function submitRsvp({ config, slug, body, send }: RsvpInput) {
+	if (!config || !slugMatches(config, slug)) return { status: 404, notified: false };
+
+	const notice = (body as { notice?: unknown } | null)?.notice;
+	if (!RSVP_NOTICES.includes(notice as RsvpNotice)) return { status: 400, notified: false };
+
+	const notified = await send(
+		formatRsvp({ guest: config.guest, date: config.date, notice: notice as RsvpNotice })
+	);
 	return { status: notified ? 200 : 502, notified };
 }
 

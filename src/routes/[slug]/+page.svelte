@@ -5,7 +5,13 @@
 	import { resolve } from '$app/paths';
 	import Deck from '$lib/evening/components/Deck.svelte';
 	import Spread from '$lib/evening/components/Spread.svelte';
-	import { parseRsvp, type Rsvp } from '$lib/evening/rsvp';
+	import {
+		parseNotices,
+		parseRsvp,
+		rsvpNotice,
+		type Rsvp,
+		type RsvpNotice
+	} from '$lib/evening/rsvp';
 	import { answersSchemaFor, type Answers } from '$lib/evening/schema';
 	import { weekday } from '$lib/evening/time';
 	import type { PageProps } from './$types';
@@ -21,6 +27,8 @@
 		everSent: boolean;
 		/** Her answer to "Are you in?". */
 		rsvp: Rsvp;
+		/** Emails about her answer that have not reached Veer yet, oldest first. */
+		notices: RsvpNotice[];
 	}
 
 	const QUESTIONS_START = 3;
@@ -47,7 +55,8 @@
 				answers: answers.data,
 				sent: stored.sent === true,
 				everSent: stored.everSent === true,
-				rsvp: parseRsvp(stored.rsvp)
+				rsvp: parseRsvp(stored.rsvp),
+				notices: parseNotices(stored.notices)
 			};
 		} catch {
 			return null;
@@ -87,6 +96,7 @@
 			saved = stored;
 			phase = 'spread';
 			if (!stored.sent) send(stored);
+			if (stored.notices.length) sendNotices();
 		}
 		ready = true;
 	});
@@ -96,7 +106,8 @@
 			answers,
 			sent: false,
 			everSent: saved?.everSent ?? false,
-			rsvp: saved?.rsvp ?? 'ask'
+			rsvp: saved?.rsvp ?? 'ask',
+			notices: saved?.notices ?? []
 		};
 		saved = next;
 		write(next);
@@ -105,10 +116,37 @@
 		send(next);
 	}
 
+	/** Every answer to "Are you in?" emails Veer. */
 	function reply(rsvp: Rsvp) {
 		if (!saved) return;
-		saved = { ...saved, rsvp };
+		const notice = rsvpNotice(saved.rsvp, rsvp);
+		saved = { ...saved, rsvp, notices: notice ? [...saved.notices, notice] : saved.notices };
 		write(saved);
+		sendNotices();
+	}
+
+	let sendingNotices = false;
+
+	/** Sends waiting emails in order; whatever fails waits for her next visit. */
+	async function sendNotices() {
+		if (sendingNotices) return;
+		sendingNotices = true;
+		try {
+			while (saved && saved.notices.length) {
+				const response = await fetch(resolve('/[slug]/rsvp', { slug: data.slug }), {
+					method: 'POST',
+					headers: { 'content-type': 'application/json' },
+					body: JSON.stringify({ notice: saved.notices[0] })
+				});
+				if (!response.ok) break;
+				saved = { ...saved, notices: saved.notices.slice(1) };
+				write(saved);
+			}
+		} catch {
+			// Offline: the queue stays saved and goes out on her next visit.
+		} finally {
+			sendingNotices = false;
+		}
 	}
 
 	function change() {

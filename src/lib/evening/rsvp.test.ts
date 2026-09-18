@@ -1,5 +1,5 @@
 import { describe, expect, test } from 'vitest';
-import { nextRsvp, parseRsvp } from './rsvp';
+import { nextRsvp, parseRsvp, rsvpNotice } from './rsvp';
 
 describe('nextRsvp', () => {
 	test('yes at the first ask is a yes', () => {
@@ -35,5 +35,27 @@ describe('parseRsvp', () => {
 	test('falls back to asking for anything else', () => {
 		expect(parseRsvp(undefined)).toBe('ask');
 		expect(parseRsvp('maybe')).toBe('ask');
+	});
+});
+
+describe('rsvpNotice', () => {
+	test('a yes at the first ask', () => {
+		expect(rsvpNotice('ask', 'yes')).toBe('yes');
+	});
+
+	test('the first no', () => {
+		expect(rsvpNotice('ask', 'no-once')).toBe('no');
+	});
+
+	test('a yes after one no', () => {
+		expect(rsvpNotice('no-once', 'yes')).toBe('yes-after-no');
+	});
+
+	test('a second no', () => {
+		expect(rsvpNotice('no-once', 'no')).toBe('no-again');
+	});
+
+	test('a yes after a final no', () => {
+		expect(rsvpNotice('no', 'yes')).toBe('changed-mind');
 	});
 });

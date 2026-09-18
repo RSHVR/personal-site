@@ -95,6 +95,8 @@
 	// "Are you in?" waits behind Next until she has read the plan; a saved answer skips it.
 	const seedOpen = () => rsvp !== 'ask';
 	let replyOpen = $state(seedOpen());
+	// Only a saved answer rises in with the rest of the page; a fresh one swaps in place.
+	const openedFromSave = seedOpen();
 
 	/** Shows "Are you in?" on its own screen and brings it into view. */
 	async function openReply() {
@@ -110,8 +112,8 @@
 		reply = next;
 		onrsvp(next);
 		preloadAhead(next);
+		// No scrolling: the GIF and its buttons replace the question where it stands.
 		await tick();
-		replySection?.scrollIntoView?.({ block: 'start', behavior: 'smooth' });
 		replyHeading?.focus({ preventScroll: true });
 	}
 
@@ -196,7 +198,7 @@
 			<button type="button" class="button next" onclick={openReply}>Next</button>
 		</div>
 	{:else}
-	<section class="reply" class:rise={rsvp !== 'ask'} bind:this={replySection} style:--n={itinerary.items.length + 3}>
+	<section class="reply" class:rise={openedFromSave} bind:this={replySection} style:--n={itinerary.items.length + 3}>
 		{#key reply}
 			{#if gif}
 				<img class="gif" src={gif.src} alt={gif.alt} width={gif.width} height={gif.height} />

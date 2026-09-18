@@ -92,6 +92,18 @@
 
 	onMount(() => preloadAhead(reply));
 
+	// "Are you in?" waits behind Next until she has read the plan; a saved answer skips it.
+	const seedOpen = () => rsvp !== 'ask';
+	let replyOpen = $state(seedOpen());
+
+	/** Shows "Are you in?" on its own screen and brings it into view. */
+	async function openReply() {
+		replyOpen = true;
+		await tick();
+		replySection?.scrollIntoView?.({ block: 'start', behavior: 'smooth' });
+		replyHeading?.focus({ preventScroll: true });
+	}
+
 	async function choose(choice: 'yes' | 'no') {
 		const next = nextRsvp(reply, choice);
 		if (next === reply) return;
@@ -179,7 +191,12 @@
 		</section>
 	{/if}
 
-	<section class="reply rise" bind:this={replySection} style:--n={itinerary.items.length + 3}>
+	{#if !replyOpen}
+		<div class="to-reply rise" style:--n={itinerary.items.length + 3}>
+			<button type="button" class="button next" onclick={openReply}>Next</button>
+		</div>
+	{:else}
+	<section class="reply" class:rise={rsvp !== 'ask'} bind:this={replySection} style:--n={itinerary.items.length + 3}>
 		{#key reply}
 			{#if gif}
 				<img class="gif" src={gif.src} alt={gif.alt} width={gif.width} height={gif.height} />
@@ -230,11 +247,10 @@
 				>
 			</div>
 		{/if}
-	</section>
 
-	<footer class="sign rise" style:--n={itinerary.items.length + 4}>
-		<button type="button" class="quiet" onclick={onchange}>Change my answers</button>
-	</footer>
+		<button type="button" class="quiet change" onclick={onchange}>Change my answers</button>
+	</section>
+	{/if}
 </article>
 
 <style>
@@ -424,11 +440,12 @@
 	 * sit alone in view once she answers.
 	 */
 	.reply {
+		animation: reply-in 0.9s ease both;
 		display: flex;
 		flex-direction: column;
 		justify-content: center;
 		min-height: 100svh;
-		padding: 24px 0;
+		padding: 16px 0;
 		box-sizing: border-box;
 		text-align: center;
 	}
@@ -436,7 +453,7 @@
 	.gif {
 		display: block;
 		width: auto;
-		height: min(220px, 32svh);
+		height: min(220px, 26svh);
 		max-width: 100%;
 		margin: 0 auto 18px;
 		border-radius: 16px;
@@ -515,7 +532,7 @@
 		display: flex;
 		flex-direction: column;
 		gap: 10px;
-		margin-top: 24px;
+		margin-top: 16px;
 	}
 
 	.add.google-first {
@@ -545,9 +562,23 @@
 		font-weight: 500;
 	}
 
-	.sign {
-		margin-top: 40px;
-		text-align: center;
+	.to-reply {
+		display: flex;
+		justify-content: center;
+		margin-top: 36px;
+	}
+
+	.next {
+		min-width: 180px;
+		padding: 0 28px;
+		background: rgb(226 189 102 / 0.08);
+		font-style: italic;
+		cursor: pointer;
+	}
+
+	.reply .change {
+		align-self: center;
+		margin-top: 8px;
 	}
 
 	.quiet {
@@ -571,6 +602,12 @@
 		animation-delay: calc(0.6s + var(--n) * 140ms);
 	}
 
+	@keyframes reply-in {
+		from {
+			opacity: 0;
+		}
+	}
+
 	@keyframes rise {
 		from {
 			opacity: 0;
@@ -581,6 +618,7 @@
 	@media (prefers-reduced-motion: reduce) {
 		.fan-card,
 		.rise,
+		.reply,
 		.gif {
 			animation: none;
 		}

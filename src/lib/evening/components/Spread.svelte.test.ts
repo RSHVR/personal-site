@@ -79,14 +79,29 @@ describe('Spread: the plan', () => {
 	test('lets her change her answers', async () => {
 		const onchange = vi.fn();
 		show({}, { onchange });
+		await click('Next');
 		await click('Change my answers');
 		expect(onchange).toHaveBeenCalled();
 	});
 });
 
 describe('Spread: are you in?', () => {
-	test('asks before showing the calendar or the number', () => {
+	test('asks only after she taps Next under the plan', async () => {
 		show();
+		expect(screen.queryByRole('heading', { name: 'Are you in?' })).not.toBeInTheDocument();
+		expect(screen.queryByRole('button', { name: 'Change my answers' })).not.toBeInTheDocument();
+
+		await click('Next');
+		expect(screen.getByRole('heading', { name: 'Are you in?' })).toBeInTheDocument();
+		expect(screen.getByRole('button', { name: 'Yes' })).toBeInTheDocument();
+		expect(screen.getByRole('button', { name: 'No' })).toBeInTheDocument();
+		expect(screen.getByRole('button', { name: 'Change my answers' })).toBeInTheDocument();
+		expect(screen.queryByRole('button', { name: 'Next' })).not.toBeInTheDocument();
+	});
+
+	test('asks before showing the calendar or the number', async () => {
+		show();
+		await click('Next');
 		expect(screen.getByRole('heading', { name: 'Are you in?' })).toBeInTheDocument();
 		expect(screen.queryByRole('link', { name: /Calendar/ })).not.toBeInTheDocument();
 		expect(screen.queryByText(/Text me/)).not.toBeInTheDocument();
@@ -95,6 +110,7 @@ describe('Spread: are you in?', () => {
 	test('a yes shows the happy cat, the number and the calendar links', async () => {
 		const onrsvp = vi.fn();
 		show({ area: 'oakville', arrival: 'pickup' }, { onrsvp });
+		await click('Next');
 		await click('Yes');
 
 		expect(onrsvp).toHaveBeenLastCalledWith('yes');
@@ -152,6 +168,7 @@ describe('Spread: are you in?', () => {
 
 	test('a first no gets the sad cat and one more ask', async () => {
 		show();
+		await click('Next');
 		await click('No');
 
 		expect(screen.getByRole('img', { name: /sad cat/ })).toBeInTheDocument();
@@ -163,12 +180,19 @@ describe('Spread: are you in?', () => {
 	test('a second no is accepted with the okay cat', async () => {
 		const onrsvp = vi.fn();
 		show({}, { onrsvp });
+		await click('Next');
 		await click('No');
 		await click('Still no');
 
 		expect(onrsvp).toHaveBeenLastCalledWith('no');
 		expect(screen.getByRole('img', { name: /nodding, okay/ })).toBeInTheDocument();
 		expect(screen.queryByRole('button', { name: 'Still no' })).not.toBeInTheDocument();
+	});
+
+	test('a saved answer opens straight on it, without Next', () => {
+		show({}, { rsvp: 'yes' });
+		expect(screen.queryByRole('button', { name: 'Next' })).not.toBeInTheDocument();
+		expect(screen.getByRole('link', { name: /Apple Calendar/ })).toBeInTheDocument();
 	});
 
 	test('she can take back a no', async () => {
